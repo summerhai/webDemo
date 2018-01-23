@@ -1,0 +1,21 @@
+package cn.com.retrans.utils;
+
+import org.apache.shiro.crypto.hash.Md5Hash;
+
+/**
+ * Created by mingyue on 2018/1/23.
+ */
+public class MyMD5 {
+    private static final String MD5_SALT = "retrans:)";
+
+    public static String md5(String str) {
+        String newSalt = str + "-" + MD5_SALT;
+        return new Md5Hash(str, newSalt).toString();
+    }
+
+    public static void main(String[] args) {
+        String password = "112358";
+        password = md5(password);
+        System.out.println(password);
+    }
+}
