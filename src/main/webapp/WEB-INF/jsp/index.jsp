@@ -38,7 +38,7 @@
         <div class="clear"> </div>
       </div>
       <div class="log-bwn" id="loginButton">
-        <input type="submit" value="登录">
+        <input type="button" value="登录">
       </div>
     </form>
   </div>
