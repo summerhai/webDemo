@@ -207,39 +207,14 @@ body {
 	margin-bottom: 2em;
 }
 
-.top-login {
-	width: 130px;
-	height: 130px;
-	display: block;
-	-webkit-transform: rotate(45deg) translate3d(0, 0, 0);
-	-moz-transform: rotate(45deg) translate3d(0, 0, 0);
-	-ms-transform: rotate(45deg) translate3d(0, 0, 0);
-	-o-transform: rotate(45deg) translate3d(0, 0, 0);
-	transform: rotate(45deg) translate3d(0, 0, 0);
-	margin: 0 auto 4em;
-	background: #fff;
-	position: relative;
-}
 
-.top-login span {
-	border: 2px solid #F36;
-	width: 105px;
-	height: 105px;
+.logo{
+	width: 170px;
+	height: 150px;
 	display: block;
 	margin: 0px auto;
-	position: absolute;
-	top: 11px;
-	left: 11px;
 }
 
-.top-login span img {
-	-webkit-transform: rotate(-45deg) translate3d(0, 0, 0);
-	-moz-transform: rotate(-45deg) translate3d(0, 0, 0);
-	-ms-transform: rotate(-45deg) translate3d(0, 0, 0);
-	-o-transform: rotate(-45deg) translate3d(0, 0, 0);
-	transform: rotate(-45deg) translate3d(0, 0, 0);
-	margin: 20px 0 0 20px;
-}
 
 .login-top {
 	width: 460px;
@@ -369,20 +344,6 @@ p.copy a:hover {
 	.login-ic input[type="text"],
 	.login-ic input[type="password"] {
 		width: 76%;
-	}
-	.top-login {
-		width: 90px;
-		height: 90px;
-		margin: 0 auto 3em;
-	}
-	.top-login span img {
-		margin: 5px 0 0 5px;
-	}
-	.top-login span {
-		width: 75px;
-		height: 75px;
-		top: 5px;
-		left: 5px;
 	}
 	
 	.login-logo {
