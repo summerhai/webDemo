@@ -29,12 +29,12 @@
     <form>
       <div class="login-ic">
         <i></i>
-        <input id="username" type="text" value="用户" />
+        <input id="username" type="text" value="" placeholder="用户名" />
         <div class="clear"> </div>
       </div>
       <div class="login-ic">
         <i class="icon"></i>
-        <input id="password"      type="password" value="密码" />
+        <input id="password"      type="password" value="" placeholder="请输入密码"/>
         <div class="clear"> </div>
       </div>
       <div class="log-bwn" id="loginButton">
@@ -48,5 +48,6 @@
 </body>
 <script src="static/AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="static/script/login/login.js"></script>
+<script src="static/layer/layer.js"></script>
 
 </html>
