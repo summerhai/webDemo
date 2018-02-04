@@ -100,6 +100,7 @@ public class LoginController {
 
     @RequestMapping(value = "/main")
     public String main(HttpServletRequest request, HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin","*");
         return "main";
     }
 

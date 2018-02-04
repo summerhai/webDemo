@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 public class MonitorController {
     @RequestMapping(value = "/sewerage")
     public String main(HttpServletRequest request, HttpServletResponse response) {
+//        response.setHeader("Access-Control-Allow-Origin","*");
         return "monitor/sewerage";
     }
 

@@ -1,3 +1,8 @@
+<%
+  String path = request.getContextPath();
+  System.out.println("path:"+path);
+  response.setHeader("Access-Control-Allow-Origin", "*");
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script>var CONTEXTPATH = "${pageContext.request.contextPath}" </script>
 
@@ -7,7 +12,7 @@
 <head>
   <title>登录</title>
 
-  <link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="<%=path%>/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,7 +24,7 @@
 
 <div class="login-form">
 
-    <span class="logo"><img src=" static/imgs/logo.png" alt="logo" /></span>
+    <span class="logo"><img src=" <%=path%>/static/imgs/logo.png" alt="logo" /></span>
 
   <h2>
     <b>安全环境监测SEMS®</b>一体化平台
@@ -46,8 +51,8 @@
 </div>
 
 </body>
-<script src="static/AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="static/script/login/login.js"></script>
-<script src="static/layer/layer.js"></script>
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="<%=path%>/static/script/login/login.js"></script>
+<script src="<%=path%>/static/layer/layer.js"></script>
 
 </html>
