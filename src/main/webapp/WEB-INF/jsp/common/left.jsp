@@ -49,21 +49,25 @@
                     <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
                 </ul>
             </li>
-            <li>
-                <a href="<%=path%>/monitor/sewerage">
+            <li class="treeview">
+                <a href="#">
                     <i class="fa fa-th"></i> <span>运行监控</span>
                     <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
+                    <small class="label pull-right bg-green">new</small>
+                    </span>
                 </a>
+                <ul class="treeview-menu">
+                    <li ><a href="<%=path%>/monitor/sewerage"><i class="fa fa-circle-o"></i>综合监控</a></li>
+                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/charts/chartjs.html"><i class="fa fa-circle-o"></i>污水回用监控</a></li>
+                </ul>
             </li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-pie-chart"></i>
                     <span>趋势报表</span>
                     <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="http://localhost/AdminLTE-2.4.2/pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>

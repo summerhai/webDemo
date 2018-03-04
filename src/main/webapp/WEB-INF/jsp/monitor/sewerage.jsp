@@ -78,8 +78,7 @@
             line-height: 23px;
         }
         .d22{
-            overflow: hidden;
-            width: 100%;
+            width: 30%;
         }
         .d34{
             width: 70%;
@@ -117,33 +116,226 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <div class="d1">
-            <div class="d21">
-                监控系统界面
-                <div class="d33">
-                    <!-- Date -->
-                    <div class="form-group">
-                        <div class="input-group date" style="float: left">
-                            <label style="float: left">日期:</label>
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <%--<h1>--%>
+                <%--Advanced Form Elements--%>
+                <%--<small>Preview</small>--%>
+            <%--</h1>--%>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+                <li><a href="#">监控</a></li>
+                <li class="active">综合监控</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="d1">
+                <div class="d21">
+                    监控系统界面
+                    <div class="d33">
+                        <!-- Date -->
+                        <div class="form-group">
+                            <div class="input-group date" style="float: left">
+                                <label style="float: left">日期:</label>
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control pull-right" id="datepicker">
+                                <%--<button type="submit" class="btn btn-primary">Submit</button>--%>
                             </div>
-                            <input type="text" class="form-control pull-right" id="datepicker">
                         </div>
+                    </div>
                 </div>
-            </div>
-            </div>
-            <div class="d22">
-                <div class="box-body">
-                    <img class="img-responsive pad" src="<%=path%>/static/imgs/zhjk.png" alt="Photo" style="width:80%; height:80%; margin: 0 auto">
+                <div class="row">
+                    <div class="col-md-6" style="width: 33%">
+                        <div class="box box-danger" style="background-color: #fff4e8">
+                            <div class="box-header">
+                                <h3 align="center" style="font-weight:bold">污水处理回用单元</h3>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-body">
+                                <!-- Date dd/mm/yyyy -->
+                                <div class="form-group">
+                                    <label style="padding-left: 15%">使用状态:</label>
+                                    <label style="color:green">运行中</label>
+
+                                    <label style="padding-left: 25%">报警:</label>
+                                    <label style="color:green">无</label>
+                                    <table class="table table-bordered text-center">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <button type="button" class="btn btn-block btn-info btn-lg">系统运行</button>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-block btn-danger btn-lg">系统停止</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table table-bordered text-center">
+                                        <tr>
+                                            <th>名称</th>
+                                            <th>状态</th>
+                                            <th>名称</th>
+                                            <th>状态</th>
+                                        </tr>
+                                        <tr>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                        </tr>
+                                    </table>
+                                    <!-- /.input group -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <div class="col-md-6" style="width: 33%">
+                        <div class="box box-danger" style="background-color: #fff4e8">
+                            <div class="box-header">
+                                <h3 align="center" style="font-weight:bold">排风除臭单元</h3>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-body">
+                                <!-- Date dd/mm/yyyy -->
+                                <div class="form-group">
+                                    <label style="padding-left: 15%">使用状态:</label>
+                                    <label style="color:green">运行中</label>
+
+                                    <label style="padding-left: 25%">报警:</label>
+                                    <label style="color:green">无</label>
+                                    <table class="table table-bordered text-center">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <button type="button" class="btn btn-block btn-info btn-lg">系统运行</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-block btn-danger btn-lg">系统停止</button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table table-bordered text-center">
+                                        <tr>
+                                            <th>名称</th>
+                                            <th>状态</th>
+                                        </tr>
+                                        <tr>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                        </tr>
+
+                                    </table>
+                                    <!-- /.input group -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <div class="col-md-6" style="width: 33%">
+                        <div class="box box-danger" style="background-color: #fff4e8">
+                            <div class="box-header">
+                                <h3 align="center" style="font-weight:bold">安环监测单元</h3>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-body">
+                                <!-- Date dd/mm/yyyy -->
+                                <div class="form-group">
+                                    <label style="padding-left: 40%">安环状态:</label>
+                                    <label style="color:green">正常</label>
+                                    <table class="table table-bordered text-center">
+                                        <tr>
+                                            <th>内容</th>
+                                            <th>数值</th>
+                                            <th>状态</th>
+                                        </tr>
+                                        <tr>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                            <td>名称1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                            <td>名称1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                            <td>名称1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                            <td>名称1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>名称1</td>
+                                            <td>状态1</td>
+                                            <td>名称1</td>
+                                        </tr>
+                                    </table>
+                                    <!-- /.input group -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box -->
+                    </div>
                 </div>
 
-                <div class="d35">
-                    <div class="d42"></div>
-                </div>
             </div>
+        </section>
 
-    </div>
     <!-- /.content-wrapper -->
     <jsp:include page="../common/footer.jsp"></jsp:include>
     <!-- Add the sidebar's background. This div must be placed
@@ -158,5 +350,61 @@
     $('#datepicker').datepicker({
         autoclose: true
     })
+    var canvas = document.getElementById("myCanvas");
+    var ctxs;
+    canvas.width = $("#myCopyImage").parent().width();
+    canvas.height = $("#myCopyImage").parent().height();
+    if(navigator.userAgent.indexOf("MSIE")>0)
+    {
+        $(canvas).height($("#myCopyImage").parent().height());
+    }
+    var img = new Image();
+    //简单地检测当前浏览器是否支持Canvas对象，以免在一些不支持html5的浏览器中提示语法错误
+    if(canvas.getContext){
+        //获取对应的CanvasRenderingContext2D对象(画笔)
+        ctx = canvas.getContext("2d");
+
+        //创建新的图片对象
+        //指定图片的URL
+        img.src = "<%=path%>/static/imgs/zhjk.png";
+        //浏览器加载图片完毕后再绘制图片
+        img.onload = function(){
+            //以Canvas画布上的坐标(10,10)为起始点，绘制图像
+            ctx.drawImage(img, 10, 10);
+        };
+    }
+
+
+    function sendAjax(ctx,sensorId,x,y){
+        //发送Ajax请求更新数据
+        $.ajax({
+            url:"/data/queryTem",
+            type:"POST",
+            data:{
+                "sensorId":sensorId,
+                "queryDate":new Date().pattern("yyyy-MM-dd hh:mm:ss")
+            },
+            success:function(data){
+                //当后台请求到最新数据时返回true，更新前台数据
+                if(data.success)
+                {
+                    //更新数据操作
+                    ctx.fillText(data.module.tempratureCurtem+"度", x, y);
+                }
+            }
+        });
+    }
+
+    function myClickHandler()
+    {
+        ctx.drawImage(img, 10, 10);
+        ctx.fillStyle="#0000ff";
+        ctx.font = "12pt Calibri blod";
+        ctx.fillText(Math.round(20+Math.random()*10), 470, 416);
+        // ctx.fillText(Math.round(20+Math.random()*10)+"度", 1400, 280);
+        ctx.fillText(Math.round(20+Math.random()*10), 698, 175);
+        // ctx.fillText(Math.round(20+Math.random()*10)+"度", 1500, 80);
+    }
+    setInterval(myClickHandler,1000);
 </script>
 </html>
