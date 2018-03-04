@@ -55,7 +55,7 @@
         }
 
         .d32{
-            width: 84%;
+            width: 73%;
             float: left;
             text-align: center;
             font-size: 50px;
@@ -63,9 +63,11 @@
             /*border: solid 1px black;*/
         }
         .d33{
-            width: 15%;
+            width: 24%;
             height: 82px;
             /*background-color: yellow;*/
+            margin-right:30px;
+            padding-top:30px;
             float: right;
         }
         .d22{
