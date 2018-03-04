@@ -55,7 +55,7 @@
         }
 
         .d32{
-            width: 73%;
+            width: 65%;
             float: left;
             text-align: center;
             font-size: 50px;
