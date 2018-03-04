@@ -109,6 +109,7 @@
     </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+<%--<%@include file="/WEB-INF/jsp/tmpl/monitor.jsp"%>--%>
 <div class="wrapper">
     <jsp:include page="../common/header.jsp"></jsp:include>
     <!-- Left side column. contains the logo and sidebar -->
@@ -173,61 +174,66 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <table class="table table-bordered text-center">
+                                    <%--每隔一段时间去刷新数据--%>
+
+                                    <table class="table table-bordered text-center"id="sewerage1">
                                         <tr>
                                             <th>名称</th>
                                             <th>状态</th>
                                             <th>名称</th>
                                             <th>状态</th>
                                         </tr>
-                                        <tr>
-                                            <td>名称1</td>
-                                            <td>状态1</td>
-                                            <td>名称1</td>
-                                            <td>状态1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>名称1</td>
-                                            <td>状态1</td>
-                                            <td>名称1</td>
-                                            <td>状态1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>名称1</td>
-                                            <td>状态1</td>
-                                            <td>名称1</td>
-                                            <td>状态1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>名称1</td>
-                                            <td>状态1</td>
-                                            <td>名称1</td>
-                                            <td>状态1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>名称1</td>
-                                            <td>状态1</td>
-                                            <td>名称1</td>
-                                            <td>状态1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>名称1</td>
-                                            <td>状态1</td>
-                                            <td>名称1</td>
-                                            <td>状态1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>名称1</td>
-                                            <td>状态1</td>
-                                            <td>名称1</td>
-                                            <td>状态1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>名称1</td>
-                                            <td>状态1</td>
-                                            <td>名称1</td>
-                                            <td>状态1</td>
-                                        </tr>
+                                        <tbody id="sewerage1Body">
+
+                                        </tbody>
+                                        <%--<tr>--%>
+                                            <%--<td>过滤泵</td>--%>
+                                            <%--<td>运行中</td>--%>
+                                            <%--<td>杀毒装置</td>--%>
+                                            <%--<td>运作中</td>--%>
+                                        <%--</tr>--%>
+                                        <%--<tr>--%>
+                                            <%--<td>PAC搅拌机</td>--%>
+                                            <%--<td>运行中</td>--%>
+                                            <%--<td>电动阀</td>--%>
+                                            <%--<td>运行中</td>--%>
+                                        <%--</tr>--%>
+                                        <%--<tr>--%>
+                                            <%--<td>PAM搅拌机</td>--%>
+                                            <%--<td>运行中</td>--%>
+                                            <%--<td>反冲洗</td>--%>
+                                            <%--<td>运行中</td>--%>
+                                        <%--</tr>--%>
+                                        <%--<tr>--%>
+                                            <%--<td>PAC计量泵</td>--%>
+                                            <%--<td>运行中</td>--%>
+                                            <%--<td>药箱液位</td>--%>
+                                            <%--<td>正常</td>--%>
+                                        <%--</tr>--%>
+                                        <%--<tr>--%>
+                                            <%--<td>PAM计量泵</td>--%>
+                                            <%--<td>运行中</td>--%>
+                                            <%--<td>中间池液位</td>--%>
+                                            <%--<td>中</td>--%>
+                                        <%--</tr>--%>
+                                        <%--<tr>--%>
+                                            <%--<td>原水泵</td>--%>
+                                            <%--<td>运行中</td>--%>
+                                            <%--<td>清水池液位</td>--%>
+                                            <%--<td>中</td>--%>
+                                        <%--</tr>--%>
+                                        <%--<tr>--%>
+                                            <%--<td>供水泵</td>--%>
+                                            <%--<td>运行中</td>--%>
+                                            <%--<td>调节池液位</td>--%>
+                                            <%--<td>中</td>--%>
+                                        <%--</tr>--%>
+                                        <%--<tr>--%>
+                                            <%--<td>反冲水泵</td>--%>
+                                            <%--<td>运行中</td>--%>
+                                            <%--<td>污泥液位</td>--%>
+                                            <%--<td>0.3</td>--%>
+                                        <%--</tr>--%>
                                     </table>
                                     <!-- /.input group -->
                                 </div>
@@ -344,6 +350,7 @@
 </div>
 </body>
 <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="<%=path%>/static/js/jquery.tmpl.js"></script>
 <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <script>
     //Date picker
@@ -378,18 +385,17 @@
     function sendAjax(ctx,sensorId,x,y){
         //发送Ajax请求更新数据
         $.ajax({
-            url:"/data/queryTem",
+            url:"<%=path%>/static/json/monitor.json",
             type:"POST",
-            data:{
-                "sensorId":sensorId,
-                "queryDate":new Date().pattern("yyyy-MM-dd hh:mm:ss")
-            },
+            // data:{
+            //     "sensorId":sensorId,
+            //     "queryDate":new Date().pattern("yyyy-MM-dd hh:mm:ss")
+            // },
             success:function(data){
                 //当后台请求到最新数据时返回true，更新前台数据
-                if(data.success)
-                {
-                    //更新数据操作
-                    ctx.fillText(data.module.tempratureCurtem+"度", x, y);
+                if(data.flag){
+                    $("#sewerage1Body").html("");
+                    $("#sewerage1Tmpl").tmpl(data).appendTo($("#sewerage1Body"));
                 }
             }
         });

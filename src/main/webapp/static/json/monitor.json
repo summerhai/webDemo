@@ -1,0 +1,13 @@
+{
+  "flag":true,
+  "data":[
+    {"name1":"过滤泵","value1":"运行中","name2":"杀毒装置","value2":"运行中"},
+    {"name1":"PAC搅拌机","value1":"运行中","name2":"电动阀","value2":"运行中"},
+    {"name1":"PAM搅拌机","value1":"停止中","name2":"反冲洗","value2":"停止中"},
+    {"name1":"PAC计量泵","value1":"运行中","name2":"药箱液位","value2":"正常"},
+    {"name1":"PAM计量泵","value1":"运行中","name2":"中间池液位","value2":"中"},
+    {"name1":"原水泵","value1":"运行中","name2":"清水池液位","value2":"中"},
+    {"name1":"供水泵","value1":"运行中","name2":"调节池液位","value2":"中"},
+    {"name1":"反冲水泵","value1":"运行中","name2":"污泥液位","value2":"0.3"}
+  ]
+}
