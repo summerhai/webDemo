@@ -40,7 +40,7 @@ function loginCheck() {
                     location.href=CONTEXTPATH+'/main';
                 }else{
                     layer.msg(data.error, {icon: 5});
-                    refreshVerifyCode();
+                    // refreshVerifyCode();
                 }
             },
             error: function (data) {
@@ -50,7 +50,7 @@ function loginCheck() {
     }
 }
 
-// function refreshVerifyCode() {
-//     $("#verify").attr("src","/code/captcha-image?timestamp="+new Date().getTime());  // 刷新验证码
-//     $("#verifyCode").val("");
-// }
+function refreshVerifyCode() {
+    $("#verify").attr("src","/code/captcha-image?timestamp="+new Date().getTime());  // 刷新验证码
+    $("#verifyCode").val("");
+}

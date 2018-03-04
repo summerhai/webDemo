@@ -42,6 +42,63 @@
     <![endif]-->
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <style>
+        .d1{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .d21{
+            width: 100%;
+        }
+
+        .d32{
+            width: 84%;
+            float: left;
+            text-align: center;
+            font-size: 50px;
+            line-height: 80px;
+            border: solid 1px black;
+        }
+        .d33{
+            width: 15%;
+            height: 82px;
+            /*background-color: yellow;*/
+            float: right;
+        }
+        .d22{
+            overflow: hidden;
+            width: 100%;
+        }
+        .d34{
+            width: 70%;
+            height: 600px;
+            background-color: red;
+            float: left;
+        }
+        .d35{
+            width: 30%;
+            height: 600px;
+            float: left;
+        }
+
+        .d41{
+            width: 100%;
+            background-color: cornflowerblue;
+
+        }
+        .p1{
+            width: 200px;
+            height: 50px;
+            font-size: 25px;
+            line-height: 40px;
+            margin: auto;
+            text-align: center;
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -51,7 +108,32 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-    <p>暂时为空</p>
+        <div class="d1">
+            <div class="d21">
+                <div class="d32">监控系统界面</div>
+                <div class="d33">
+                    <!-- Date -->
+                    <div class="form-group">
+                        <label>Date:</label>
+
+                        <div class="input-group date">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="datepicker">
+                        </div>
+                </div>
+            </div>
+            <div class="d22">
+                <div class="d34"></div>
+                <div class="d35">
+                    <div class="d41">
+                        <p class="p1">污水回用系统</p>
+                    </div>
+                    <div class="d42"></div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- /.content-wrapper -->
     <jsp:include page="../common/footer.jsp"></jsp:include>

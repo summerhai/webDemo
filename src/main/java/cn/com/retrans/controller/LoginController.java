@@ -30,6 +30,7 @@ public class LoginController {
     @ResponseBody
     public JSONObject login(HttpServletRequest request, HttpServletResponse response) {
         JSONObject flag = new JSONObject();
+
 //        String verifyCode = request.getParameter("verifyCode");
 //        HttpSession session = request.getSession();
 //        String code = (String) session.getAttribute(Constants.KAPTCHA_SESSION_KEY);
@@ -40,7 +41,6 @@ public class LoginController {
 //            flag.put("error", "验证码输入有误");
 //            return flag;
 //        }
-
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         password = MyMD5.md5(password);
