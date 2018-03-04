@@ -52,6 +52,10 @@
         }
         .d21{
             width: 100%;
+            font-size: 50px;
+            line-height: 80px;
+            text-align: center;
+            position:relative;
         }
 
         .d32{
@@ -63,12 +67,15 @@
             /*border: solid 1px black;*/
         }
         .d33{
-            width: 24%;
+            width: 280px;
             height: 82px;
             /*background-color: yellow;*/
-            margin-right:30px;
-            padding-top:30px;
-            float: right;
+
+            position:absolute;
+            font-size: 15px;
+            right: 10px;
+            top: 23px;
+            line-height: 23px;
         }
         .d22{
             overflow: hidden;
@@ -112,7 +119,7 @@
     <div class="content-wrapper">
         <div class="d1">
             <div class="d21">
-                <div class="d32">监控系统界面</div>
+                监控系统界面
                 <div class="d33">
                     <!-- Date -->
                     <div class="form-group">
@@ -125,6 +132,7 @@
                         </div>
                 </div>
             </div>
+            </div>
             <div class="d22">
                 <div class="box-body">
                     <img class="img-responsive pad" src="<%=path%>/static/imgs/zhjk.png" alt="Photo" style="width:80%; height:80%; margin: 0 auto">
@@ -134,7 +142,7 @@
                     <div class="d42"></div>
                 </div>
             </div>
-        </div>
+
     </div>
     <!-- /.content-wrapper -->
     <jsp:include page="../common/footer.jsp"></jsp:include>
