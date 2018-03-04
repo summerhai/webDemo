@@ -60,7 +60,7 @@
             text-align: center;
             font-size: 50px;
             line-height: 80px;
-            border: solid 1px black;
+            /*border: solid 1px black;*/
         }
         .d33{
             width: 15%;
@@ -114,9 +114,8 @@
                 <div class="d33">
                     <!-- Date -->
                     <div class="form-group">
-                        <label>Date:</label>
-
-                        <div class="input-group date">
+                        <div class="input-group date" style="float: left">
+                            <label style="float: left">日期:</label>
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
@@ -125,11 +124,11 @@
                 </div>
             </div>
             <div class="d22">
-                <div class="d34"></div>
+                <div class="box-body">
+                    <img class="img-responsive pad" src="<%=path%>/static/imgs/zhjk.png" alt="Photo" style="width:80%; height:80%; margin: 0 auto">
+                </div>
+
                 <div class="d35">
-                    <div class="d41">
-                        <p class="p1">污水回用系统</p>
-                    </div>
                     <div class="d42"></div>
                 </div>
             </div>
@@ -142,4 +141,12 @@
     <div class="control-sidebar-bg"></div>
 </div>
 </body>
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script>
+    //Date picker
+    $('#datepicker').datepicker({
+        autoclose: true
+    })
+</script>
 </html>
