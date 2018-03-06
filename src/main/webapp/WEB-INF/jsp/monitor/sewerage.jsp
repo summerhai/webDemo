@@ -2,7 +2,7 @@
     String path = request.getContextPath();
     response.setHeader("Access-Control-Allow-Origin", "*");
 %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <script>var CONTEXTPATH = "${pageContext.request.contextPath}" </script>
 <!DOCTYPE html>
@@ -112,9 +112,9 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <%@include file="/WEB-INF/jsp/tmpl/monitor.jsp"%>
 <div class="wrapper">
-    <jsp:include page="../common/header.jsp"></jsp:include>
+    <%@include file="/WEB-INF/jsp/common/header.jsp"%>
     <!-- Left side column. contains the logo and sidebar -->
-    <jsp:include page="../common/left.jsp"></jsp:include>
+    <%@include file="/WEB-INF/jsp/common/left.jsp"%>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -127,7 +127,7 @@
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
                 <li><a href="#">监控</a></li>
-                <li class="active">综合监控</li>
+                <li >综合监控</li>
             </ol>
         </section>
         <section class="content">
@@ -344,7 +344,7 @@
         </section>
 
     <!-- /.content-wrapper -->
-    <jsp:include page="../common/footer.jsp"></jsp:include>
+        <%@include file="/WEB-INF/jsp/common/footer.jsp"%>
     <!-- Add the sidebar's background. This div must be placed
      immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
@@ -358,40 +358,12 @@
     $('#datepicker').datepicker({
         autoclose: true
     })
-    <%--var canvas = document.getElementById("myCanvas");--%>
-    <%--var ctxs;--%>
-    <%--canvas.width = $("#myCopyImage").parent().width();--%>
-    <%--canvas.height = $("#myCopyImage").parent().height();--%>
-    <%--if(navigator.userAgent.indexOf("MSIE")>0)--%>
-    <%--{--%>
-        <%--$(canvas).height($("#myCopyImage").parent().height());--%>
-    <%--}--%>
-    <%--var img = new Image();--%>
-    <%--//简单地检测当前浏览器是否支持Canvas对象，以免在一些不支持html5的浏览器中提示语法错误--%>
-    <%--if(canvas.getContext){--%>
-        <%--//获取对应的CanvasRenderingContext2D对象(画笔)--%>
-        <%--ctx = canvas.getContext("2d");--%>
-
-        <%--//创建新的图片对象--%>
-        <%--//指定图片的URL--%>
-        <%--img.src = "<%=path%>/static/imgs/zhjk.png";--%>
-        <%--//浏览器加载图片完毕后再绘制图片--%>
-        <%--img.onload = function(){--%>
-            <%--//以Canvas画布上的坐标(10,10)为起始点，绘制图像--%>
-            <%--ctx.drawImage(img, 10, 10);--%>
-        <%--};--%>
-    <%--}--%>
-
 
     function sendAjax(){
         //发送Ajax请求更新数据
         $.ajax({
             url:"<%=path%>/static/json/monitor.json",
             type:"GET",
-            // data:{
-            //     "sensorId":sensorId,
-            //     "queryDate":new Date().pattern("yyyy-MM-dd hh:mm:ss")
-            // },
             success:function(data){
                 //当后台请求到最新数据时返回true，更新前台数据
                 if(data.flag){
@@ -402,18 +374,12 @@
         });
     }
 
-    // function myClickHandler()
-    // {
-    //     ctx.drawImage(img, 10, 10);
-    //     ctx.fillStyle="#0000ff";
-    //     ctx.font = "12pt Calibri blod";
-    //     ctx.fillText(Math.round(20+Math.random()*10), 470, 416);
-    //     // ctx.fillText(Math.round(20+Math.random()*10)+"度", 1400, 280);
-    //     ctx.fillText(Math.round(20+Math.random()*10), 698, 175);
-    //     // ctx.fillText(Math.round(20+Math.random()*10)+"度", 1500, 80);
-    // }
-    // setInterval(myClickHandler,1000);
     sendAjax();
-
+    $(function(){
+        $(".treeview li").click(function(){
+            $('.treeview li').removeClass("active");
+            $('#systemMenu >li:eq(2)').addClass("active");
+        });
+    })
 </script>
 </html>

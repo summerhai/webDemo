@@ -5,11 +5,7 @@
   Time: 11:38
   To change this template use File | Settings | File Templates.
 --%>
-<%
-    String path = request.getContextPath();
-    response.setHeader("Access-Control-Allow-Origin", "*");
-%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <header class="main-header">
     <!-- Logo -->
     <a href="index2.html" class="logo">

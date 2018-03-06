@@ -5,11 +5,7 @@
   Time: 11:38
   To change this template use File | Settings | File Templates.
 --%>
-<%
-    String path = request.getContextPath();
-    response.setHeader("Access-Control-Allow-Origin", "*");
-%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -35,14 +31,13 @@
         </form>
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">导航栏</li>
+        <ul class="sidebar-menu" data-widget="tree" id="systemMenu">
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>仪表盘</span>
                     <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="1index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
@@ -59,7 +54,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li ><a href="<%=path%>/monitor/sewerage"><i class="fa fa-circle-o"></i>综合监控</a></li>
-                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/charts/chartjs.html"><i class="fa fa-circle-o"></i>污水回用监控</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i>污水回用监控</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -77,7 +72,6 @@
                     <li><a href="http://localhost/AdminLTE-2.4.2/pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
                 </ul>
             </li>
-
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-laptop"></i>
