@@ -19,7 +19,7 @@
                 <img src="<%=path%>/static/AdminLTE-2.4.2/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p>系统管理员</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -37,7 +37,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">导航栏</li>
-            <li class="active treeview">
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>仪表盘</span>
                     <span class="pull-right-container">
@@ -45,15 +45,16 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="1index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+                    <li><a href="1index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
                     <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-th"></i> <span>运行监控</span>
+                    <i class="fa fa-pie-chart"></i>
+                    <span>运行监控</span>
                     <span class="pull-right-container">
-                    <small class="label pull-right bg-green">new</small>
+                    <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
@@ -76,6 +77,7 @@
                     <li><a href="http://localhost/AdminLTE-2.4.2/pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
                 </ul>
             </li>
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-laptop"></i>
