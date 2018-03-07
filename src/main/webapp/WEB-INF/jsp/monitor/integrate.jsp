@@ -4,6 +4,7 @@
 %>
 <%@ page contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%--综合监控页面--%>
 <script>var CONTEXTPATH = "${pageContext.request.contextPath}" </script>
 <!DOCTYPE html>
 <html>
@@ -127,13 +128,13 @@
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
                 <li><a href="#">监控</a></li>
-                <li >污水处理回用</li>
+                <li >综合监控</li>
             </ol>
         </section>
         <section class="content">
             <div class="d1">
                 <div class="d21">
-                    污水处理回用单元
+                    监控系统界面
                     <div class="d33">
                         <!-- Date -->
                         <div class="form-group">
@@ -358,33 +359,8 @@
 <script src="<%=path%>/static/AdminLTE-2.4.2/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<%=path%>/static/AdminLTE-2.4.2/dist/js/demo.js"></script>
+<script src="<%=path%>/static/js/integrate.js"></script>
 <script>
-    //Date picker
-    $('#datepicker').datepicker({
-        autoclose: true
-    })
 
-    function sendAjax(){
-        //发送Ajax请求更新数据
-        $.ajax({
-            url:"<%=path%>/static/json/monitor.json",
-            type:"GET",
-            success:function(data){
-                //当后台请求到最新数据时返回true，更新前台数据
-                if(data.flag){
-                    $("#sewerage1Body").html("");
-                    $("#sewerage1Tmpl").tmpl(data).appendTo($("#sewerage1Body"));
-                }
-            }
-        });
-    }
-
-    sendAjax();
-    $(function(){
-        $(".treeview li").click(function(){
-            $('.treeview li').removeClass("active");
-            $('#systemMenu >li:eq(2)').addClass("active");
-        });
-    })
 </script>
 </html>

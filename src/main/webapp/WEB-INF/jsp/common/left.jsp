@@ -31,7 +31,7 @@
         </form>
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu" data-widget="tree" id="systemMenu">
+        <ul class="sidebar-menu" data-widget="tree">
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>仪表盘</span>
@@ -53,8 +53,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li ><a href="<%=path%>/monitor/sewerage"><i class="fa fa-circle-o"></i>综合监控</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i>污水回用监控</a></li>
+                    <li><a href="<%=path%>/monitor/integrate"><i class="fa fa-circle-o"></i>综合监控</a></li>
+                    <li><a href="<%=path%>/monitor/sewerage"><i class="fa fa-circle-o"></i>污水回用监控</a></li>
                 </ul>
             </li>
             <li class="treeview">

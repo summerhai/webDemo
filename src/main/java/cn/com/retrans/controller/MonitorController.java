@@ -13,10 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/monitor")
 public class MonitorController {
     @RequestMapping(value = "/sewerage")
-    public String main(HttpServletRequest request, HttpServletResponse response) {
+    public String sewerage(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("进入sewerage");
-//        response.setHeader("Access-Control-Allow-Origin","*");
         return "monitor/sewerage";
     }
 
+    @RequestMapping(value = "/integrate")
+    public String integrate(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("进入integrate");
+        return "monitor/integrate";
+    }
 }
