@@ -59,7 +59,7 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
+        <section class="content-header" style="float: right">
             <!-- Date -->
             <div class="form-group" style="float: right">
                 <div class="input-group date">
@@ -71,7 +71,7 @@
                     <%--<button type="submit" class="btn btn-primary">Submit</button>--%>
                 </div>
             </div>
-            <h1 style="text-align: center">
+            <h1 style="text-align: center;font-size:45px" >
                 监控系统界面
             </h1>
             <ol class="breadcrumb">
