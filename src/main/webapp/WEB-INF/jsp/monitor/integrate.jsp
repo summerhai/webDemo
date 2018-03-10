@@ -273,8 +273,6 @@
                     <!-- /.box -->
                 </div>
             </div>
-
-    </div>
     </section>
 
     <!-- /.content-wrapper -->
