@@ -216,7 +216,12 @@
       <artifactId>commons-lang</artifactId>
       <version>2.6</version>
     </dependency>
-
+    <!--为dataTable分页引入pageHelper -->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>4.1.4</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>webDemo</finalName>

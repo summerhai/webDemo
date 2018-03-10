@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.retrans.dao.EventMapper">
+  <resultMap id="BaseResultMap" type="cn.com.retrans.pojo.Event">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="user_id" jdbcType="CHAR" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="operation_time" jdbcType="TIMESTAMP" property="operationTime" />
+    <result column="event_operation" jdbcType="VARCHAR" property="eventOperation" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, user_name, operation_time, event_operation, ip
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from event
+    where id = #{id,jdbcType=CHAR}
+  </select>
+
+  <select id="selectEventList" parameterType="java.lang.String" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from event
+  </select>
+
+  <select id="selectEventListBySearch" parameterType="java.lang.String" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from event
+      where user_name like #{0} or operation_time like #{0} or event_operation like #{0} or ip like #{0}
+      <if test="param2 != null">
+          order by #{1}
+      </if>
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from event
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.retrans.pojo.Event">
+    insert into event (id, user_id, user_name, 
+      operation_time, event_operation, ip
+      )
+    values (#{id,jdbcType=CHAR}, #{userId,jdbcType=CHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{operationTime,jdbcType=TIMESTAMP}, #{eventOperation,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.retrans.pojo.Event">
+    insert into event
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="operationTime != null">
+        operation_time,
+      </if>
+      <if test="eventOperation != null">
+        event_operation,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null">
+        #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eventOperation != null">
+        #{eventOperation,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.retrans.pojo.Event">
+    update event
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=CHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null">
+        operation_time = #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eventOperation != null">
+        event_operation = #{eventOperation,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.retrans.pojo.Event">
+    update event
+    set user_id = #{userId,jdbcType=CHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      operation_time = #{operationTime,jdbcType=TIMESTAMP},
+      event_operation = #{eventOperation,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

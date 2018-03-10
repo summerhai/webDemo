@@ -9,7 +9,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>系统主页</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -42,37 +42,7 @@
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  <style>
-    .container {
-      position: relative;
-    }
-
-    .header {
-      text-align: center;
-      position: absolute;
-      right: 636px;
-      overflow: hidden;
-    }
-
-    .header h1{
-      display: inline-block;
-      margin: 0 auto;
-    }
-    .date-right {
-      font-size: 20px;
-      position: absolute;
-      top: 10px;
-      right: 25px;
-      display: inline-block;
-      overflow: hidden;
-    }
-    .date-right input {
-      height: 40px;
-    }
-
-
-  </style>
+  <link rel="stylesheet" href="<%=path%>/static/css/googleFonts.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -90,17 +60,7 @@
       <!-- Small boxes (Stat box) -->
       <!-- /.row -->
       <!-- Main row -->
-
-      <div class="container">
-        <div class="header">
-          <h1>头部的文字</h1>
-        </div>
-        <div class="date-right">
-          <label for="meeting">日期：</label><input id="meeting" type="datetime-local" value=""/>
-        </div>
-      </div>
-
-
+        <span>暂时为空</span>
     </section>
     <!-- /.content -->
   </div>

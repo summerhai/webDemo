@@ -9,7 +9,7 @@ $('#datepicker').datepicker({
 function sendAjax(){
     //发送Ajax请求更新数据
     $.ajax({
-        url:"<%=path%>/static/json/monitor.json",
+        url:CONTEXTPATH+"/static/json/monitor.json",
         type:"GET",
         success:function(data){
             //当后台请求到最新数据时返回true，更新前台数据

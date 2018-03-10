@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.retrans.dao.WarningMapper">
+  <resultMap id="BaseResultMap" type="cn.com.retrans.pojo.Warning">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="warning_time" jdbcType="TIMESTAMP" property="warningTime" />
+    <result column="warning_object" jdbcType="VARCHAR" property="warningObject" />
+    <result column="warning_type" jdbcType="VARCHAR" property="warningType" />
+    <result column="warning_event" jdbcType="VARCHAR" property="warningEvent" />
+    <result column="current_value" jdbcType="DOUBLE" property="currentValue" />
+    <result column="limit_value" jdbcType="DOUBLE" property="limitValue" />
+    <result column="warning_desc" jdbcType="VARCHAR" property="warningDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, warning_time, warning_object, warning_type, warning_event, current_value, limit_value, 
+    warning_desc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from warning
+    where id = #{id,jdbcType=CHAR}
+  </select>
+
+  <select id="selectWarningList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from warning
+  </select>
+
+  <select id="selectWarningListBySearch" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from warning
+    where warning_time like #{0} or warning_object like #{0} or warning_type like #{0} or warning_event like #{0} or
+    current_value like #{0} or limit_value like #{0} or warning_desc like #{0}
+    <if test="param2 != null">
+      order by #{1}
+    </if>
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from warning
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.retrans.pojo.Warning">
+    insert into warning (id, warning_time, warning_object, 
+      warning_type, warning_event, current_value, 
+      limit_value, warning_desc)
+    values (#{id,jdbcType=CHAR}, #{warningTime,jdbcType=TIMESTAMP}, #{warningObject,jdbcType=VARCHAR}, 
+      #{warningType,jdbcType=VARCHAR}, #{warningEvent,jdbcType=VARCHAR}, #{currentValue,jdbcType=DOUBLE}, 
+      #{limitValue,jdbcType=DOUBLE}, #{warningDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.retrans.pojo.Warning">
+    insert into warning
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="warningTime != null">
+        warning_time,
+      </if>
+      <if test="warningObject != null">
+        warning_object,
+      </if>
+      <if test="warningType != null">
+        warning_type,
+      </if>
+      <if test="warningEvent != null">
+        warning_event,
+      </if>
+      <if test="currentValue != null">
+        current_value,
+      </if>
+      <if test="limitValue != null">
+        limit_value,
+      </if>
+      <if test="warningDesc != null">
+        warning_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="warningTime != null">
+        #{warningTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="warningObject != null">
+        #{warningObject,jdbcType=VARCHAR},
+      </if>
+      <if test="warningType != null">
+        #{warningType,jdbcType=VARCHAR},
+      </if>
+      <if test="warningEvent != null">
+        #{warningEvent,jdbcType=VARCHAR},
+      </if>
+      <if test="currentValue != null">
+        #{currentValue,jdbcType=DOUBLE},
+      </if>
+      <if test="limitValue != null">
+        #{limitValue,jdbcType=DOUBLE},
+      </if>
+      <if test="warningDesc != null">
+        #{warningDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.retrans.pojo.Warning">
+    update warning
+    <set>
+      <if test="warningTime != null">
+        warning_time = #{warningTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="warningObject != null">
+        warning_object = #{warningObject,jdbcType=VARCHAR},
+      </if>
+      <if test="warningType != null">
+        warning_type = #{warningType,jdbcType=VARCHAR},
+      </if>
+      <if test="warningEvent != null">
+        warning_event = #{warningEvent,jdbcType=VARCHAR},
+      </if>
+      <if test="currentValue != null">
+        current_value = #{currentValue,jdbcType=DOUBLE},
+      </if>
+      <if test="limitValue != null">
+        limit_value = #{limitValue,jdbcType=DOUBLE},
+      </if>
+      <if test="warningDesc != null">
+        warning_desc = #{warningDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.retrans.pojo.Warning">
+    update warning
+    set warning_time = #{warningTime,jdbcType=TIMESTAMP},
+      warning_object = #{warningObject,jdbcType=VARCHAR},
+      warning_type = #{warningType,jdbcType=VARCHAR},
+      warning_event = #{warningEvent,jdbcType=VARCHAR},
+      current_value = #{currentValue,jdbcType=DOUBLE},
+      limit_value = #{limitValue,jdbcType=DOUBLE},
+      warning_desc = #{warningDesc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

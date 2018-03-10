@@ -39,12 +39,12 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="1index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                    <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                <ul class="treeview-menu" >
+                    <li><a href="#" onclick="alert('暂未开放')"><i class="fa fa-circle-o"></i> 仪表板1</a></li>
+                    <li><a href="#" onclick="alert('暂未开放')"><i class="fa fa-circle-o"></i> 仪表板2</a></li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview" id="monitor-li">
                 <a href="#">
                     <i class="fa fa-pie-chart"></i>
                     <span>运行监控</span>
@@ -52,42 +52,28 @@
                     <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
-                <ul class="treeview-menu">
+                <ul class="treeview-menu" id="monitor-ul">
                     <li><a href="<%=path%>/monitor/integrate"><i class="fa fa-circle-o"></i>综合监控</a></li>
                     <li><a href="<%=path%>/monitor/sewerage"><i class="fa fa-circle-o"></i>污水回用监控</a></li>
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-pie-chart"></i>
-                    <span>趋势报表</span>
+            <li>
+                <a href="<%=path%>/trendReport/trendReport">
+                    <i class="fa fa-calendar"></i> <span>趋势报表</span>
                     <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
+                        <small class="label pull-right bg-red">3</small>
+                        <small class="label pull-right bg-blue">17</small>
                     </span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-                </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-laptop"></i>
-                    <span>预警报警</span>
+            <li>
+                <a href="<%=path%>/warning/warning">
+                    <i class="fa fa-circle-o text-red"></i> <span>预警报警</span>
                     <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                        <small class="label pull-right bg-red">3</small>
+                        <small class="label pull-right bg-blue">17</small>
+                    </span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-                </ul>
             </li>
             <li class="treeview">
                 <a href="#">
@@ -102,25 +88,18 @@
                     <li><a href="http://localhost/AdminLTE-2.4.2/pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-table"></i> <span>事件管理</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+            <li>
+                <a href="<%=path%>/event/event">
+                    <i class="fa fa-circle-o text-red"></i> <span>事件管理</span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
-                </ul>
             </li>
             <li>
                 <a href="http://localhost/AdminLTE-2.4.2/pages/calendar.html">
                     <i class="fa fa-calendar"></i> <span>高级配置</span>
                     <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
-            </span>
+                        <small class="label pull-right bg-red">3</small>
+                        <small class="label pull-right bg-blue">17</small>
+                    </span>
                 </a>
             </li>
         </ul>
