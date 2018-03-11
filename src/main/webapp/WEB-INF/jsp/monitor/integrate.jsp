@@ -17,11 +17,6 @@
     <link rel="stylesheet"
           href="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="<%=path%>/static/css/common.css">
-
-    <%@include file="/WEB-INF/jsp/common/commonJs.jsp" %>
-    <script src="<%=path%>/static/js/jquery.tmpl.js"></script>
-    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-    <script src="<%=path%>/static/script/monitor/integrate.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <%@include file="/WEB-INF/jsp/tmpl/monitorTmpl.jsp" %>
@@ -268,5 +263,8 @@
     </div>
     <%@include file="/WEB-INF/jsp/common/footer.jsp" %>
 </body>
-
+<%@include file="/WEB-INF/jsp/common/commonJs.jsp" %>
+<script src="<%=path%>/static/js/jquery.tmpl.js"></script>
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="<%=path%>/static/script/monitor/integrate.js"></script>
 </html>

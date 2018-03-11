@@ -3,7 +3,7 @@
     response.setHeader("Access-Control-Allow-Origin", "*");
 %>
 <%@ page contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <script>var CONTEXTPATH = "${pageContext.request.contextPath}" </script>
 <!DOCTYPE html>
 <html>
@@ -19,64 +19,174 @@
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<%@include file="/WEB-INF/jsp/tmpl/monitorTmpl.jsp"%>
 <div class="wrapper">
-    <%@include file="/WEB-INF/jsp/common/header.jsp"%>
+    <%@include file="/WEB-INF/jsp/common/header.jsp" %>
     <!-- Left side column. contains the logo and sidebar -->
-    <%@include file="/WEB-INF/jsp/common/left.jsp"%>
+    <%@include file="/WEB-INF/jsp/common/left.jsp" %>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
+        <section class="content-header" style="padding: 45px 15px 0 15px">
             <%--<h1>--%>
-                <%--Advanced Form Elements--%>
-                <%--<small>Preview</small>--%>
+            <%--Advanced Form Elements--%>
+            <%--<small>Preview</small>--%>
             <%--</h1>--%>
             <ol class="breadcrumb">
                 <li><a href="<%=path%>/main"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li><a href="<%=path%>/monitor/integrate">监控</a></li>
-                <li><a href="<%=path%>/monitor/sewerage">污水处理回用</a></li>
+                <li><a href="<%=path%>/admin/schedule">计划任务</a></li>
             </ol>
         </section>
         <section class="content">
-            <div class="d1">
-                <div class="d21">
-                    污水处理回用单元
-                    <div class="d33">
-                        <!-- Date -->
-                        <div class="form-group">
-                            <div class="input-group date" style="float: left">
-                                <label style="float: left">日期:</label>
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" class="form-control pull-right" id="datepicker">
-                                <%--<button type="submit" class="btn btn-primary">Submit</button>--%>
-                            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="box box-primary">
+                        <div class="box-body box-profile">
+                            <h3 class="profile-username text-center">设备列表</h3>
+
+                            <ul class="list-group list-group-unbordered" style="text-align: center;">
+                                <li class="list-group-item">
+                                    <a href="#device1" data-toggle="tab" class="btn btn-primary btn-block">设备1</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#device2" data-toggle="tab" class="btn btn-primary btn-block">设备2</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#device3" data-toggle="tab" class="btn btn-primary btn-block">设备3</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#" class="btn btn-primary btn-block">设备4</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#" class="btn btn-primary btn-block">设备5</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#" class="btn btn-primary btn-block">设备6</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#" class="btn btn-primary btn-block">设备7</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#" class="btn btn-primary btn-block">设备8</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div style="display:none">
-                        <img class="img-responsive pad" id="myCopyImage" src="<%=path%>/static/imgs/sewerage.png" alt="Photo" style="width:80%; height:80%; margin: 0 auto">
-                    </div>
-                    <div style="width: 100%; text-align: center">
-                        <canvas id="myCanvas" style="border: 1px solid white;width:80%; height:80%;">
-                            您的浏览器不支持canvas标签。
-                        </canvas>
+                <div class="col-md-9">
+                    <div class="nav-tabs-custom">
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="device1">
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">设备1计划配置</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <!-- form start -->
+                                    <form role="form">
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <label>属性1</label>
+                                                <input type="text" class="form-control" placeholder="Enter ...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>属性2</label>
+                                                <input type="text" class="form-control" placeholder="Enter ...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputFile">设备图片</label>
+                                                <input type="file" id="exampleInputFile1">
+
+                                                <p class="help-block">更改设备图片</p>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-body -->
+
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-primary">确定</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="device2">
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">设备2计划配置</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <!-- form start -->
+                                    <form role="form">
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <label>属性1</label>
+                                                <input type="text" class="form-control" placeholder="Enter ...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>属性2</label>
+                                                <input type="text" class="form-control" placeholder="Enter ...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputFile">设备图片</label>
+                                                <input type="file" id="exampleInputFile1">
+
+                                                <p class="help-block">更改设备图片</p>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-body -->
+
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-primary">确定</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="device3">
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">设备3计划配置</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <!-- form start -->
+                                    <form role="form">
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <label>属性1</label>
+                                                <input type="text" class="form-control" placeholder="Enter ...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>属性2</label>
+                                                <input type="text" class="form-control" placeholder="Enter ...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputFile">设备图片</label>
+                                                <input type="file" id="exampleInputFile1">
+
+                                                <p class="help-block">更改设备图片</p>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-body -->
+
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-primary">确定</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
                     </div>
                 </div>
-
             </div>
         </section>
 
-    <!-- /.content-wrapper -->
-    <!-- Add the sidebar's background. This div must be placed
-     immediately after the control sidebar -->
+        <!-- /.content-wrapper -->
+        <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
     </div>
-    <%@include file="/WEB-INF/jsp/common/footer.jsp"%>
+    <%@include file="/WEB-INF/jsp/common/footer.jsp" %>
 </body>
 
 <script src="<%=path%>/static/script/monitor/sewerage.js"></script>

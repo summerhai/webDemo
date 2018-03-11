@@ -22,15 +22,7 @@
     <link rel="stylesheet"
           href="<%=path%>/static/AdminLTE-2.4.2/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="<%=path%>/static/css/common.css">
-    <%@include file="/WEB-INF/jsp/common/commonJs.jsp" %>
-    <!-- date-range-picker -->
-    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/moment/min/moment.min.js"></script>
-    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <!-- DataTables -->
-    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
-    <script src="<%=path%>/static/script/warning/warning.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -106,5 +98,13 @@
     </div>
     <%@include file="/WEB-INF/jsp/common/footer.jsp" %>
 </body>
+<%@include file="/WEB-INF/jsp/common/commonJs.jsp" %>
+<!-- date-range-picker -->
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/moment/min/moment.min.js"></script>
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- DataTables -->
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
+<script src="<%=path%>/static/script/warning/warning.js"></script>
 </html>

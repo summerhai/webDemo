@@ -18,21 +18,7 @@
     <link rel="stylesheet"
           href="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-daterangepicker/daterangepicker.css">
     <link rel="stylesheet" href="<%=path%>/static/css/common.css">
-    <%@include file="/WEB-INF/jsp/common/commonJs.jsp" %>
-    <script src="<%=path%>/static/js/jquery.tmpl.js"></script>
-    <!-- date-range-picker -->
-    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/moment/min/moment.min.js"></script>
-    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <!-- bootstrap datepicker -->
-    <!-- FLOT CHARTS -->
-    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.js"></script>
-    <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.resize.js"></script>
-    <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.pie.js"></script>
-    <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.categories.js"></script>
-    <script src="<%=path%>/static/script/trendReport/trendReport.js"></script>
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <%@include file="/WEB-INF/jsp/tmpl/trendReportTmpl.jsp" %>
@@ -299,5 +285,19 @@
     </div>
     <%@include file="/WEB-INF/jsp/common/footer.jsp" %>
 </body>
-
+<%@include file="/WEB-INF/jsp/common/commonJs.jsp" %>
+<script src="<%=path%>/static/js/jquery.tmpl.js"></script>
+<!-- date-range-picker -->
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/moment/min/moment.min.js"></script>
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<!-- FLOT CHARTS -->
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.js"></script>
+<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.resize.js"></script>
+<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.pie.js"></script>
+<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.categories.js"></script>
+<script src="<%=path%>/static/script/trendReport/trendReport.js"></script>
 </html>

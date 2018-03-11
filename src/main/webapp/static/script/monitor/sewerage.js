@@ -1,8 +1,14 @@
 var img;
+
 $(function () {
+    showTime();
     initCanvas();
     setInterval(myClickHandler,1000);
 })
+
+function showTime() {
+    setInterval("curTime.innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt (new Date().getDay());", 1000);
+}
 
 //Date picker
 $('#datepicker').datepicker({
@@ -43,7 +49,7 @@ function myClickHandler()
     ctx.fillStyle="#0000ff";
     ctx.font = "12pt Calibri blod";
     ctx.fillStyle = 'red';
-    ctx.fillText("运行中", 470, 416);
+    ctx.fillText("运行中", 600, 150);
     // ctx.fillText(Math.round(20+Math.random()*10)+"度", 1400, 280);
     ctx.fillText("停止", 698, 175);
     // ctx.fillText(Math.round(20+Math.random()*10)+"度", 1500, 80);
