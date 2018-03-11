@@ -75,18 +75,14 @@
                     </span>
                 </a>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-edit"></i> <span>计划任务</span>
+            <li>
+                <a href="<%=path%>/schedule/schedule">
+                    <i class="fa fa-circle-o text-red"></i> <span>计划任务</span>
                     <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                        <small class="label pull-right bg-red">3</small>
+                        <small class="label pull-right bg-blue">17</small>
+                    </span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-                    <li><a href="http://localhost/AdminLTE-2.4.2/pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
-                </ul>
             </li>
             <li>
                 <a href="<%=path%>/event/event">

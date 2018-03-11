@@ -48,77 +48,7 @@
     <![endif]-->
     <!-- Google Font -->
     <link rel="stylesheet" href="<%=path%>/static/css/googleFonts.css">
-
-    <style>
-        .d1 {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        .d21 {
-            width: 100%;
-            font-size: 50px;
-            line-height: 80px;
-            text-align: center;
-            position: relative;
-        }
-
-        .d32 {
-            width: 65%;
-            float: left;
-            text-align: center;
-            font-size: 50px;
-            line-height: 80px;
-            /*border: solid 1px black;*/
-        }
-
-        .d33 {
-            width: 280px;
-            height: 82px;
-            /*background-color: yellow;*/
-
-            position: absolute;
-            font-size: 15px;
-            right: 10px;
-            top: 23px;
-            line-height: 23px;
-        }
-
-        .d22 {
-            width: 30%;
-        }
-
-        .d34 {
-            width: 70%;
-            height: 600px;
-            background-color: red;
-            float: left;
-        }
-
-        .d35 {
-            width: 30%;
-            height: 600px;
-            float: left;
-        }
-
-        .d41 {
-            width: 100%;
-            background-color: cornflowerblue;
-
-        }
-
-        .p1 {
-            width: 200px;
-            height: 50px;
-            font-size: 25px;
-            line-height: 40px;
-            margin: auto;
-            text-align: center;
-            border: 1px solid black;
-        }
-    </style>
+    <link rel="stylesheet" href="<%=path%>/static/css/common.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
