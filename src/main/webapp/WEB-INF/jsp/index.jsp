@@ -10,7 +10,7 @@
 <html>
 
 <head>
-  <title>登录</title>
+  <title style="text-align: center">欢迎登陆安环监测平台</title>
 
   <link href="<%=path%>/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

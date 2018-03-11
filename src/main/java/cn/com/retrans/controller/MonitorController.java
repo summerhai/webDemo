@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
  * Created by mingyue on 2018/2/3.
  */
 @Controller
-@RequestMapping("/monitor")
+@RequestMapping("/admin")
 public class MonitorController {
     @RequestMapping(value = "/sewerage")
     public String sewerage(HttpServletRequest request, HttpServletResponse response) {

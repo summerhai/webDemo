@@ -21,7 +21,7 @@ import java.util.List;
  * Created by mingyue on 2018/2/3.
  */
 @Controller
-@RequestMapping("/event")
+@RequestMapping("/admin")
 public class EventController {
     @Autowired
     private EventService eventService;
@@ -32,7 +32,7 @@ public class EventController {
         return "event/event";
     }
 
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = "/event/list")
     @ResponseBody
     public String getEventList(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("进入event list");

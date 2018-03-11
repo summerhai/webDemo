@@ -13,38 +13,26 @@
     <title>趋势报表</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="<%=path%>/static/AdminLTE-2.4.2/bower_components/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/bower_components/Ionicons/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/dist/css/skins/_all-skins.min.css">
-    <!-- Morris chart -->
-    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/bower_components/morris.js/morris.css">
-    <!-- jvectormap -->
-    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/bower_components/jvectormap/jquery-jvectormap.css">
+    <%@include file="/WEB-INF/jsp/common/commonCss.jsp" %>
     <!-- Daterange picker -->
     <link rel="stylesheet"
           href="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-daterangepicker/daterangepicker.css">
-    <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet"
-          href="<%=path%>/static/AdminLTE-2.4.2/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="<%=path%>/static/js/html5shiv.min.js"></script>
-    <script src="<%=path%>/static/js/respond.min.js"></script>
-    <![endif]-->
-    <!-- Google Font -->
-    <link rel="stylesheet" href="<%=path%>/static/css/googleFonts.css">
     <link rel="stylesheet" href="<%=path%>/static/css/common.css">
+    <%@include file="/WEB-INF/jsp/common/commonJs.jsp" %>
+    <script src="<%=path%>/static/js/jquery.tmpl.js"></script>
+    <!-- date-range-picker -->
+    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/moment/min/moment.min.js"></script>
+    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap datepicker -->
+    <!-- FLOT CHARTS -->
+    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.js"></script>
+    <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.resize.js"></script>
+    <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.pie.js"></script>
+    <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
+    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.categories.js"></script>
+    <script src="<%=path%>/static/script/trendReport/trendReport.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <%@include file="/WEB-INF/jsp/tmpl/trendReportTmpl.jsp" %>
@@ -63,7 +51,7 @@
             <%--</h1>--%>
             <ol class="breadcrumb">
                 <li><a href="<%=path%>/main"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li><a href="<%=path%>/trendReport/trendReport">趋势报表</a></li>
+                <li><a href="<%=path%>/admin/trendReport">趋势报表</a></li>
             </ol>
         </section>
         <section class="content">
@@ -311,24 +299,5 @@
     </div>
     <%@include file="/WEB-INF/jsp/common/footer.jsp" %>
 </body>
-<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="<%=path%>/static/js/jquery.tmpl.js"></script>
-<script src="<%=path%>/static/AdminLTE-2.4.2/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<%=path%>/static/AdminLTE-2.4.2/dist/js/pages/dashboard.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<%=path%>/static/AdminLTE-2.4.2/dist/js/demo.js"></script>
-<!-- date-range-picker -->
-<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/moment/min/moment.min.js"></script>
-<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap datepicker -->
-<!-- FLOT CHARTS -->
-<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.js"></script>
-<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.resize.js"></script>
-<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.pie.js"></script>
-<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.categories.js"></script>
-<script src="<%=path%>/static/script/trendReport/trendReport.js"></script>
+
 </html>

@@ -2,9 +2,7 @@
     String path = request.getContextPath();
     response.setHeader("Access-Control-Allow-Origin", "*");
 %>
-<%@ page contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%--综合监控页面--%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <script>var CONTEXTPATH = "${pageContext.request.contextPath}" </script>
 <!DOCTYPE html>
 <html>
@@ -14,58 +12,36 @@
     <title>综合监控</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/bower_components/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/bower_components/Ionicons/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/dist/css/skins/_all-skins.min.css">
-    <!-- Morris chart -->
-    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/bower_components/morris.js/morris.css">
-    <!-- jvectormap -->
-    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/bower_components/jvectormap/jquery-jvectormap.css">
+    <%@include file="/WEB-INF/jsp/common/commonCss.jsp" %>
     <!-- Date Picker -->
-    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-daterangepicker/daterangepicker.css">
-    <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="<%=path%>/static/js/html5shiv.min.js"></script>
-    <script src="<%=path%>/static/js/respond.min.js"></script>
-    <![endif]-->
-    <!-- Google Font -->
-    <link rel="stylesheet" href="<%=path%>/static/css/googleFonts.css">
+    <link rel="stylesheet"
+          href="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="<%=path%>/static/css/common.css">
 
+    <%@include file="/WEB-INF/jsp/common/commonJs.jsp" %>
+    <script src="<%=path%>/static/js/jquery.tmpl.js"></script>
+    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="<%=path%>/static/script/monitor/integrate.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<%@include file="/WEB-INF/jsp/tmpl/monitorTmpl.jsp"%>
+<%@include file="/WEB-INF/jsp/tmpl/monitorTmpl.jsp" %>
 <div class="wrapper">
-    <%@include file="/WEB-INF/jsp/common/header.jsp"%>
+    <%@include file="/WEB-INF/jsp/common/header.jsp" %>
     <!-- Left side column. contains the logo and sidebar -->
-    <%@include file="/WEB-INF/jsp/common/left.jsp"%>
+    <%@include file="/WEB-INF/jsp/common/left.jsp" %>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <%--<h1>--%>
-                <%--Advanced Form Elements--%>
-                <%--<small>Preview</small>--%>
+            <%--Advanced Form Elements--%>
+            <%--<small>Preview</small>--%>
             <%--</h1>--%>
             <ol class="breadcrumb">
                 <li><a href="<%=path%>/main"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li><a href="<%=path%>/monitor/integrate">监控</a></li>
-                <li><a href="<%=path%>/monitor/integrate">综合监控</a></li>
+                <li><a href="<%=path%>/admin/integrate">监控</a></li>
+                <li><a href="<%=path%>/admin/integrate">综合监控</a></li>
             </ol>
         </section>
         <section class="content">
@@ -103,19 +79,21 @@
                                     <label style="color:green">无</label>
                                     <table class="table table-bordered text-center">
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    <button type="button" class="btn btn-block btn-info btn-lg">系统运行</button>
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-block btn-danger btn-lg">系统停止</button>
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td>
+                                                <button type="button" class="btn btn-block btn-info btn-lg">系统运行
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-block btn-danger btn-lg">系统停止
+                                                </button>
+                                            </td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                     <%--每隔一段时间去刷新数据--%>
 
-                                    <table class="table table-bordered text-center"id="sewerage1">
+                                    <table class="table table-bordered text-center" id="sewerage1">
                                         <tr>
                                             <th>名称</th>
                                             <th>状态</th>
@@ -126,52 +104,52 @@
 
                                         </tbody>
                                         <%--<tr>--%>
-                                            <%--<td>过滤泵</td>--%>
-                                            <%--<td>运行中</td>--%>
-                                            <%--<td>杀毒装置</td>--%>
-                                            <%--<td>运作中</td>--%>
+                                        <%--<td>过滤泵</td>--%>
+                                        <%--<td>运行中</td>--%>
+                                        <%--<td>杀毒装置</td>--%>
+                                        <%--<td>运作中</td>--%>
                                         <%--</tr>--%>
                                         <%--<tr>--%>
-                                            <%--<td>PAC搅拌机</td>--%>
-                                            <%--<td>运行中</td>--%>
-                                            <%--<td>电动阀</td>--%>
-                                            <%--<td>运行中</td>--%>
+                                        <%--<td>PAC搅拌机</td>--%>
+                                        <%--<td>运行中</td>--%>
+                                        <%--<td>电动阀</td>--%>
+                                        <%--<td>运行中</td>--%>
                                         <%--</tr>--%>
                                         <%--<tr>--%>
-                                            <%--<td>PAM搅拌机</td>--%>
-                                            <%--<td>运行中</td>--%>
-                                            <%--<td>反冲洗</td>--%>
-                                            <%--<td>运行中</td>--%>
+                                        <%--<td>PAM搅拌机</td>--%>
+                                        <%--<td>运行中</td>--%>
+                                        <%--<td>反冲洗</td>--%>
+                                        <%--<td>运行中</td>--%>
                                         <%--</tr>--%>
                                         <%--<tr>--%>
-                                            <%--<td>PAC计量泵</td>--%>
-                                            <%--<td>运行中</td>--%>
-                                            <%--<td>药箱液位</td>--%>
-                                            <%--<td>正常</td>--%>
+                                        <%--<td>PAC计量泵</td>--%>
+                                        <%--<td>运行中</td>--%>
+                                        <%--<td>药箱液位</td>--%>
+                                        <%--<td>正常</td>--%>
                                         <%--</tr>--%>
                                         <%--<tr>--%>
-                                            <%--<td>PAM计量泵</td>--%>
-                                            <%--<td>运行中</td>--%>
-                                            <%--<td>中间池液位</td>--%>
-                                            <%--<td>中</td>--%>
+                                        <%--<td>PAM计量泵</td>--%>
+                                        <%--<td>运行中</td>--%>
+                                        <%--<td>中间池液位</td>--%>
+                                        <%--<td>中</td>--%>
                                         <%--</tr>--%>
                                         <%--<tr>--%>
-                                            <%--<td>原水泵</td>--%>
-                                            <%--<td>运行中</td>--%>
-                                            <%--<td>清水池液位</td>--%>
-                                            <%--<td>中</td>--%>
+                                        <%--<td>原水泵</td>--%>
+                                        <%--<td>运行中</td>--%>
+                                        <%--<td>清水池液位</td>--%>
+                                        <%--<td>中</td>--%>
                                         <%--</tr>--%>
                                         <%--<tr>--%>
-                                            <%--<td>供水泵</td>--%>
-                                            <%--<td>运行中</td>--%>
-                                            <%--<td>调节池液位</td>--%>
-                                            <%--<td>中</td>--%>
+                                        <%--<td>供水泵</td>--%>
+                                        <%--<td>运行中</td>--%>
+                                        <%--<td>调节池液位</td>--%>
+                                        <%--<td>中</td>--%>
                                         <%--</tr>--%>
                                         <%--<tr>--%>
-                                            <%--<td>反冲水泵</td>--%>
-                                            <%--<td>运行中</td>--%>
-                                            <%--<td>污泥液位</td>--%>
-                                            <%--<td>0.3</td>--%>
+                                        <%--<td>反冲水泵</td>--%>
+                                        <%--<td>运行中</td>--%>
+                                        <%--<td>污泥液位</td>--%>
+                                        <%--<td>0.3</td>--%>
                                         <%--</tr>--%>
                                     </table>
                                     <!-- /.input group -->
@@ -198,10 +176,12 @@
                                         <tbody>
                                         <tr>
                                             <td>
-                                                <button type="button" class="btn btn-block btn-info btn-lg">系统运行</button>
+                                                <button type="button" class="btn btn-block btn-info btn-lg">系统运行
+                                                </button>
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-block btn-danger btn-lg">系统停止</button>
+                                                <button type="button" class="btn btn-block btn-danger btn-lg">系统停止
+                                                </button>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -281,23 +261,12 @@
             </div>
         </section>
 
-    <!-- /.content-wrapper -->
-    <!-- Add the sidebar's background. This div must be placed
-     immediately after the control sidebar -->
-    <div class="control-sidebar-bg"></div>
+        <!-- /.content-wrapper -->
+        <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
     </div>
-    <%@include file="/WEB-INF/jsp/common/footer.jsp"%>
+    <%@include file="/WEB-INF/jsp/common/footer.jsp" %>
 </body>
-<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="<%=path%>/static/js/jquery.tmpl.js"></script>
-<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<script src="<%=path%>/static/AdminLTE-2.4.2/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<%=path%>/static/AdminLTE-2.4.2/dist/js/pages/dashboard.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<%=path%>/static/AdminLTE-2.4.2/dist/js/demo.js"></script>
-<script src="<%=path%>/static/script/monitor/integrate.js"></script>
-<script>
 
-</script>
 </html>

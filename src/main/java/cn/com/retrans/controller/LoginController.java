@@ -104,6 +104,12 @@ public class LoginController {
         return "main";
     }
 
+    @RequestMapping(value = "/index")
+    public String index(HttpServletRequest request, HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin","*");
+        return "index";
+    }
+
 
     /**
      * 用户登出

@@ -45,7 +45,7 @@ function initEventTable(){
             }
         },
         ajax: {
-            url: CONTEXTPATH+'/event/list',
+            url: CONTEXTPATH+'/admin/event/list',
             type: 'POST'
         },
         columns: [

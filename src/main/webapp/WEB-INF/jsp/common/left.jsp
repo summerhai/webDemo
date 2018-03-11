@@ -53,12 +53,12 @@
                     </span>
                 </a>
                 <ul class="treeview-menu" id="monitor-ul">
-                    <li><a href="<%=path%>/monitor/integrate"><i class="fa fa-circle-o"></i>综合监控</a></li>
-                    <li><a href="<%=path%>/monitor/sewerage"><i class="fa fa-circle-o"></i>污水回用监控</a></li>
+                    <li><a href="<%=path%>/admin/integrate"><i class="fa fa-circle-o"></i>综合监控</a></li>
+                    <li><a href="<%=path%>/admin/sewerage"><i class="fa fa-circle-o"></i>污水回用监控</a></li>
                 </ul>
             </li>
             <li>
-                <a href="<%=path%>/trendReport/trendReport">
+                <a href="<%=path%>/admin/trendReport">
                     <i class="fa fa-calendar"></i> <span>趋势报表</span>
                     <span class="pull-right-container">
                         <small class="label pull-right bg-red">3</small>
@@ -67,7 +67,7 @@
                 </a>
             </li>
             <li>
-                <a href="<%=path%>/warning/warning">
+                <a href="<%=path%>/admin/warning">
                     <i class="fa fa-circle-o text-red"></i> <span>预警报警</span>
                     <span class="pull-right-container">
                         <small class="label pull-right bg-red">3</small>
@@ -76,7 +76,7 @@
                 </a>
             </li>
             <li>
-                <a href="<%=path%>/schedule/schedule">
+                <a href="<%=path%>/admin/schedule">
                     <i class="fa fa-circle-o text-red"></i> <span>计划任务</span>
                     <span class="pull-right-container">
                         <small class="label pull-right bg-red">3</small>
@@ -85,7 +85,7 @@
                 </a>
             </li>
             <li>
-                <a href="<%=path%>/event/event">
+                <a href="<%=path%>/admin/event">
                     <i class="fa fa-circle-o text-red"></i> <span>事件管理</span>
                 </a>
             </li>

@@ -21,7 +21,7 @@ import java.util.List;
  * Created by mingyue on 2018/2/3.
  */
 @Controller
-@RequestMapping("/schedule")
+@RequestMapping("/admin")
 public class ScheduleController {
 
     @RequestMapping(value = "/schedule")

@@ -23,7 +23,7 @@ import java.util.List;
  * Created by mingyue on 2018/2/3.
  */
 @Controller
-@RequestMapping("/warning")
+@RequestMapping("/admin")
 public class WarningController {
     @Autowired
     private WarningService warningService;
@@ -34,7 +34,7 @@ public class WarningController {
         return "warning/warning";
     }
 
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = "/warning/list")
     @ResponseBody
     public String getWarningList(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("进入warning list");

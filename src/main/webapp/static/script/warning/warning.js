@@ -45,7 +45,7 @@ function initWarningTable(){
             }
         },
         ajax: {
-            url: CONTEXTPATH+'/warning/list',
+            url: CONTEXTPATH+'/admin/warning/list',
             type: 'POST'
         },
         columns: [
