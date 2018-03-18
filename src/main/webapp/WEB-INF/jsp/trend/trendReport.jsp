@@ -58,114 +58,141 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="height: 80%;">
+                <div class="row" style="height: 70%;">
                     <div class="col-md-4" border: 1px solid white;>
                         <img class="img-responsive pad" id="myCopyImage" src="<%=path%>/static/imgs/device1.png"
                              alt="Photo" style="width:90%; height:90%; margin: 0 auto">
                     </div>
                     <div class="col-md-8">
                         <div class="col-xs-12">
-                            <!-- interactive chart -->
-                            <div class="box box-primary" style="text-align: center">
-                                <div class="box-header with-border">
-                                    <i class="fa fa-bar-chart-o"></i>
+                            <%--数据图和数据表的切换--%>
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#dataGraph" data-toggle="tab"
+                                                      aria-expanded="true">数据图</a></li>
+                                <li class=""><a href="#dataTable" data-toggle="tab" aria-expanded="false">数据表</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="dataGraph">
+                                    <!-- interactive chart -->
+                                    <div class="box box-primary" style="text-align: center">
+                                        <div class="box-header with-border">
+                                            <i class="fa fa-bar-chart-o"></i>
 
-                                    <h3 class="box-title">设备实时数据图</h3>
+                                            <h3 class="box-title">设备实时数据图</h3>
 
-                                    <div class="box-tools pull-right">
-                                        Real time
-                                        <div class="btn-group" id="realtime" data-toggle="btn-toggle">
-                                            <button type="button" class="btn btn-default btn-xs active"
-                                                    data-toggle="on">On
-                                            </button>
-                                            <button type="button" class="btn btn-default btn-xs" data-toggle="off">Off
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-body">
-                                    <div id="interactive" style="height: 300px; padding: 0px; position: relative;">
-                                        <canvas class="flot-base" width="100%" height="300"
-                                                style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 100%; height: 300px;"></canvas>
-                                        <div class="flot-text"
-                                             style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);">
-                                            <div class="flot-x-axis flot-x1-axis xAxis x1Axis"
-                                                 style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;">
-                                                <div class="flot-tick-label tickLabel"
-                                                     style="position: absolute; max-width: 147px; top: 282px; left: 21px; text-align: center;">
-                                                    0
-                                                </div>
-                                                <div class="flot-tick-label tickLabel"
-                                                     style="position: absolute; max-width: 147px; top: 282px; left: 179px; text-align: center;">
-                                                    10
-                                                </div>
-                                                <div class="flot-tick-label tickLabel"
-                                                     style="position: absolute; max-width: 147px; top: 282px; left: 339px; text-align: center;">
-                                                    20
-                                                </div>
-                                                <div class="flot-tick-label tickLabel"
-                                                     style="position: absolute; max-width: 147px; top: 282px; left: 500px; text-align: center;">
-                                                    30
-                                                </div>
-                                                <div class="flot-tick-label tickLabel"
-                                                     style="position: absolute; max-width: 147px; top: 282px; left: 660px; text-align: center;">
-                                                    40
-                                                </div>
-                                                <div class="flot-tick-label tickLabel"
-                                                     style="position: absolute; max-width: 147px; top: 282px; left: 821px; text-align: center;">
-                                                    50
-                                                </div>
-                                                <div class="flot-tick-label tickLabel"
-                                                     style="position: absolute; max-width: 147px; top: 282px; left: 982px; text-align: center;">
-                                                    60
-                                                </div>
-                                                <div class="flot-tick-label tickLabel"
-                                                     style="position: absolute; max-width: 147px; top: 282px; left: 1142px; text-align: center;">
-                                                    70
-                                                </div>
-                                                <div class="flot-tick-label tickLabel"
-                                                     style="position: absolute; max-width: 147px; top: 282px; left: 1303px; text-align: center;">
-                                                    80
-                                                </div>
-                                                <div class="flot-tick-label tickLabel"
-                                                     style="position: absolute; max-width: 147px; top: 282px; left: 1463px; text-align: center;">
-                                                    90
-                                                </div>
-                                            </div>
-                                            <div class="flot-y-axis flot-y1-axis yAxis y1Axis"
-                                                 style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;">
-                                                <div class="flot-tick-label tickLabel"
-                                                     style="position: absolute; top: 269px; left: 13px; text-align: right;">
-                                                    0
-                                                </div>
-                                                <div class="flot-tick-label tickLabel"
-                                                     style="position: absolute; top: 215px; left: 7px; text-align: right;">
-                                                    20
-                                                </div>
-                                                <div class="flot-tick-label tickLabel"
-                                                     style="position: absolute; top: 161px; left: 7px; text-align: right;">
-                                                    40
-                                                </div>
-                                                <div class="flot-tick-label tickLabel"
-                                                     style="position: absolute; top: 108px; left: 7px; text-align: right;">
-                                                    60
-                                                </div>
-                                                <div class="flot-tick-label tickLabel"
-                                                     style="position: absolute; top: 54px; left: 7px; text-align: right;">
-                                                    80
-                                                </div>
-                                                <div class="flot-tick-label tickLabel"
-                                                     style="position: absolute; top: 1px; left: 1px; text-align: right;">
-                                                    100
+                                            <div class="box-tools pull-right">
+                                                Real time
+                                                <div class="btn-group" id="realtime" data-toggle="btn-toggle">
+                                                    <button type="button" class="btn btn-default btn-xs active"
+                                                            data-toggle="on">On
+                                                    </button>
+                                                    <button type="button" class="btn btn-default btn-xs" data-toggle="off">Off
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <canvas class="flot-overlay" width="1623" height="300"
-                                                style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 100%; height: 300px;"></canvas>
+                                        <div class="box-body">
+                                            <div id="interactive" style="height: 300px; padding: 0px; position: relative;">
+                                                <canvas class="flot-base" width="100%" height="300"
+                                                        style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 100%; height: 300px;"></canvas>
+                                                <div class="flot-text"
+                                                     style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);">
+                                                    <div class="flot-x-axis flot-x1-axis xAxis x1Axis"
+                                                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;">
+                                                        <div class="flot-tick-label tickLabel"
+                                                             style="position: absolute; max-width: 147px; top: 282px; left: 21px; text-align: center;">
+                                                            0
+                                                        </div>
+                                                        <div class="flot-tick-label tickLabel"
+                                                             style="position: absolute; max-width: 147px; top: 282px; left: 179px; text-align: center;">
+                                                            10
+                                                        </div>
+                                                        <div class="flot-tick-label tickLabel"
+                                                             style="position: absolute; max-width: 147px; top: 282px; left: 339px; text-align: center;">
+                                                            20
+                                                        </div>
+                                                        <div class="flot-tick-label tickLabel"
+                                                             style="position: absolute; max-width: 147px; top: 282px; left: 500px; text-align: center;">
+                                                            30
+                                                        </div>
+                                                        <div class="flot-tick-label tickLabel"
+                                                             style="position: absolute; max-width: 147px; top: 282px; left: 660px; text-align: center;">
+                                                            40
+                                                        </div>
+                                                        <div class="flot-tick-label tickLabel"
+                                                             style="position: absolute; max-width: 147px; top: 282px; left: 821px; text-align: center;">
+                                                            50
+                                                        </div>
+                                                        <div class="flot-tick-label tickLabel"
+                                                             style="position: absolute; max-width: 147px; top: 282px; left: 982px; text-align: center;">
+                                                            60
+                                                        </div>
+                                                        <div class="flot-tick-label tickLabel"
+                                                             style="position: absolute; max-width: 147px; top: 282px; left: 1142px; text-align: center;">
+                                                            70
+                                                        </div>
+                                                        <div class="flot-tick-label tickLabel"
+                                                             style="position: absolute; max-width: 147px; top: 282px; left: 1303px; text-align: center;">
+                                                            80
+                                                        </div>
+                                                        <div class="flot-tick-label tickLabel"
+                                                             style="position: absolute; max-width: 147px; top: 282px; left: 1463px; text-align: center;">
+                                                            90
+                                                        </div>
+                                                    </div>
+                                                    <div class="flot-y-axis flot-y1-axis yAxis y1Axis"
+                                                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;">
+                                                        <div class="flot-tick-label tickLabel"
+                                                             style="position: absolute; top: 269px; left: 13px; text-align: right;">
+                                                            0
+                                                        </div>
+                                                        <div class="flot-tick-label tickLabel"
+                                                             style="position: absolute; top: 215px; left: 7px; text-align: right;">
+                                                            20
+                                                        </div>
+                                                        <div class="flot-tick-label tickLabel"
+                                                             style="position: absolute; top: 161px; left: 7px; text-align: right;">
+                                                            40
+                                                        </div>
+                                                        <div class="flot-tick-label tickLabel"
+                                                             style="position: absolute; top: 108px; left: 7px; text-align: right;">
+                                                            60
+                                                        </div>
+                                                        <div class="flot-tick-label tickLabel"
+                                                             style="position: absolute; top: 54px; left: 7px; text-align: right;">
+                                                            80
+                                                        </div>
+                                                        <div class="flot-tick-label tickLabel"
+                                                             style="position: absolute; top: 1px; left: 1px; text-align: right;">
+                                                            100
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <canvas class="flot-overlay" width="1623" height="300"
+                                                        style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 100%; height: 300px;"></canvas>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-body-->
                                     </div>
                                 </div>
-                                <!-- /.box-body-->
+                                <div class="tab-pane active" id="dataTable">
+                                    <!-- 数据表 -->
+                                    <table id="dataTableId" width="100%"
+                                           class="table table-bordered table-hover dataTable">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>时间</th>
+                                            <th>设定值</th>
+                                            <th>运行值</th>
+                                            <%--<th>操作</th>--%>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
                             </div>
+
                             <!-- /.box -->
 
                         </div>
@@ -192,7 +219,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="height: 20%;">
+                <div class="row" style="height: 30%;">
                     <table class="table table-bordered text-center">
                         <tbody>
                         <tr>
