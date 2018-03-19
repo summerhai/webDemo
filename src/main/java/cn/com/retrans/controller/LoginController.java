@@ -98,13 +98,13 @@ public class LoginController {
         return flag;
     }
 
-    @RequestMapping(value = "/main")
+    @RequestMapping(value = "/main",method = RequestMethod.GET)
     public String main(HttpServletRequest request, HttpServletResponse response) {
         response.setHeader("Access-Control-Allow-Origin","*");
         return "main";
     }
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String index(HttpServletRequest request, HttpServletResponse response) {
         response.setHeader("Access-Control-Allow-Origin","*");
         return "index";

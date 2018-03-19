@@ -135,7 +135,7 @@ function initDataTable(){
         processing: true,
         serverSide: true,
         lengthChange: true,//是否允许用户改变表格每页显示的记录数
-        // lengthMenu: [10],   // 每页显示数据（默认是10）
+        lengthMenu: [5],   // 每页显示数据（默认是10）
         ordering: true,//是否允许用户排序
         paging: true,//是否分页
         pagingType: "full_numbers",//除首页、上一页、下一页、末页四个按钮还有页数按钮
@@ -180,13 +180,13 @@ function initDataTable(){
                     return meta.row + 1 + meta.settings._iDisplayStart;
                 }},
             {
-                data: "operationTime", render:function (data,type,row) {
+                data: "collectTime", render:function (data,type,row) {
                     return timestampToTime(data);
                 }
             },
-            {data: "userName"},
-            {data: "eventOperation"},
-            {data: "ip"}
+            {data: "setPower"},
+            {data: "runPower"},
+            {data: "allSum"}
         ]
     });
 }

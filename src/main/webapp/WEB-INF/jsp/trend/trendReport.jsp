@@ -18,7 +18,10 @@
     <link rel="stylesheet"
           href="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-daterangepicker/daterangepicker.css">
     <link rel="stylesheet" href="<%=path%>/static/css/common.css">
-
+    <!-- DataTables -->
+    <link rel="stylesheet"
+          href="<%=path%>/static/AdminLTE-2.4.2/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="<%=path%>/static/css/common.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <%@include file="/WEB-INF/jsp/tmpl/trendReportTmpl.jsp" %>
@@ -69,11 +72,11 @@
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#dataGraph" data-toggle="tab"
                                                       aria-expanded="true">数据图</a></li>
-                                <li class=""><a href="#dataTable" data-toggle="tab" aria-expanded="false">数据表</a>
+                                <li><a href="#dataTable" data-toggle="tab" aria-expanded="false">数据表</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane active" id="dataGraph">
+                                <div class="tab-pane active" style="height: 50%" id="dataGraph">
                                     <!-- interactive chart -->
                                     <div class="box box-primary" style="text-align: center">
                                         <div class="box-header with-border">
@@ -176,7 +179,7 @@
                                         <!-- /.box-body-->
                                     </div>
                                 </div>
-                                <div class="tab-pane active" id="dataTable">
+                                <div class="tab-pane" style="height: 50%" id="dataTable">
                                     <!-- 数据表 -->
                                     <table id="dataTableId" width="100%"
                                            class="table table-bordered table-hover dataTable">
@@ -186,11 +189,12 @@
                                             <th>时间</th>
                                             <th>设定值</th>
                                             <th>运行值</th>
+                                            <th>总数</th>
                                             <%--<th>操作</th>--%>
                                         </tr>
                                         </thead>
                                     </table>
-                                </div>
+                                </div sty>
                             </div>
 
                             <!-- /.box -->
@@ -318,6 +322,9 @@
 <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/moment/min/moment.min.js"></script>
 <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap datepicker -->
+<!-- DataTables -->
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- FLOT CHARTS -->
 <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.js"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->

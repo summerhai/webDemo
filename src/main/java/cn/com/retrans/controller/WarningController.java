@@ -5,8 +5,10 @@ import cn.com.retrans.service.WarningService;
 import cn.com.retrans.utils.DataTablePageUtil;
 import cn.com.retrans.utils.DatabaseUtil;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,66 +27,22 @@ import java.util.List;
 @Controller
 @RequestMapping("/admin")
 public class WarningController {
+    Logger logger = Logger.getLogger(WarningController.class);
     @Autowired
     private WarningService warningService;
 
-    @RequestMapping(value = "/warning")
+    @RequestMapping(value = "/warning",method = RequestMethod.GET)
     public String warning(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("进入warning");
+        logger.info("进入warning");
         return "warning/warning";
     }
 
-    @RequestMapping(value = "/warning/list")
+    @RequestMapping(value = "/warning/list",method = RequestMethod.POST)
     @ResponseBody
     public String getWarningList(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("进入warning list");
-        //使用DataTables的属性接收分页数据
-        DataTablePageUtil<Warning> dataTable = new DataTablePageUtil<Warning>(request);
-        //还是使用List，方便后期用到
-        List<Warning> warnings = new ArrayList<>();
-        //开始分页：PageHelper会处理接下来的第一个查询
-        String orderBy = null;
-        if (dataTable.getOrder()[0] != 0) {
-            //注意，页面上点击的排序和真实数据库中的排序并不一致，所以需要有一个映射关系
-            String orderColumn = DatabaseUtil.getColumnName("warning", dataTable.getOrder()[0]);
-            System.out.println("真正orderby的列:" + orderColumn);
-            orderBy = String.valueOf(orderColumn) + " " + dataTable.getOrder_dir();
-            PageHelper.orderBy(orderBy);
-        }
-        System.out.println("分页参数1:"+dataTable.getPage_num()+","+dataTable.getPage_size());
-        PageHelper.startPage(dataTable.getPage_num(), dataTable.getPage_size());
-        //是否进行了查询
-        boolean isSearch = false;
-        //是
-        if (dataTable.getSearch() != null && !dataTable.getSearch().equals("")) {
-            isSearch = true;
-            System.out.println("查询的是："+dataTable.getSearch());
-            warnings = warningService.getWarningListBySearch("%" + dataTable.getSearch() + "%", orderBy);
-        }
-        //否
-        if (!isSearch) {
-            warnings = warningService.getWarningList();
-        }
-        //用PageInfo对结果进行包装
-        PageInfo<Warning> pageInfo = new PageInfo<Warning>(warnings);
-
-        //封装数据给DataTables
-        dataTable.setDraw(dataTable.getDraw());
-//        System.out.println("获得的data:" + dataTable.getOrder_dir());
-//        for (Warning t : pageInfo.getList()) {
-//            System.out.println("name===" + t.getWarningEvent());
-//        }
-        System.out.println("分页参数2:"+pageInfo.getPageNum()+","+pageInfo.getPageSize());
-        dataTable.setPage_size(pageInfo.getPageSize());
-        dataTable.setPage_num(pageInfo.getPageNum());
-//        dataTable.setIs_orderable(pageInfo.);
-        dataTable.setData(pageInfo.getList());
-        dataTable.setRecordsTotal((int) pageInfo.getTotal());
-        dataTable.setRecordsFiltered(dataTable.getRecordsTotal());
-        //返回数据到页面
-        String jsonString = JSON.toJSONString(dataTable);
-
-        return jsonString;
+        logger.info("进入warning list");
+        String resultString = warningService.getWarningList(request);
+        return resultString;
     }
 
 }

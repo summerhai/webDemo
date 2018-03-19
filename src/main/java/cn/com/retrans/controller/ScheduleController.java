@@ -10,6 +10,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +25,7 @@ import java.util.List;
 @RequestMapping("/admin")
 public class ScheduleController {
 
-    @RequestMapping(value = "/schedule")
+    @RequestMapping(value = "/schedule",method = RequestMethod.GET)
     public String schedule(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("进入schedule");
         return "schedule/schedule";
