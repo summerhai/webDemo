@@ -47,11 +47,15 @@ function myClickHandler()
 {
     ctx.drawImage(img, 10,10,ctx.canvas.width,ctx.canvas.height);
     ctx.fillStyle="#0000ff";
-    ctx.font = "12pt Calibri blod";
-    ctx.fillStyle = 'red';
-    ctx.fillText("运行中", 600, 150);
+    ctx.font = "10pt Calibri blod";
+    ctx.fillStyle = 'blue';
+    ctx.fillText("运行中", 125, 280);
+    ctx.fillText("运行中", 260, 260);
     // ctx.fillText(Math.round(20+Math.random()*10)+"度", 1400, 280);
-    ctx.fillText("停止", 698, 175);
+    ctx.fillStyle="#0000ff";
+    ctx.font = "10pt Calibri blod";
+    ctx.fillStyle = 'red';
+    ctx.fillText("停止", 380, 300);
     // ctx.fillText(Math.round(20+Math.random()*10)+"度", 1500, 80);
 }
 

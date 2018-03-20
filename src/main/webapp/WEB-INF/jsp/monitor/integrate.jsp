@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6" style="width: 33%">
+                    <div class="col-md-6" style="width: 33%;border:1px solid #F00">
                         <div class="box box-danger" style="background:rgb(236, 240, 245);border-top-color:rgb(236, 240, 245)">
                             <div class="box-header">
                                 <h3 align="center" style="font-weight:bold;position: relative">污水处理回用单元</h3>
@@ -153,7 +153,7 @@
                         </div>
                         <!-- /.box -->
                     </div>
-                    <div class="col-md-6" style="width: 33%">
+                    <div class="col-md-6" style="width: 33%;height:604px;border:1px solid #F00">
                         <div class="box box-danger" style="background:rgb(236, 240, 245);border-top-color:rgb(236, 240, 245)">
                             <div class="box-header">
                                 <h3 align="center" style="font-weight:bold">排风除臭单元</h3>
@@ -202,7 +202,7 @@
                         </div>
                         <!-- /.box -->
                     </div>
-                    <div class="col-md-6" style="width: 33%">
+                    <div class="col-md-6" style="width: 33%;height:604px;border:1px solid #F00">
                         <div class="box box-danger" style="background:rgb(236, 240, 245);border-top-color:rgb(236, 240, 245)">
                             <div class="box-header">
                                 <h3 align="center" style="font-weight:bold">安环监测单元</h3>

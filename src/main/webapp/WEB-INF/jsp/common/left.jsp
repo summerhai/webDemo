@@ -32,21 +32,21 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>仪表盘</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu" >
-                    <li><a href="#" onclick="alert('暂未开放')"><i class="fa fa-circle-o"></i> 仪表板1</a></li>
-                    <li><a href="#" onclick="alert('暂未开放')"><i class="fa fa-circle-o"></i> 仪表板2</a></li>
-                </ul>
-            </li>
+            <%--<li class="treeview">--%>
+                <%--<a href="#">--%>
+                    <%--<i class="fa fa-dashboard"></i> <span>仪表盘</span>--%>
+                    <%--<span class="pull-right-container">--%>
+                        <%--<i class="fa fa-angle-left pull-right"></i>--%>
+                    <%--</span>--%>
+                <%--</a>--%>
+                <%--<ul class="treeview-menu" >--%>
+                    <%--<li><a href="#" onclick="alert('暂未开放')"><i class="fa fa-circle-o"></i> 仪表板1</a></li>--%>
+                    <%--<li><a href="#" onclick="alert('暂未开放')"><i class="fa fa-circle-o"></i> 仪表板2</a></li>--%>
+                <%--</ul>--%>
+            <%--</li>--%>
             <li class="treeview" id="monitor-li">
                 <a href="#">
-                    <i class="fa fa-pie-chart"></i>
+                    <i class="fa fa-dashboard"></i>
                     <span>运行监控</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
@@ -58,17 +58,18 @@
                 </ul>
             </li>
             <li>
-                <a href="<%=path%>/admin/trendReport">
-                    <i class="fa fa-calendar"></i> <span>趋势报表</span>
-                    <span class="pull-right-container">
-                        <small class="label pull-right bg-red">3</small>
-                        <small class="label pull-right bg-blue">17</small>
-                    </span>
+                <a href="<%=path%>/admin/trend">
+                    <i class="fa fa-pie-chart"></i> <span>趋势曲线</span>
+                </a>
+            </li>
+            <li>
+                <a href="<%=path%>/admin/report">
+                    <i class="fa fa-files-o"></i> <span>报表管理</span>
                 </a>
             </li>
             <li>
                 <a href="<%=path%>/admin/warning">
-                    <i class="fa fa-circle-o text-red"></i> <span>预警报警</span>
+                    <i class="fa fa-laptop"></i> <span>预警报警</span>
                     <span class="pull-right-container">
                         <small class="label pull-right bg-red">3</small>
                         <small class="label pull-right bg-blue">17</small>
@@ -77,7 +78,7 @@
             </li>
             <li>
                 <a href="<%=path%>/admin/schedule">
-                    <i class="fa fa-circle-o text-red"></i> <span>计划任务</span>
+                    <i class="fa fa-calendar"></i> <span>计划任务</span>
                     <span class="pull-right-container">
                         <small class="label pull-right bg-red">3</small>
                         <small class="label pull-right bg-blue">17</small>
@@ -86,16 +87,7 @@
             </li>
             <li>
                 <a href="<%=path%>/admin/event">
-                    <i class="fa fa-circle-o text-red"></i> <span>事件管理</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost/AdminLTE-2.4.2/pages/calendar.html">
-                    <i class="fa fa-calendar"></i> <span>高级配置</span>
-                    <span class="pull-right-container">
-                        <small class="label pull-right bg-red">3</small>
-                        <small class="label pull-right bg-blue">17</small>
-                    </span>
+                    <i class="fa fa-folder"></i> <span>事件管理</span>
                 </a>
             </li>
         </ul>

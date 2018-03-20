@@ -1,11 +1,11 @@
 //Date picker
 $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' })
 $(function () {
-    initEventTable();
+    initReportTable();
 })
 
-function initEventTable(){
-    var curTable = $("#eventTable").DataTable({
+function initReportTable(){
+    var curTable = $("#reportTable").DataTable({
         processing: true,
         serverSide: true,
         lengthChange: true,//是否允许用户改变表格每页显示的记录数
@@ -45,7 +45,7 @@ function initEventTable(){
             }
         },
         ajax: {
-            url: CONTEXTPATH+'/admin/event/list',
+            url: CONTEXTPATH+'/admin/report/list',
             type: 'POST'
         },
         columns: [
@@ -54,13 +54,13 @@ function initEventTable(){
                     return meta.row + 1 + meta.settings._iDisplayStart;
                 }},
             {
-                data: "operationTime", render:function (data,type,row) {
+                data: "collectTime", render:function (data,type,row) {
                     return timestampToTime(data);
                 }
             },
-            {data: "userName"},
-            {data: "eventOperation"},
-            {data: "ip"}
+            {data: "setPower"},
+            {data: "runPower"},
+            {data: "allSum"}
         ]
     });
 }
