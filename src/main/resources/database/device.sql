@@ -10,10 +10,54 @@ Target Server Type    : MYSQL
 Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2018-03-20 22:35:55
+Date: 2018-03-22 22:48:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for device
+-- ----------------------------
+DROP TABLE IF EXISTS `device`;
+CREATE TABLE `device` (
+  `id` char(20) NOT NULL,
+  `collect_time` datetime DEFAULT NULL,
+  `filter_pump_1` tinyint(1) DEFAULT NULL,
+  `filter_pump_2` tinyint(1) DEFAULT NULL,
+  `pac_blender` tinyint(1) DEFAULT NULL,
+  `pam_blender` tinyint(1) DEFAULT NULL,
+  `pac_metering_pumb_1` tinyint(1) DEFAULT NULL,
+  `pac_metering_pumb_2` tinyint(1) DEFAULT NULL,
+  `pam_metering_pumb_1` tinyint(1) DEFAULT NULL,
+  `pam_metering_pumb_2` tinyint(1) DEFAULT NULL,
+  `raw_water_pumb_1` tinyint(1) DEFAULT NULL,
+  `raw_water_pumb_2` tinyint(1) DEFAULT NULL,
+  `water_supply_pumb_1` tinyint(1) DEFAULT NULL,
+  `water_supply_pumb_2` tinyint(1) DEFAULT NULL,
+  `back_flush_pumb` tinyint(1) DEFAULT NULL,
+  `blower` tinyint(1) DEFAULT NULL,
+  `anti_virus_device` tinyint(1) DEFAULT NULL,
+  `electric valve` tinyint(1) DEFAULT NULL,
+  `medical_kit_index` tinyint(1) DEFAULT NULL,
+  `regulate_low` tinyint(1) DEFAULT NULL,
+  `regulate_high` tinyint(1) DEFAULT NULL,
+  `middle_low` tinyint(1) DEFAULT NULL,
+  `middle_middle` tinyint(1) DEFAULT NULL,
+  `middle_high` tinyint(1) DEFAULT NULL,
+  `water_low` tinyint(1) DEFAULT NULL,
+  `water_middle` tinyint(1) DEFAULT NULL,
+  `water_high` tinyint(1) DEFAULT NULL,
+  `black_flush_1` tinyint(1) DEFAULT NULL,
+  `black_flush_2` tinyint(1) DEFAULT NULL,
+  `black_flush_3` tinyint(1) DEFAULT NULL,
+  `black_flush_4` tinyint(1) DEFAULT NULL,
+  `system_run` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of device
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for event
@@ -23,7 +67,7 @@ CREATE TABLE `event` (
   `id` char(20) NOT NULL,
   `user_id` char(20) DEFAULT NULL,
   `user_name` varchar(255) DEFAULT NULL,
-  `operation_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `operation_time` datetime DEFAULT NULL,
   `event_operation` varchar(255) DEFAULT NULL,
   `ip` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -41,24 +85,43 @@ INSERT INTO `event` VALUES ('2', '2', 'admin1', '2018-03-08 20:08:34', '登录1'
 DROP TABLE IF EXISTS `report`;
 CREATE TABLE `report` (
   `id` char(20) NOT NULL,
-  `collect_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `set_power` double DEFAULT NULL,
-  `run_power` double DEFAULT NULL,
-  `all_sum` int(11) DEFAULT NULL,
+  `collect_time` datetime DEFAULT NULL,
+  `env_temperature` double DEFAULT NULL,
+  `env_humidity` double DEFAULT NULL,
+  `cable_temperature` double DEFAULT NULL,
+  `smoke_signal` double DEFAULT NULL,
+  `water_signal` double DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of report
 -- ----------------------------
-INSERT INTO `report` VALUES ('1', '2018-03-13 18:16:31', '11', '12', '11111');
-INSERT INTO `report` VALUES ('2', '2018-03-14 18:16:44', '12', '13', '2222');
-INSERT INTO `report` VALUES ('3', '2018-03-14 18:16:44', '12', '13', '2222');
-INSERT INTO `report` VALUES ('4', '2018-03-14 18:16:44', '12', '13', '2222');
-INSERT INTO `report` VALUES ('5', '2018-03-14 18:16:44', '12', '13', '2222');
-INSERT INTO `report` VALUES ('6', '2018-03-14 18:16:44', '12', '13', '2222');
-INSERT INTO `report` VALUES ('7', '2018-03-14 18:16:44', '12', '13', '2222');
-INSERT INTO `report` VALUES ('8', '2018-03-14 18:16:44', '12', '13', '2222');
+INSERT INTO `report` VALUES ('1', '2018-03-13 18:16:31', '11', '12', '11111', null, null);
+INSERT INTO `report` VALUES ('2', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
+INSERT INTO `report` VALUES ('3', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
+INSERT INTO `report` VALUES ('4', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
+INSERT INTO `report` VALUES ('5', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
+INSERT INTO `report` VALUES ('6', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
+INSERT INTO `report` VALUES ('7', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
+INSERT INTO `report` VALUES ('8', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
+
+-- ----------------------------
+-- Table structure for trend_data
+-- ----------------------------
+DROP TABLE IF EXISTS `trend_data`;
+CREATE TABLE `trend_data` (
+  `id` char(20) NOT NULL,
+  `date` date DEFAULT NULL,
+  `time` time DEFAULT NULL,
+  `data` double DEFAULT NULL,
+  `sum` double DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of trend_data
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for user
@@ -85,7 +148,7 @@ INSERT INTO `user` VALUES ('1', 'admin', '46a642cfdef78c00240bb7adb34ba260', 'ad
 DROP TABLE IF EXISTS `warning`;
 CREATE TABLE `warning` (
   `id` char(20) NOT NULL,
-  `warning_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `warning_time` datetime DEFAULT NULL,
   `warning_object` varchar(255) DEFAULT NULL,
   `warning_type` varchar(255) DEFAULT NULL,
   `warning_event` varchar(255) DEFAULT NULL,
