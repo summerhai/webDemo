@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.retrans.dao.ReportMapper">
+  <resultMap id="BaseResultMap" type="cn.com.retrans.pojo.Report">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="collect_time" jdbcType="TIMESTAMP" property="collectTime" />
+    <result column="set_power" jdbcType="DOUBLE" property="setPower" />
+    <result column="run_power" jdbcType="DOUBLE" property="runPower" />
+    <result column="all_sum" jdbcType="INTEGER" property="allSum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, collect_time, set_power, run_power, all_sum
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from report
+    where id = #{id,jdbcType=CHAR}
+  </select>
+
+  <select id="selectReportList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from report
+  </select>
+
+  <select id="selectBySearch" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from report
+    where collect_time like #{0} or set_power like #{0} or run_power like #{0} or all_sum like #{0}
+    <if test="param2 != null">
+      order by #{1}
+    </if>
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from report
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.retrans.pojo.Report">
+    insert into report (id, collect_time, set_power, 
+      run_power, all_sum)
+    values (#{id,jdbcType=CHAR}, #{collectTime,jdbcType=TIMESTAMP}, #{setPower,jdbcType=DOUBLE}, 
+      #{runPower,jdbcType=DOUBLE}, #{allSum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.retrans.pojo.Report">
+    insert into report
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="collectTime != null">
+        collect_time,
+      </if>
+      <if test="setPower != null">
+        set_power,
+      </if>
+      <if test="runPower != null">
+        run_power,
+      </if>
+      <if test="allSum != null">
+        all_sum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="collectTime != null">
+        #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="setPower != null">
+        #{setPower,jdbcType=DOUBLE},
+      </if>
+      <if test="runPower != null">
+        #{runPower,jdbcType=DOUBLE},
+      </if>
+      <if test="allSum != null">
+        #{allSum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.retrans.pojo.Report">
+    update report
+    <set>
+      <if test="collectTime != null">
+        collect_time = #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="setPower != null">
+        set_power = #{setPower,jdbcType=DOUBLE},
+      </if>
+      <if test="runPower != null">
+        run_power = #{runPower,jdbcType=DOUBLE},
+      </if>
+      <if test="allSum != null">
+        all_sum = #{allSum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.retrans.pojo.Report">
+    update report
+    set collect_time = #{collectTime,jdbcType=TIMESTAMP},
+      set_power = #{setPower,jdbcType=DOUBLE},
+      run_power = #{runPower,jdbcType=DOUBLE},
+      all_sum = #{allSum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>
