@@ -101,7 +101,7 @@ public class LoginController {
     @RequestMapping(value = "/main",method = RequestMethod.GET)
     public String main(HttpServletRequest request, HttpServletResponse response) {
         response.setHeader("Access-Control-Allow-Origin","*");
-        return "main";
+        return "monitor/integrate";
     }
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)

@@ -1,11 +1,11 @@
 
 $(function () {
+    showTime();
     sendAjax();
 })
-//Date picker
-$('#datepicker').datepicker({
-    autoclose: true
-})
+function showTime() {
+    setInterval("curTime.innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt (new Date().getDay());", 1000);
+}
 function sendAjax(){
     //发送Ajax请求更新数据
     $.ajax({

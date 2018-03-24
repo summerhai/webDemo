@@ -17,13 +17,9 @@
     <!-- Daterange picker -->
     <link rel="stylesheet"
           href="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="<%=path%>/static/css/common.css">
+    <%--<link rel="stylesheet" href="<%=path%>/static/css/common.css">--%>
     <%@include file="/WEB-INF/jsp/common/commonJs.jsp" %>
-    <script src="<%=path%>/static/js/jquery.tmpl.js"></script>
-    <!-- date-range-picker -->
-    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/moment/min/moment.min.js"></script>
-    <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <script src="<%=path%>/static/script/monitor/sewerage.js"></script>
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <%@include file="/WEB-INF/jsp/tmpl/monitorTmpl.jsp" %>
@@ -47,41 +43,34 @@
             </ol>
         </section>
         <section class="content">
-            <div class="d1">
-                <div class="d21">
-                    污水处理回用单元
-                    <div class="d33">
-                        <form class="form-inline" role="form" style="display: inline-block">
-                            <div class="form-group">
-                                <label class="form-label">间隔:</label>
-                                <select class="form-control" >
-                                    <option>3秒</option>
-                                    <option>5秒</option>
-                                    <option>10秒</option>
-                                    <option>30秒</option>
-                                    <option>1分钟</option>
-                                </select>
-                            </div>
-                        </form>
-                        <div style="display: inline-block;padding-left: 10px">
-                            <span id="curTime" style="font-size: 20px"></span>
-                        </div>
-
+            <div class="row">
+                <h2 style="text-align: center;"><strong>污水处理回用单元</strong></h2>
+                <form class="form-inline" role="form" style="float:right">
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 15px">间隔:</label>
+                        <select class="form-control" >
+                            <option>3秒</option>
+                            <option>5秒</option>
+                            <option>10秒</option>
+                            <option>30秒</option>
+                            <option>1分钟</option>
+                        </select>
                     </div>
-
+                </form>
+                <div style="float: right;padding-left: 10px">
+                    <span id="curTime" style="font-size: 15px"></span>
                 </div>
-                <div class="row">
-                    <div style="display:none">
-                        <img class="img-responsive pad" id="myCopyImage" src="<%=path%>/static/imgs/sewerage.png"
-                             alt="Photo" style="width:80%; height:80%; margin: 0 auto">
-                    </div>
-                    <div style="width: 100%; text-align: center">
-                        <canvas id="myCanvas" style="border: 1px solid white;width:80%; height:80%;">
-                            您的浏览器不支持canvas标签。
-                        </canvas>
-                    </div>
+            </div>
+            <div class="row">
+                <div style="display:none">
+                    <img class="img-responsive pad" id="myCopyImage" src="<%=path%>/static/imgs/sewerage.png"
+                         alt="Photo" style="width:80%; height:80%; margin: 0 auto">
                 </div>
-
+                <div style="width: 100%; text-align: center">
+                    <canvas id="myCanvas" style="border: 1px solid white;width:80%; height:80%;">
+                        您的浏览器不支持canvas标签。
+                    </canvas>
+                </div>
             </div>
         </section>
 
@@ -92,6 +81,11 @@
     </div>
     <%@include file="/WEB-INF/jsp/common/footer.jsp" %>
 </body>
+<script src="<%=path%>/static/js/jquery.tmpl.js"></script>
+<!-- date-range-picker -->
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/moment/min/moment.min.js"></script>
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="<%=path%>/static/script/monitor/sewerage.js"></script>
 </span>
 
 </html>
