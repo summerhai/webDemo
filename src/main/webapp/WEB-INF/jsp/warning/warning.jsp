@@ -21,7 +21,7 @@
     <!-- DataTables -->
     <link rel="stylesheet"
           href="<%=path%>/static/AdminLTE-2.4.2/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="<%=path%>/static/css/common.css">
+    <%--<link rel="stylesheet" href="<%=path%>/static/css/common.css">--%>
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -44,50 +44,40 @@
             </ol>
         </section>
         <section class="content">
-            <div class="d1">
-                <div class="d21">
-                    预警报警记录
-                    <div class="d33">
-                        <!-- Date -->
-                        <div class="form-group">
-                            <div class="input-group date" style="float: left">
-                                <label style="float: left">日期:</label>
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" class="form-control pull-right" id="reservationtime">
-                                <%--<button type="submit" class="btn btn-primary">Submit</button>--%>
-                            </div>
-                        </div>
+            <div class="row">
+                <h2 style="text-align: center;"><strong>预警报警记录</strong></h2>
+                <div class="input-group" style="float: right;width: 20%;padding-bottom: 10px;padding-right: 10px;">
+                    <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
                     </div>
+                    <input type="text" class="form-control pull-right" id="reservationtime">
                 </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="box">
-                            <div class="box-body">
-                                <table id="warningTable" width="100%"
-                                       class="table table-bordered table-hover dataTable">
-                                    <thead>
-                                    <tr>
-                                        <th>序号</th>
-                                        <th>报警时间</th>
-                                        <th>报警对象</th>
-                                        <th>报警类型</th>
-                                        <th>报警事件</th>
-                                        <th>当前值</th>
-                                        <th>界限值</th>
-                                        <th>报警描述</th>
-                                        <%--<th>操作</th>--%>
-                                    </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                            <!-- /.box-body -->
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <table id="warningTable" width="100%"
+                                   class="table table-bordered table-hover dataTable">
+                                <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>报警时间</th>
+                                    <th>报警对象</th>
+                                    <th>报警类型</th>
+                                    <th>报警事件</th>
+                                    <th>当前值</th>
+                                    <th>界限值</th>
+                                    <th>报警描述</th>
+                                    <%--<th>操作</th>--%>
+                                </tr>
+                                </thead>
+                            </table>
                         </div>
-                        <!-- /.box -->
+                        <!-- /.box-body -->
                     </div>
+                    <!-- /.box -->
                 </div>
-
             </div>
         </section>
 

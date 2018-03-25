@@ -2,47 +2,94 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.com.retrans.dao.ReportMapper">
   <resultMap id="BaseResultMap" type="cn.com.retrans.pojo.Report">
-    <id column="id" jdbcType="CHAR" property="id" />
-    <result column="collect_time" jdbcType="TIMESTAMP" property="collectTime" />
-    <result column="set_power" jdbcType="DOUBLE" property="setPower" />
-    <result column="run_power" jdbcType="DOUBLE" property="runPower" />
-    <result column="all_sum" jdbcType="INTEGER" property="allSum" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="collect_date" jdbcType="DATE" property="collectDate" />
+    <result column="collect_time" jdbcType="TIME" property="collectTime" />
+    <result column="filter_pumb_1" jdbcType="TINYINT" property="filterPumb1" />
+    <result column="filter_pumb_2" jdbcType="TINYINT" property="filterPumb2" />
+    <result column="pac_blender" jdbcType="TINYINT" property="pacBlender" />
+    <result column="pam_blender" jdbcType="TINYINT" property="pamBlender" />
+    <result column="pac_metering_pumb_1" jdbcType="TINYINT" property="pacMeteringPumb1" />
+    <result column="pac_metering_pumb_2" jdbcType="TINYINT" property="pacMeteringPumb2" />
+    <result column="pam_metering_pumb_1" jdbcType="TINYINT" property="pamMeteringPumb1" />
+    <result column="pam_metering_pumb_2" jdbcType="TINYINT" property="pamMeteringPumb2" />
+    <result column="raw_water_pumb_1" jdbcType="TINYINT" property="rawWaterPumb1" />
+    <result column="raw_water_pumb_2" jdbcType="TINYINT" property="rawWaterPumb2" />
+    <result column="water_supply_pumb_1" jdbcType="TINYINT" property="waterSupplyPumb1" />
+    <result column="water_supply_pumb_2" jdbcType="TINYINT" property="waterSupplyPumb2" />
+    <result column="back_flush_pumb" jdbcType="TINYINT" property="backFlushPumb" />
+    <result column="blower" jdbcType="TINYINT" property="blower" />
+    <result column="anti_virus_device" jdbcType="TINYINT" property="antiVirusDevice" />
+    <result column="electric_valve" jdbcType="TINYINT" property="electricValve" />
+    <result column="medical_kit_index" jdbcType="TINYINT" property="medicalKitIndex" />
+    <result column="regulate_low" jdbcType="TINYINT" property="regulateLow" />
+    <result column="regulate_high" jdbcType="TINYINT" property="regulateHigh" />
+    <result column="middle_low" jdbcType="TINYINT" property="middleLow" />
+    <result column="middle_middle" jdbcType="TINYINT" property="middleMiddle" />
+    <result column="middle_high" jdbcType="TINYINT" property="middleHigh" />
+    <result column="water_low" jdbcType="TINYINT" property="waterLow" />
+    <result column="water_middle" jdbcType="TINYINT" property="waterMiddle" />
+    <result column="water_high" jdbcType="TINYINT" property="waterHigh" />
+    <result column="black_flush_1" jdbcType="TINYINT" property="blackFlush1" />
+    <result column="black_flush_2" jdbcType="TINYINT" property="blackFlush2" />
+    <result column="black_flush_3" jdbcType="TINYINT" property="blackFlush3" />
+    <result column="black_flush_4" jdbcType="TINYINT" property="blackFlush4" />
+    <result column="system_run" jdbcType="TINYINT" property="systemRun" />
+    <result column="mud_level" jdbcType="DOUBLE" property="mudLevel" />
+    <result column="env_dimidity" jdbcType="DOUBLE" property="envDimidity" />
+    <result column="env_temperature" jdbcType="DOUBLE" property="envTemperature" />
+    <result column="cable_temperature" jdbcType="DOUBLE" property="cableTemperature" />
+    <result column="smoke_signal" jdbcType="DOUBLE" property="smokeSignal" />
+    <result column="water_signal" jdbcType="DOUBLE" property="waterSignal" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, collect_time, set_power, run_power, all_sum
+    id, collect_date, collect_time, filter_pumb_1, filter_pumb_2, pac_blender, pam_blender, 
+    pac_metering_pumb_1, pac_metering_pumb_2, pam_metering_pumb_1, pam_metering_pumb_2, 
+    raw_water_pumb_1, raw_water_pumb_2, water_supply_pumb_1, water_supply_pumb_2, back_flush_pumb, 
+    blower, anti_virus_device, electric_valve, medical_kit_index, regulate_low, regulate_high, 
+    middle_low, middle_middle, middle_high, water_low, water_middle, water_high, black_flush_1, 
+    black_flush_2, black_flush_3, black_flush_4, system_run, mud_level, env_dimidity, 
+    env_temperature, cable_temperature, smoke_signal, water_signal
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from report
-    where id = #{id,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
   </select>
-
-  <select id="selectReportList" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from report
-  </select>
-
-  <select id="selectBySearch" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from report
-    where collect_time like #{0} or set_power like #{0} or run_power like #{0} or all_sum like #{0}
-    <if test="param2 != null">
-      order by #{1}
-    </if>
-  </select>
-
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from report
-    where id = #{id,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.com.retrans.pojo.Report">
-    insert into report (id, collect_time, set_power, 
-      run_power, all_sum)
-    values (#{id,jdbcType=CHAR}, #{collectTime,jdbcType=TIMESTAMP}, #{setPower,jdbcType=DOUBLE}, 
-      #{runPower,jdbcType=DOUBLE}, #{allSum,jdbcType=INTEGER})
+    insert into report (id, collect_date, collect_time, 
+      filter_pumb_1, filter_pumb_2, pac_blender, 
+      pam_blender, pac_metering_pumb_1, pac_metering_pumb_2, 
+      pam_metering_pumb_1, pam_metering_pumb_2, raw_water_pumb_1, 
+      raw_water_pumb_2, water_supply_pumb_1, water_supply_pumb_2, 
+      back_flush_pumb, blower, anti_virus_device, 
+      electric_valve, medical_kit_index, regulate_low, 
+      regulate_high, middle_low, middle_middle, 
+      middle_high, water_low, water_middle, 
+      water_high, black_flush_1, black_flush_2, 
+      black_flush_3, black_flush_4, system_run, 
+      mud_level, env_dimidity, env_temperature, 
+      cable_temperature, smoke_signal, water_signal
+      )
+    values (#{id,jdbcType=INTEGER}, #{collectDate,jdbcType=DATE}, #{collectTime,jdbcType=TIME}, 
+      #{filterPumb1,jdbcType=TINYINT}, #{filterPumb2,jdbcType=TINYINT}, #{pacBlender,jdbcType=TINYINT}, 
+      #{pamBlender,jdbcType=TINYINT}, #{pacMeteringPumb1,jdbcType=TINYINT}, #{pacMeteringPumb2,jdbcType=TINYINT}, 
+      #{pamMeteringPumb1,jdbcType=TINYINT}, #{pamMeteringPumb2,jdbcType=TINYINT}, #{rawWaterPumb1,jdbcType=TINYINT}, 
+      #{rawWaterPumb2,jdbcType=TINYINT}, #{waterSupplyPumb1,jdbcType=TINYINT}, #{waterSupplyPumb2,jdbcType=TINYINT}, 
+      #{backFlushPumb,jdbcType=TINYINT}, #{blower,jdbcType=TINYINT}, #{antiVirusDevice,jdbcType=TINYINT}, 
+      #{electricValve,jdbcType=TINYINT}, #{medicalKitIndex,jdbcType=TINYINT}, #{regulateLow,jdbcType=TINYINT}, 
+      #{regulateHigh,jdbcType=TINYINT}, #{middleLow,jdbcType=TINYINT}, #{middleMiddle,jdbcType=TINYINT}, 
+      #{middleHigh,jdbcType=TINYINT}, #{waterLow,jdbcType=TINYINT}, #{waterMiddle,jdbcType=TINYINT}, 
+      #{waterHigh,jdbcType=TINYINT}, #{blackFlush1,jdbcType=TINYINT}, #{blackFlush2,jdbcType=TINYINT}, 
+      #{blackFlush3,jdbcType=TINYINT}, #{blackFlush4,jdbcType=TINYINT}, #{systemRun,jdbcType=TINYINT}, 
+      #{mudLevel,jdbcType=DOUBLE}, #{envDimidity,jdbcType=DOUBLE}, #{envTemperature,jdbcType=DOUBLE}, 
+      #{cableTemperature,jdbcType=DOUBLE}, #{smokeSignal,jdbcType=DOUBLE}, #{waterSignal,jdbcType=DOUBLE}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.com.retrans.pojo.Report">
     insert into report
@@ -50,61 +97,401 @@
       <if test="id != null">
         id,
       </if>
+      <if test="collectDate != null">
+        collect_date,
+      </if>
       <if test="collectTime != null">
         collect_time,
       </if>
-      <if test="setPower != null">
-        set_power,
+      <if test="filterPumb1 != null">
+        filter_pumb_1,
       </if>
-      <if test="runPower != null">
-        run_power,
+      <if test="filterPumb2 != null">
+        filter_pumb_2,
       </if>
-      <if test="allSum != null">
-        all_sum,
+      <if test="pacBlender != null">
+        pac_blender,
+      </if>
+      <if test="pamBlender != null">
+        pam_blender,
+      </if>
+      <if test="pacMeteringPumb1 != null">
+        pac_metering_pumb_1,
+      </if>
+      <if test="pacMeteringPumb2 != null">
+        pac_metering_pumb_2,
+      </if>
+      <if test="pamMeteringPumb1 != null">
+        pam_metering_pumb_1,
+      </if>
+      <if test="pamMeteringPumb2 != null">
+        pam_metering_pumb_2,
+      </if>
+      <if test="rawWaterPumb1 != null">
+        raw_water_pumb_1,
+      </if>
+      <if test="rawWaterPumb2 != null">
+        raw_water_pumb_2,
+      </if>
+      <if test="waterSupplyPumb1 != null">
+        water_supply_pumb_1,
+      </if>
+      <if test="waterSupplyPumb2 != null">
+        water_supply_pumb_2,
+      </if>
+      <if test="backFlushPumb != null">
+        back_flush_pumb,
+      </if>
+      <if test="blower != null">
+        blower,
+      </if>
+      <if test="antiVirusDevice != null">
+        anti_virus_device,
+      </if>
+      <if test="electricValve != null">
+        electric_valve,
+      </if>
+      <if test="medicalKitIndex != null">
+        medical_kit_index,
+      </if>
+      <if test="regulateLow != null">
+        regulate_low,
+      </if>
+      <if test="regulateHigh != null">
+        regulate_high,
+      </if>
+      <if test="middleLow != null">
+        middle_low,
+      </if>
+      <if test="middleMiddle != null">
+        middle_middle,
+      </if>
+      <if test="middleHigh != null">
+        middle_high,
+      </if>
+      <if test="waterLow != null">
+        water_low,
+      </if>
+      <if test="waterMiddle != null">
+        water_middle,
+      </if>
+      <if test="waterHigh != null">
+        water_high,
+      </if>
+      <if test="blackFlush1 != null">
+        black_flush_1,
+      </if>
+      <if test="blackFlush2 != null">
+        black_flush_2,
+      </if>
+      <if test="blackFlush3 != null">
+        black_flush_3,
+      </if>
+      <if test="blackFlush4 != null">
+        black_flush_4,
+      </if>
+      <if test="systemRun != null">
+        system_run,
+      </if>
+      <if test="mudLevel != null">
+        mud_level,
+      </if>
+      <if test="envDimidity != null">
+        env_dimidity,
+      </if>
+      <if test="envTemperature != null">
+        env_temperature,
+      </if>
+      <if test="cableTemperature != null">
+        cable_temperature,
+      </if>
+      <if test="smokeSignal != null">
+        smoke_signal,
+      </if>
+      <if test="waterSignal != null">
+        water_signal,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=CHAR},
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="collectDate != null">
+        #{collectDate,jdbcType=DATE},
       </if>
       <if test="collectTime != null">
-        #{collectTime,jdbcType=TIMESTAMP},
+        #{collectTime,jdbcType=TIME},
       </if>
-      <if test="setPower != null">
-        #{setPower,jdbcType=DOUBLE},
+      <if test="filterPumb1 != null">
+        #{filterPumb1,jdbcType=TINYINT},
       </if>
-      <if test="runPower != null">
-        #{runPower,jdbcType=DOUBLE},
+      <if test="filterPumb2 != null">
+        #{filterPumb2,jdbcType=TINYINT},
       </if>
-      <if test="allSum != null">
-        #{allSum,jdbcType=INTEGER},
+      <if test="pacBlender != null">
+        #{pacBlender,jdbcType=TINYINT},
+      </if>
+      <if test="pamBlender != null">
+        #{pamBlender,jdbcType=TINYINT},
+      </if>
+      <if test="pacMeteringPumb1 != null">
+        #{pacMeteringPumb1,jdbcType=TINYINT},
+      </if>
+      <if test="pacMeteringPumb2 != null">
+        #{pacMeteringPumb2,jdbcType=TINYINT},
+      </if>
+      <if test="pamMeteringPumb1 != null">
+        #{pamMeteringPumb1,jdbcType=TINYINT},
+      </if>
+      <if test="pamMeteringPumb2 != null">
+        #{pamMeteringPumb2,jdbcType=TINYINT},
+      </if>
+      <if test="rawWaterPumb1 != null">
+        #{rawWaterPumb1,jdbcType=TINYINT},
+      </if>
+      <if test="rawWaterPumb2 != null">
+        #{rawWaterPumb2,jdbcType=TINYINT},
+      </if>
+      <if test="waterSupplyPumb1 != null">
+        #{waterSupplyPumb1,jdbcType=TINYINT},
+      </if>
+      <if test="waterSupplyPumb2 != null">
+        #{waterSupplyPumb2,jdbcType=TINYINT},
+      </if>
+      <if test="backFlushPumb != null">
+        #{backFlushPumb,jdbcType=TINYINT},
+      </if>
+      <if test="blower != null">
+        #{blower,jdbcType=TINYINT},
+      </if>
+      <if test="antiVirusDevice != null">
+        #{antiVirusDevice,jdbcType=TINYINT},
+      </if>
+      <if test="electricValve != null">
+        #{electricValve,jdbcType=TINYINT},
+      </if>
+      <if test="medicalKitIndex != null">
+        #{medicalKitIndex,jdbcType=TINYINT},
+      </if>
+      <if test="regulateLow != null">
+        #{regulateLow,jdbcType=TINYINT},
+      </if>
+      <if test="regulateHigh != null">
+        #{regulateHigh,jdbcType=TINYINT},
+      </if>
+      <if test="middleLow != null">
+        #{middleLow,jdbcType=TINYINT},
+      </if>
+      <if test="middleMiddle != null">
+        #{middleMiddle,jdbcType=TINYINT},
+      </if>
+      <if test="middleHigh != null">
+        #{middleHigh,jdbcType=TINYINT},
+      </if>
+      <if test="waterLow != null">
+        #{waterLow,jdbcType=TINYINT},
+      </if>
+      <if test="waterMiddle != null">
+        #{waterMiddle,jdbcType=TINYINT},
+      </if>
+      <if test="waterHigh != null">
+        #{waterHigh,jdbcType=TINYINT},
+      </if>
+      <if test="blackFlush1 != null">
+        #{blackFlush1,jdbcType=TINYINT},
+      </if>
+      <if test="blackFlush2 != null">
+        #{blackFlush2,jdbcType=TINYINT},
+      </if>
+      <if test="blackFlush3 != null">
+        #{blackFlush3,jdbcType=TINYINT},
+      </if>
+      <if test="blackFlush4 != null">
+        #{blackFlush4,jdbcType=TINYINT},
+      </if>
+      <if test="systemRun != null">
+        #{systemRun,jdbcType=TINYINT},
+      </if>
+      <if test="mudLevel != null">
+        #{mudLevel,jdbcType=DOUBLE},
+      </if>
+      <if test="envDimidity != null">
+        #{envDimidity,jdbcType=DOUBLE},
+      </if>
+      <if test="envTemperature != null">
+        #{envTemperature,jdbcType=DOUBLE},
+      </if>
+      <if test="cableTemperature != null">
+        #{cableTemperature,jdbcType=DOUBLE},
+      </if>
+      <if test="smokeSignal != null">
+        #{smokeSignal,jdbcType=DOUBLE},
+      </if>
+      <if test="waterSignal != null">
+        #{waterSignal,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.com.retrans.pojo.Report">
     update report
     <set>
+      <if test="collectDate != null">
+        collect_date = #{collectDate,jdbcType=DATE},
+      </if>
       <if test="collectTime != null">
-        collect_time = #{collectTime,jdbcType=TIMESTAMP},
+        collect_time = #{collectTime,jdbcType=TIME},
       </if>
-      <if test="setPower != null">
-        set_power = #{setPower,jdbcType=DOUBLE},
+      <if test="filterPumb1 != null">
+        filter_pumb_1 = #{filterPumb1,jdbcType=TINYINT},
       </if>
-      <if test="runPower != null">
-        run_power = #{runPower,jdbcType=DOUBLE},
+      <if test="filterPumb2 != null">
+        filter_pumb_2 = #{filterPumb2,jdbcType=TINYINT},
       </if>
-      <if test="allSum != null">
-        all_sum = #{allSum,jdbcType=INTEGER},
+      <if test="pacBlender != null">
+        pac_blender = #{pacBlender,jdbcType=TINYINT},
+      </if>
+      <if test="pamBlender != null">
+        pam_blender = #{pamBlender,jdbcType=TINYINT},
+      </if>
+      <if test="pacMeteringPumb1 != null">
+        pac_metering_pumb_1 = #{pacMeteringPumb1,jdbcType=TINYINT},
+      </if>
+      <if test="pacMeteringPumb2 != null">
+        pac_metering_pumb_2 = #{pacMeteringPumb2,jdbcType=TINYINT},
+      </if>
+      <if test="pamMeteringPumb1 != null">
+        pam_metering_pumb_1 = #{pamMeteringPumb1,jdbcType=TINYINT},
+      </if>
+      <if test="pamMeteringPumb2 != null">
+        pam_metering_pumb_2 = #{pamMeteringPumb2,jdbcType=TINYINT},
+      </if>
+      <if test="rawWaterPumb1 != null">
+        raw_water_pumb_1 = #{rawWaterPumb1,jdbcType=TINYINT},
+      </if>
+      <if test="rawWaterPumb2 != null">
+        raw_water_pumb_2 = #{rawWaterPumb2,jdbcType=TINYINT},
+      </if>
+      <if test="waterSupplyPumb1 != null">
+        water_supply_pumb_1 = #{waterSupplyPumb1,jdbcType=TINYINT},
+      </if>
+      <if test="waterSupplyPumb2 != null">
+        water_supply_pumb_2 = #{waterSupplyPumb2,jdbcType=TINYINT},
+      </if>
+      <if test="backFlushPumb != null">
+        back_flush_pumb = #{backFlushPumb,jdbcType=TINYINT},
+      </if>
+      <if test="blower != null">
+        blower = #{blower,jdbcType=TINYINT},
+      </if>
+      <if test="antiVirusDevice != null">
+        anti_virus_device = #{antiVirusDevice,jdbcType=TINYINT},
+      </if>
+      <if test="electricValve != null">
+        electric_valve = #{electricValve,jdbcType=TINYINT},
+      </if>
+      <if test="medicalKitIndex != null">
+        medical_kit_index = #{medicalKitIndex,jdbcType=TINYINT},
+      </if>
+      <if test="regulateLow != null">
+        regulate_low = #{regulateLow,jdbcType=TINYINT},
+      </if>
+      <if test="regulateHigh != null">
+        regulate_high = #{regulateHigh,jdbcType=TINYINT},
+      </if>
+      <if test="middleLow != null">
+        middle_low = #{middleLow,jdbcType=TINYINT},
+      </if>
+      <if test="middleMiddle != null">
+        middle_middle = #{middleMiddle,jdbcType=TINYINT},
+      </if>
+      <if test="middleHigh != null">
+        middle_high = #{middleHigh,jdbcType=TINYINT},
+      </if>
+      <if test="waterLow != null">
+        water_low = #{waterLow,jdbcType=TINYINT},
+      </if>
+      <if test="waterMiddle != null">
+        water_middle = #{waterMiddle,jdbcType=TINYINT},
+      </if>
+      <if test="waterHigh != null">
+        water_high = #{waterHigh,jdbcType=TINYINT},
+      </if>
+      <if test="blackFlush1 != null">
+        black_flush_1 = #{blackFlush1,jdbcType=TINYINT},
+      </if>
+      <if test="blackFlush2 != null">
+        black_flush_2 = #{blackFlush2,jdbcType=TINYINT},
+      </if>
+      <if test="blackFlush3 != null">
+        black_flush_3 = #{blackFlush3,jdbcType=TINYINT},
+      </if>
+      <if test="blackFlush4 != null">
+        black_flush_4 = #{blackFlush4,jdbcType=TINYINT},
+      </if>
+      <if test="systemRun != null">
+        system_run = #{systemRun,jdbcType=TINYINT},
+      </if>
+      <if test="mudLevel != null">
+        mud_level = #{mudLevel,jdbcType=DOUBLE},
+      </if>
+      <if test="envDimidity != null">
+        env_dimidity = #{envDimidity,jdbcType=DOUBLE},
+      </if>
+      <if test="envTemperature != null">
+        env_temperature = #{envTemperature,jdbcType=DOUBLE},
+      </if>
+      <if test="cableTemperature != null">
+        cable_temperature = #{cableTemperature,jdbcType=DOUBLE},
+      </if>
+      <if test="smokeSignal != null">
+        smoke_signal = #{smokeSignal,jdbcType=DOUBLE},
+      </if>
+      <if test="waterSignal != null">
+        water_signal = #{waterSignal,jdbcType=DOUBLE},
       </if>
     </set>
-    where id = #{id,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.com.retrans.pojo.Report">
     update report
-    set collect_time = #{collectTime,jdbcType=TIMESTAMP},
-      set_power = #{setPower,jdbcType=DOUBLE},
-      run_power = #{runPower,jdbcType=DOUBLE},
-      all_sum = #{allSum,jdbcType=INTEGER}
-    where id = #{id,jdbcType=CHAR}
+    set collect_date = #{collectDate,jdbcType=DATE},
+      collect_time = #{collectTime,jdbcType=TIME},
+      filter_pumb_1 = #{filterPumb1,jdbcType=TINYINT},
+      filter_pumb_2 = #{filterPumb2,jdbcType=TINYINT},
+      pac_blender = #{pacBlender,jdbcType=TINYINT},
+      pam_blender = #{pamBlender,jdbcType=TINYINT},
+      pac_metering_pumb_1 = #{pacMeteringPumb1,jdbcType=TINYINT},
+      pac_metering_pumb_2 = #{pacMeteringPumb2,jdbcType=TINYINT},
+      pam_metering_pumb_1 = #{pamMeteringPumb1,jdbcType=TINYINT},
+      pam_metering_pumb_2 = #{pamMeteringPumb2,jdbcType=TINYINT},
+      raw_water_pumb_1 = #{rawWaterPumb1,jdbcType=TINYINT},
+      raw_water_pumb_2 = #{rawWaterPumb2,jdbcType=TINYINT},
+      water_supply_pumb_1 = #{waterSupplyPumb1,jdbcType=TINYINT},
+      water_supply_pumb_2 = #{waterSupplyPumb2,jdbcType=TINYINT},
+      back_flush_pumb = #{backFlushPumb,jdbcType=TINYINT},
+      blower = #{blower,jdbcType=TINYINT},
+      anti_virus_device = #{antiVirusDevice,jdbcType=TINYINT},
+      electric_valve = #{electricValve,jdbcType=TINYINT},
+      medical_kit_index = #{medicalKitIndex,jdbcType=TINYINT},
+      regulate_low = #{regulateLow,jdbcType=TINYINT},
+      regulate_high = #{regulateHigh,jdbcType=TINYINT},
+      middle_low = #{middleLow,jdbcType=TINYINT},
+      middle_middle = #{middleMiddle,jdbcType=TINYINT},
+      middle_high = #{middleHigh,jdbcType=TINYINT},
+      water_low = #{waterLow,jdbcType=TINYINT},
+      water_middle = #{waterMiddle,jdbcType=TINYINT},
+      water_high = #{waterHigh,jdbcType=TINYINT},
+      black_flush_1 = #{blackFlush1,jdbcType=TINYINT},
+      black_flush_2 = #{blackFlush2,jdbcType=TINYINT},
+      black_flush_3 = #{blackFlush3,jdbcType=TINYINT},
+      black_flush_4 = #{blackFlush4,jdbcType=TINYINT},
+      system_run = #{systemRun,jdbcType=TINYINT},
+      mud_level = #{mudLevel,jdbcType=DOUBLE},
+      env_dimidity = #{envDimidity,jdbcType=DOUBLE},
+      env_temperature = #{envTemperature,jdbcType=DOUBLE},
+      cable_temperature = #{cableTemperature,jdbcType=DOUBLE},
+      smoke_signal = #{smokeSignal,jdbcType=DOUBLE},
+      water_signal = #{waterSignal,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -10,54 +10,10 @@ Target Server Type    : MYSQL
 Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2018-03-22 22:48:43
+Date: 2018-03-25 21:57:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
-
--- ----------------------------
--- Table structure for device
--- ----------------------------
-DROP TABLE IF EXISTS `device`;
-CREATE TABLE `device` (
-  `id` char(20) NOT NULL,
-  `collect_time` datetime DEFAULT NULL,
-  `filter_pump_1` tinyint(1) DEFAULT NULL,
-  `filter_pump_2` tinyint(1) DEFAULT NULL,
-  `pac_blender` tinyint(1) DEFAULT NULL,
-  `pam_blender` tinyint(1) DEFAULT NULL,
-  `pac_metering_pumb_1` tinyint(1) DEFAULT NULL,
-  `pac_metering_pumb_2` tinyint(1) DEFAULT NULL,
-  `pam_metering_pumb_1` tinyint(1) DEFAULT NULL,
-  `pam_metering_pumb_2` tinyint(1) DEFAULT NULL,
-  `raw_water_pumb_1` tinyint(1) DEFAULT NULL,
-  `raw_water_pumb_2` tinyint(1) DEFAULT NULL,
-  `water_supply_pumb_1` tinyint(1) DEFAULT NULL,
-  `water_supply_pumb_2` tinyint(1) DEFAULT NULL,
-  `back_flush_pumb` tinyint(1) DEFAULT NULL,
-  `blower` tinyint(1) DEFAULT NULL,
-  `anti_virus_device` tinyint(1) DEFAULT NULL,
-  `electric valve` tinyint(1) DEFAULT NULL,
-  `medical_kit_index` tinyint(1) DEFAULT NULL,
-  `regulate_low` tinyint(1) DEFAULT NULL,
-  `regulate_high` tinyint(1) DEFAULT NULL,
-  `middle_low` tinyint(1) DEFAULT NULL,
-  `middle_middle` tinyint(1) DEFAULT NULL,
-  `middle_high` tinyint(1) DEFAULT NULL,
-  `water_low` tinyint(1) DEFAULT NULL,
-  `water_middle` tinyint(1) DEFAULT NULL,
-  `water_high` tinyint(1) DEFAULT NULL,
-  `black_flush_1` tinyint(1) DEFAULT NULL,
-  `black_flush_2` tinyint(1) DEFAULT NULL,
-  `black_flush_3` tinyint(1) DEFAULT NULL,
-  `black_flush_4` tinyint(1) DEFAULT NULL,
-  `system_run` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of device
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for event
@@ -84,6 +40,64 @@ INSERT INTO `event` VALUES ('2', '2', 'admin1', '2018-03-08 20:08:34', '登录1'
 -- ----------------------------
 DROP TABLE IF EXISTS `report`;
 CREATE TABLE `report` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `collect_date` date DEFAULT NULL,
+  `collect_time` time DEFAULT NULL,
+  `filter_pumb_1` tinyint(2) DEFAULT NULL,
+  `filter_pumb_2` tinyint(2) DEFAULT NULL,
+  `pac_blender` tinyint(2) DEFAULT NULL,
+  `pam_blender` tinyint(2) DEFAULT NULL,
+  `pac_metering_pumb_1` tinyint(2) DEFAULT NULL,
+  `pac_metering_pumb_2` tinyint(2) DEFAULT NULL,
+  `pam_metering_pumb_1` tinyint(2) DEFAULT NULL,
+  `pam_metering_pumb_2` tinyint(2) DEFAULT NULL,
+  `raw_water_pumb_1` tinyint(2) DEFAULT NULL,
+  `raw_water_pumb_2` tinyint(2) DEFAULT NULL,
+  `water_supply_pumb_1` tinyint(2) DEFAULT NULL,
+  `water_supply_pumb_2` tinyint(2) DEFAULT NULL,
+  `back_flush_pumb` tinyint(2) DEFAULT NULL,
+  `blower` tinyint(2) DEFAULT NULL,
+  `anti_virus_device` tinyint(2) DEFAULT NULL,
+  `electric_valve` tinyint(2) DEFAULT NULL,
+  `medical_kit_index` tinyint(2) DEFAULT NULL,
+  `regulate_low` tinyint(2) DEFAULT NULL,
+  `regulate_high` tinyint(2) DEFAULT NULL,
+  `middle_low` tinyint(2) DEFAULT NULL,
+  `middle_middle` tinyint(2) DEFAULT NULL,
+  `middle_high` tinyint(2) DEFAULT NULL,
+  `water_low` tinyint(2) DEFAULT NULL,
+  `water_middle` tinyint(2) DEFAULT NULL,
+  `water_high` tinyint(2) DEFAULT NULL,
+  `black_flush_1` tinyint(2) DEFAULT NULL,
+  `black_flush_2` tinyint(2) DEFAULT NULL,
+  `black_flush_3` tinyint(2) DEFAULT NULL,
+  `black_flush_4` tinyint(2) DEFAULT NULL,
+  `system_run` tinyint(2) DEFAULT NULL,
+  `mud_level` double DEFAULT NULL,
+  `env_dimidity` double DEFAULT NULL,
+  `env_temperature` double DEFAULT NULL,
+  `cable_temperature` double DEFAULT NULL,
+  `smoke_signal` double DEFAULT NULL,
+  `water_signal` double DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of report
+-- ----------------------------
+INSERT INTO `report` VALUES ('10', '2018-03-25', '21:56:47', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '0', '1', '0', '0', '1', '0', '1', '1', '1', '1', '1', '2', '20', '15', '26', '1', '1');
+INSERT INTO `report` VALUES ('11', '2018-03-25', '21:56:47', '0', '1', '1', '0', '-2', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '0', '1', '0', '0', '1', '0', '1', '1', '1', '1', '1', '3.5', '21.2', '20', '24.5', '1', '0');
+INSERT INTO `report` VALUES ('12', '2018-03-25', '21:56:47', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '0', '1', '0', '0', '1', '0', '1', '1', '1', '1', '1', '4.7', '15.2', '16.2', '29.8', '0', '0');
+INSERT INTO `report` VALUES ('13', '2018-03-25', '21:56:47', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '0', '1', '0', '0', '0', '0', '1', '1', '1', '1', '1', '1', '3', '19.8', '15.2', '27.2', '0', '1');
+INSERT INTO `report` VALUES ('14', '2018-03-25', '21:56:47', '0', '1', '1', '0', '-2', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '0', '1', '0', '0', '1', '0', '1', '1', '1', '1', '1', '1.5', '29.1', '18.1', '29.4', '1', '0');
+INSERT INTO `report` VALUES ('15', '2018-03-25', '21:56:47', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '0', '1', '0', '0', '1', '0', '1', '1', '1', '1', '1', '4', '18.5', '19.9', '26.3', '0', '0');
+INSERT INTO `report` VALUES ('16', '2018-03-25', '21:56:47', '0', '1', '1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '0', '1', '0', '0', '0', '1', '1', '1', '1', '1', '1', '2.5', '20.1', '15', '28.9', '0', '1');
+
+-- ----------------------------
+-- Table structure for report1
+-- ----------------------------
+DROP TABLE IF EXISTS `report1`;
+CREATE TABLE `report1` (
   `id` char(20) NOT NULL,
   `collect_time` datetime DEFAULT NULL,
   `env_temperature` double DEFAULT NULL,
@@ -95,16 +109,16 @@ CREATE TABLE `report` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of report
+-- Records of report1
 -- ----------------------------
-INSERT INTO `report` VALUES ('1', '2018-03-13 18:16:31', '11', '12', '11111', null, null);
-INSERT INTO `report` VALUES ('2', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
-INSERT INTO `report` VALUES ('3', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
-INSERT INTO `report` VALUES ('4', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
-INSERT INTO `report` VALUES ('5', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
-INSERT INTO `report` VALUES ('6', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
-INSERT INTO `report` VALUES ('7', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
-INSERT INTO `report` VALUES ('8', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
+INSERT INTO `report1` VALUES ('1', '2018-03-13 18:16:31', '11', '12', '11111', null, null);
+INSERT INTO `report1` VALUES ('2', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
+INSERT INTO `report1` VALUES ('3', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
+INSERT INTO `report1` VALUES ('4', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
+INSERT INTO `report1` VALUES ('5', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
+INSERT INTO `report1` VALUES ('6', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
+INSERT INTO `report1` VALUES ('7', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
+INSERT INTO `report1` VALUES ('8', '2018-03-14 18:16:44', '12', '13', '2222', null, null);
 
 -- ----------------------------
 -- Table structure for trend_data

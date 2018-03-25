@@ -43,7 +43,7 @@
                     <span id="curTime" style="font-size: 20px"></span>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="height: 50%">
                 <div class="col-md-6" style="width: 33%;border:1px solid #F00;height: 127%">
                     <div class="box box-danger" style="background:rgb(236, 240, 245);border-top-color:rgb(236, 240, 245)">
                         <div class="box-header">

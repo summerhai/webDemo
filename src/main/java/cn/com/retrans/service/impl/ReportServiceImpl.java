@@ -6,7 +6,6 @@ import cn.com.retrans.service.ReportService;
 import cn.com.retrans.utils.DataTablePageUtil;
 import cn.com.retrans.utils.DatabaseUtil;
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.log4j.Logger;
@@ -46,11 +45,11 @@ public class ReportServiceImpl implements ReportService {
         if (dataTable.getSearch() != null && !dataTable.getSearch().equals("")) {
             isSearch = true;
             logger.info("查询的是："+dataTable.getSearch());
-            reports = reportMapper.selectBySearch("%" + dataTable.getSearch() + "%", orderBy);
+//            reports = reportMapper.selectBySearch("%" + dataTable.getSearch() + "%", orderBy);
         }
         //否
         if (!isSearch) {
-            reports = reportMapper.selectReportList();
+//            reports = reportMapper.selectReportList();
         }
         //用PageInfo对结果进行包装
         PageInfo<Report> pageInfo = new PageInfo<Report>(reports);

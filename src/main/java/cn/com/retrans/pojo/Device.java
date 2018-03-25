@@ -2,72 +2,72 @@ package cn.com.retrans.pojo;
 
 import java.util.Date;
 
-public class Report {
-    private Integer id;
+public class Device {
+    private String id;
 
     private Date collectDate;
 
     private Date collectTime;
 
-    private Byte filterPumb1;
+    private Boolean filterPump1;
 
-    private Byte filterPumb2;
+    private Boolean filterPump2;
 
-    private Byte pacBlender;
+    private Boolean pacBlender;
 
-    private Byte pamBlender;
+    private Boolean pamBlender;
 
-    private Byte pacMeteringPumb1;
+    private Boolean pacMeteringPumb1;
 
-    private Byte pacMeteringPumb2;
+    private Boolean pacMeteringPumb2;
 
-    private Byte pamMeteringPumb1;
+    private Boolean pamMeteringPumb1;
 
-    private Byte pamMeteringPumb2;
+    private Boolean pamMeteringPumb2;
 
-    private Byte rawWaterPumb1;
+    private Boolean rawWaterPumb1;
 
-    private Byte rawWaterPumb2;
+    private Boolean rawWaterPumb2;
 
-    private Byte waterSupplyPumb1;
+    private Boolean waterSupplyPumb1;
 
-    private Byte waterSupplyPumb2;
+    private Boolean waterSupplyPumb2;
 
-    private Byte backFlushPumb;
+    private Boolean backFlushPumb;
 
-    private Byte blower;
+    private Boolean blower;
 
-    private Byte antiVirusDevice;
+    private Boolean antiVirusDevice;
 
-    private Byte electricValve;
+    private Boolean electricValve;
 
-    private Byte medicalKitIndex;
+    private Boolean medicalKitIndex;
 
-    private Byte regulateLow;
+    private Boolean regulateLow;
 
-    private Byte regulateHigh;
+    private Boolean regulateHigh;
 
-    private Byte middleLow;
+    private Boolean middleLow;
 
-    private Byte middleMiddle;
+    private Boolean middleMiddle;
 
-    private Byte middleHigh;
+    private Boolean middleHigh;
 
-    private Byte waterLow;
+    private Boolean waterLow;
 
-    private Byte waterMiddle;
+    private Boolean waterMiddle;
 
-    private Byte waterHigh;
+    private Boolean waterHigh;
 
-    private Byte blackFlush1;
+    private Boolean blackFlush1;
 
-    private Byte blackFlush2;
+    private Boolean blackFlush2;
 
-    private Byte blackFlush3;
+    private Boolean blackFlush3;
 
-    private Byte blackFlush4;
+    private Boolean blackFlush4;
 
-    private Byte systemRun;
+    private Boolean systemRun;
 
     private Double mudLevel;
 
@@ -81,12 +81,12 @@ public class Report {
 
     private Double waterSignal;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public Date getCollectDate() {
@@ -105,243 +105,243 @@ public class Report {
         this.collectTime = collectTime;
     }
 
-    public Byte getFilterPumb1() {
-        return filterPumb1;
+    public Boolean getFilterPump1() {
+        return filterPump1;
     }
 
-    public void setFilterPumb1(Byte filterPumb1) {
-        this.filterPumb1 = filterPumb1;
+    public void setFilterPump1(Boolean filterPump1) {
+        this.filterPump1 = filterPump1;
     }
 
-    public Byte getFilterPumb2() {
-        return filterPumb2;
+    public Boolean getFilterPump2() {
+        return filterPump2;
     }
 
-    public void setFilterPumb2(Byte filterPumb2) {
-        this.filterPumb2 = filterPumb2;
+    public void setFilterPump2(Boolean filterPump2) {
+        this.filterPump2 = filterPump2;
     }
 
-    public Byte getPacBlender() {
+    public Boolean getPacBlender() {
         return pacBlender;
     }
 
-    public void setPacBlender(Byte pacBlender) {
+    public void setPacBlender(Boolean pacBlender) {
         this.pacBlender = pacBlender;
     }
 
-    public Byte getPamBlender() {
+    public Boolean getPamBlender() {
         return pamBlender;
     }
 
-    public void setPamBlender(Byte pamBlender) {
+    public void setPamBlender(Boolean pamBlender) {
         this.pamBlender = pamBlender;
     }
 
-    public Byte getPacMeteringPumb1() {
+    public Boolean getPacMeteringPumb1() {
         return pacMeteringPumb1;
     }
 
-    public void setPacMeteringPumb1(Byte pacMeteringPumb1) {
+    public void setPacMeteringPumb1(Boolean pacMeteringPumb1) {
         this.pacMeteringPumb1 = pacMeteringPumb1;
     }
 
-    public Byte getPacMeteringPumb2() {
+    public Boolean getPacMeteringPumb2() {
         return pacMeteringPumb2;
     }
 
-    public void setPacMeteringPumb2(Byte pacMeteringPumb2) {
+    public void setPacMeteringPumb2(Boolean pacMeteringPumb2) {
         this.pacMeteringPumb2 = pacMeteringPumb2;
     }
 
-    public Byte getPamMeteringPumb1() {
+    public Boolean getPamMeteringPumb1() {
         return pamMeteringPumb1;
     }
 
-    public void setPamMeteringPumb1(Byte pamMeteringPumb1) {
+    public void setPamMeteringPumb1(Boolean pamMeteringPumb1) {
         this.pamMeteringPumb1 = pamMeteringPumb1;
     }
 
-    public Byte getPamMeteringPumb2() {
+    public Boolean getPamMeteringPumb2() {
         return pamMeteringPumb2;
     }
 
-    public void setPamMeteringPumb2(Byte pamMeteringPumb2) {
+    public void setPamMeteringPumb2(Boolean pamMeteringPumb2) {
         this.pamMeteringPumb2 = pamMeteringPumb2;
     }
 
-    public Byte getRawWaterPumb1() {
+    public Boolean getRawWaterPumb1() {
         return rawWaterPumb1;
     }
 
-    public void setRawWaterPumb1(Byte rawWaterPumb1) {
+    public void setRawWaterPumb1(Boolean rawWaterPumb1) {
         this.rawWaterPumb1 = rawWaterPumb1;
     }
 
-    public Byte getRawWaterPumb2() {
+    public Boolean getRawWaterPumb2() {
         return rawWaterPumb2;
     }
 
-    public void setRawWaterPumb2(Byte rawWaterPumb2) {
+    public void setRawWaterPumb2(Boolean rawWaterPumb2) {
         this.rawWaterPumb2 = rawWaterPumb2;
     }
 
-    public Byte getWaterSupplyPumb1() {
+    public Boolean getWaterSupplyPumb1() {
         return waterSupplyPumb1;
     }
 
-    public void setWaterSupplyPumb1(Byte waterSupplyPumb1) {
+    public void setWaterSupplyPumb1(Boolean waterSupplyPumb1) {
         this.waterSupplyPumb1 = waterSupplyPumb1;
     }
 
-    public Byte getWaterSupplyPumb2() {
+    public Boolean getWaterSupplyPumb2() {
         return waterSupplyPumb2;
     }
 
-    public void setWaterSupplyPumb2(Byte waterSupplyPumb2) {
+    public void setWaterSupplyPumb2(Boolean waterSupplyPumb2) {
         this.waterSupplyPumb2 = waterSupplyPumb2;
     }
 
-    public Byte getBackFlushPumb() {
+    public Boolean getBackFlushPumb() {
         return backFlushPumb;
     }
 
-    public void setBackFlushPumb(Byte backFlushPumb) {
+    public void setBackFlushPumb(Boolean backFlushPumb) {
         this.backFlushPumb = backFlushPumb;
     }
 
-    public Byte getBlower() {
+    public Boolean getBlower() {
         return blower;
     }
 
-    public void setBlower(Byte blower) {
+    public void setBlower(Boolean blower) {
         this.blower = blower;
     }
 
-    public Byte getAntiVirusDevice() {
+    public Boolean getAntiVirusDevice() {
         return antiVirusDevice;
     }
 
-    public void setAntiVirusDevice(Byte antiVirusDevice) {
+    public void setAntiVirusDevice(Boolean antiVirusDevice) {
         this.antiVirusDevice = antiVirusDevice;
     }
 
-    public Byte getElectricValve() {
+    public Boolean getElectricValve() {
         return electricValve;
     }
 
-    public void setElectricValve(Byte electricValve) {
+    public void setElectricValve(Boolean electricValve) {
         this.electricValve = electricValve;
     }
 
-    public Byte getMedicalKitIndex() {
+    public Boolean getMedicalKitIndex() {
         return medicalKitIndex;
     }
 
-    public void setMedicalKitIndex(Byte medicalKitIndex) {
+    public void setMedicalKitIndex(Boolean medicalKitIndex) {
         this.medicalKitIndex = medicalKitIndex;
     }
 
-    public Byte getRegulateLow() {
+    public Boolean getRegulateLow() {
         return regulateLow;
     }
 
-    public void setRegulateLow(Byte regulateLow) {
+    public void setRegulateLow(Boolean regulateLow) {
         this.regulateLow = regulateLow;
     }
 
-    public Byte getRegulateHigh() {
+    public Boolean getRegulateHigh() {
         return regulateHigh;
     }
 
-    public void setRegulateHigh(Byte regulateHigh) {
+    public void setRegulateHigh(Boolean regulateHigh) {
         this.regulateHigh = regulateHigh;
     }
 
-    public Byte getMiddleLow() {
+    public Boolean getMiddleLow() {
         return middleLow;
     }
 
-    public void setMiddleLow(Byte middleLow) {
+    public void setMiddleLow(Boolean middleLow) {
         this.middleLow = middleLow;
     }
 
-    public Byte getMiddleMiddle() {
+    public Boolean getMiddleMiddle() {
         return middleMiddle;
     }
 
-    public void setMiddleMiddle(Byte middleMiddle) {
+    public void setMiddleMiddle(Boolean middleMiddle) {
         this.middleMiddle = middleMiddle;
     }
 
-    public Byte getMiddleHigh() {
+    public Boolean getMiddleHigh() {
         return middleHigh;
     }
 
-    public void setMiddleHigh(Byte middleHigh) {
+    public void setMiddleHigh(Boolean middleHigh) {
         this.middleHigh = middleHigh;
     }
 
-    public Byte getWaterLow() {
+    public Boolean getWaterLow() {
         return waterLow;
     }
 
-    public void setWaterLow(Byte waterLow) {
+    public void setWaterLow(Boolean waterLow) {
         this.waterLow = waterLow;
     }
 
-    public Byte getWaterMiddle() {
+    public Boolean getWaterMiddle() {
         return waterMiddle;
     }
 
-    public void setWaterMiddle(Byte waterMiddle) {
+    public void setWaterMiddle(Boolean waterMiddle) {
         this.waterMiddle = waterMiddle;
     }
 
-    public Byte getWaterHigh() {
+    public Boolean getWaterHigh() {
         return waterHigh;
     }
 
-    public void setWaterHigh(Byte waterHigh) {
+    public void setWaterHigh(Boolean waterHigh) {
         this.waterHigh = waterHigh;
     }
 
-    public Byte getBlackFlush1() {
+    public Boolean getBlackFlush1() {
         return blackFlush1;
     }
 
-    public void setBlackFlush1(Byte blackFlush1) {
+    public void setBlackFlush1(Boolean blackFlush1) {
         this.blackFlush1 = blackFlush1;
     }
 
-    public Byte getBlackFlush2() {
+    public Boolean getBlackFlush2() {
         return blackFlush2;
     }
 
-    public void setBlackFlush2(Byte blackFlush2) {
+    public void setBlackFlush2(Boolean blackFlush2) {
         this.blackFlush2 = blackFlush2;
     }
 
-    public Byte getBlackFlush3() {
+    public Boolean getBlackFlush3() {
         return blackFlush3;
     }
 
-    public void setBlackFlush3(Byte blackFlush3) {
+    public void setBlackFlush3(Boolean blackFlush3) {
         this.blackFlush3 = blackFlush3;
     }
 
-    public Byte getBlackFlush4() {
+    public Boolean getBlackFlush4() {
         return blackFlush4;
     }
 
-    public void setBlackFlush4(Byte blackFlush4) {
+    public void setBlackFlush4(Boolean blackFlush4) {
         this.blackFlush4 = blackFlush4;
     }
 
-    public Byte getSystemRun() {
+    public Boolean getSystemRun() {
         return systemRun;
     }
 
-    public void setSystemRun(Byte systemRun) {
+    public void setSystemRun(Boolean systemRun) {
         this.systemRun = systemRun;
     }
 
