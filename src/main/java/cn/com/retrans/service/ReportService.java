@@ -7,4 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 public interface ReportService {
 
     String getReportList(HttpServletRequest request);
+
+    JSONObject getSewerageInfo();
+
+    JSONObject getAnhuanInfo();
 }

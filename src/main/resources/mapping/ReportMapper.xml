@@ -57,6 +57,31 @@
     from report
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <!--<select id="selectBySearch" parameterType="java.lang.String" resultMap="BaseResultMap">-->
+    <!--select-->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from report-->
+    <!--where warning_time like #{0} or warning_object like #{0} or warning_type like #{0} or warning_event like #{0} or-->
+    <!--current_value like #{0} or limit_value like #{0} or warning_desc like #{0}-->
+    <!--<if test="param2 != null">-->
+      <!--order by #{1}-->
+    <!--</if>-->
+  <!--</select>-->
+
+  <select id="selectReportList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from report
+  </select>
+
+  <select id="selectCurMax" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from report
+    where id = (select max(id) from report)
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from report
     where id = #{id,jdbcType=INTEGER}

@@ -13,9 +13,8 @@ function initReportTable(){
         ordering: true,//是否允许用户排序
         paging: true,//是否分页
         pagingType: "full_numbers",//除首页、上一页、下一页、末页四个按钮还有页数按钮
-        /* scrollX: true,//允许水平滚动
-         scrollY: "200px",
-         scrollCollapse: true, */
+        scrollX: true,//允许水平滚动
+        scrollCollapse: true,
         searching: true,//是否开始本地搜索
         stateSave: false,//刷新时是否保存状态
         autoWidth: true,//自动计算宽度
@@ -54,13 +53,50 @@ function initReportTable(){
                     return meta.row + 1 + meta.settings._iDisplayStart;
                 }},
             {
+                data: "collectDate", render:function (data,type,row) {
+                    return timestampToDate(data);
+                }
+            },
+            {
                 data: "collectTime", render:function (data,type,row) {
                     return timestampToTime(data);
                 }
             },
-            {data: "setPower"},
-            {data: "runPower"},
-            {data: "allSum"}
+            {data: "filterPumb1"},
+            {data: "filterPumb2"},
+            {data: "pacBlender"},
+            {data: "pamBlender"},
+            {data: "pacMeteringPumb1"},
+            {data: "pacMeteringPumb2"},
+            {data: "pamMeteringPumb1"},
+            {data: "pamMeteringPumb2"},
+            {data: "rawWaterPumb1"},
+            {data: "rawWaterPumb2"},
+            {data: "waterSupplyPumb1"},
+            {data: "waterSupplyPumb2"},
+            {data: "backFlushPumb"},
+            {data: "blower"},
+            {data: "antiVirusDevice"},
+            {data: "electricValve"},
+            {data: "medicalKitIndex"},
+            {data: "regulateLow"},
+            {data: "regulateHigh"},
+            {data: "middleLow"},
+            {data: "middleMiddle"},
+            {data: "middleHigh"},
+            {data: "waterLow"},
+            {data: "waterMiddle"},
+            {data: "waterHigh"},
+            {data: "blackFlush1"},
+            {data: "blackFlush2"},
+            {data: "blackFlush3"},
+            {data: "blackFlush4"},
+            {data: "mudLevel"},
+            {data: "envDimidity"},
+            {data: "envTemperature"},
+            {data: "cableTemperature"},
+            {data: "smokeSignal"},
+            {data: "waterSignal"}
         ]
     });
 }
@@ -70,13 +106,18 @@ function initReportTable(){
  * @param timestamp
  * @returns {*}
  */
-function timestampToTime(timestamp) {
+function timestampToDate(timestamp) {
     var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
     Y = date.getFullYear() + '-';
     M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
-    D = date.getDate() + ' ';
+    D = date.getDate();
+    return Y+M+D;
+}
+
+function timestampToTime(timestamp) {
+    var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
     h = date.getHours() < 10 ? '0'+(date.getHours()) : date.getHours() + ":";
     m = date.getMinutes() < 10 ? '0'+(date.getMinutes()) : date.getMinutes() + ":";
     s = date.getSeconds() < 10 ? '0'+(date.getSeconds()) : date.getSeconds();
-    return Y+M+D+h+m+s;
+    return h+m+s;
 }

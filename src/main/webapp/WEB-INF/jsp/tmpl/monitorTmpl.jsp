@@ -27,3 +27,19 @@
 {{/each}}
 
 </script>
+
+<script id="anhuanTmpl" type="text/x-jquery-tmpl">
+
+{{each data}}
+   <tr>
+			<td>
+				<span   title="{{html name}}" >{{html name}}</span>
+			</td>
+			<td>
+				<span   title="{{html value}}" >{{html value}}</span>
+			</td>
+		</tr>
+
+{{/each}}
+
+</script>

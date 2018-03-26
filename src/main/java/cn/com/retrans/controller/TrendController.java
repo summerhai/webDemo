@@ -24,4 +24,6 @@ public class TrendController {
         logger.info("进入trend");
         return "trend/trend";
     }
+
+
 }

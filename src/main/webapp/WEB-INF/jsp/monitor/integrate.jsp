@@ -44,13 +44,13 @@
                 </div>
             </div>
             <div class="row" style="height: 50%">
-                <div class="col-md-6" style="width: 33%;border:1px solid #F00;height: 127%">
+                <div class="col-md-6" style="width: 33%;">
                     <div class="box box-danger" style="background:rgb(236, 240, 245);border-top-color:rgb(236, 240, 245)">
                         <div class="box-header">
                             <h3 align="center" style="font-weight:bold;position: relative">污水处理回用单元</h3>
                         </div>
                         <!-- /.box-body -->
-                        <div class="box-body">
+                        <div class="box-body" style="border:1px solid #F00;" id="jiankong1">
                             <!-- Date dd/mm/yyyy -->
                             <div class="form-group">
                                 <label style="padding-left: 15%">使用状态:</label>
@@ -74,7 +74,7 @@
                                 </table>
                                 <%--每隔一段时间去刷新数据--%>
 
-                                <table class="table table-bordered text-center" id="sewerage1">
+                                <table class="table table-bordered text-center" id="sewerage1" style="font-size: 14px">
                                     <tr>
                                         <th>名称</th>
                                         <th>状态</th>
@@ -91,13 +91,13 @@
                     </div>
                     <!-- /.box -->
                 </div>
-                <div class="col-md-6" style="width: 33%;height: 127%;border:1px solid #F00">
+                <div class="col-md-6" style="width: 33%;">
                     <div class="box box-danger" style="background:rgb(236, 240, 245);border-top-color:rgb(236, 240, 245)">
                         <div class="box-header">
                             <h3 align="center" style="font-weight:bold">排风除臭单元</h3>
                         </div>
                         <!-- /.box-body -->
-                        <div class="box-body">
+                        <div class="box-body" id="jiankong2" style="border:1px solid #F00;height: 634px">
                             <!-- Date dd/mm/yyyy -->
                             <div class="form-group">
                                 <label style="padding-left: 15%">使用状态:</label>
@@ -140,49 +140,27 @@
                     </div>
                     <!-- /.box -->
                 </div>
-                <div class="col-md-6" style="width: 33%;height: 127%;border:1px solid #F00">
+                <div class="col-md-6" style="width: 33%;">
                     <div class="box box-danger" style="background:rgb(236, 240, 245);border-top-color:rgb(236, 240, 245)">
                         <div class="box-header">
                             <h3 align="center" style="font-weight:bold">安环监测单元</h3>
                         </div>
                         <!-- /.box-body -->
-                        <div class="box-body">
+                        <div class="box-body" id="jiankong3" style="border:1px solid #F00;height: 634px">
                             <!-- Date dd/mm/yyyy -->
                             <div class="form-group">
                                 <label style="padding-left: 40%">安环状态:</label>
                                 <label style="color:green">正常</label>
-                                <table class="table table-bordered text-center">
+                                <table class="table table-bordered text-center" id="anhuan" style="font-size: 14px">
                                     <tr>
-                                        <th>内容</th>
+                                        <th>名称</th>
                                         <th>数值</th>
-                                        <th>状态</th>
                                     </tr>
-                                    <tr>
-                                        <td>名称1</td>
-                                        <td>状态1</td>
-                                        <td>名称1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>名称1</td>
-                                        <td>状态1</td>
-                                        <td>名称1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>名称1</td>
-                                        <td>状态1</td>
-                                        <td>名称1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>名称1</td>
-                                        <td>状态1</td>
-                                        <td>名称1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>名称1</td>
-                                        <td>状态1</td>
-                                        <td>名称1</td>
-                                    </tr>
+                                    <tbody id="anhuanBody">
+
+                                    </tbody>
                                 </table>
+
                                 <!-- /.input group -->
                             </div>
                         </div>
