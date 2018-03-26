@@ -8,78 +8,86 @@ $(function () {
 
 
 function mudFlot() {
-    /*
-     * Flot Interactive Chart
-     * -----------------------
-     */
-    // We use an inline data source in the example, usually data would
-    // be fetched from a server
-    var data = [], totalPoints = 100
+    var data = [];
+    var dataset;
+    var totalPoints = 100;
+    var updateInterval = 1000;
+    var now = new Date().getTime();
 
-    function getRandomData() {
 
-        if (data.length > 0)
-            data = data.slice(1)
+    function GetData() {
 
-        // Do a random walk
+        data.shift();
+
         while (data.length < totalPoints) {
+            var y = Math.random() * 100;
+            var temp = [now += updateInterval, y];
 
-            var prev = data.length > 0 ? data[data.length - 1] : 50,
-                y = prev + Math.random() * 10 - 5
-
-            if (y < 0) {
-                y = 0
-            } else if (y > 100) {
-                y = 100
-            }
-
-            data.push(y)
+            data.push(temp);
         }
-
-        // Zip the generated y values with the x values
-        var res = []
-        for (var i = 0; i < data.length; ++i) {
-            res.push([i, data[i]])
-        }
-        // console.log(res);
-        return res
     }
 
-    var interactive_plot = $.plot('#mudFlot', [getRandomData()], {
-        grid: {
-            borderColor: '#f3f3f3',
-            borderWidth: 1,
-            tickColor: '#f3f3f3'
-        },
+    var options = {
         series: {
-            shadowSize: 0, // Drawing is faster without shadows
-            color: '#3c8dbc'
+            lines: {
+                show: true,
+                lineWidth: 1.2,
+                fill: true
+            }
         },
-        lines: {
-            fill: true, //Converts the line chart to area chart
-            color: '#3c8dbc'
+        xaxis: {
+            mode: "time",
+            tickSize: [30, "second"],
+            tickFormatter: function (v, axis) {
+                var date = new Date(v);
+
+                if (date.getSeconds() % 30 == 0) {
+                    var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+                    var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+                    var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+
+                    return hours + ":" + minutes + ":" + seconds;
+                } else {
+                    return "";
+                }
+            },
+            axisLabel: "Time",
+            axisLabelUseCanvas: true,
+            axisLabelFontSizePixels: 12,
+            axisLabelFontFamily: 'Verdana, Arial',
+            axisLabelPadding: 10
         },
         yaxis: {
             min: 0,
             max: 100,
-            show: true
+            tickSize: 10,
+            tickFormatter: function (v, axis) {
+                if (v % 10 == 0) {
+                    return v;
+                } else {
+                    return "";
+                }
+            },
+            axisLabel: "泥位液位",
+            axisLabelUseCanvas: true,
+            axisLabelFontSizePixels: 12,
+            axisLabelFontFamily: 'Verdana, Arial',
+            axisLabelPadding: 6
         },
-        xaxis: {
-            show: true
+        legend: {
+            labelBoxBorderColor: "#ffffff"
+        },
+        grid: {
+            backgroundColor: "#ffffff",
+            tickColor: "#3c8dbc"
         }
-    })
+    };
 
-    var updateInterval = 500 //Fetch data ever x milliseconds
+    dataset = [
+        {data: data}
+    ];
+
     var realtime = 'on' //If == to on then fetch data every x seconds. else stop fetching
-    function update() {
-
-        interactive_plot.setData([getRandomData()])
-
-        // Since the axes don't change, we don't need to call plot.setupGrid()
-        interactive_plot.draw()
-        if (realtime === 'on')
-            setTimeout(update, updateInterval)
-    }
 
     //INITIALIZE REALTIME DATA FETCHING
     if (realtime === 'on') {
@@ -95,9 +103,15 @@ function mudFlot() {
         }
         update()
     })
-    /*
-     * END INTERACTIVE CHART
-     */
+
+    function update() {
+        console.log("当前是:"+realtime)
+        GetData();
+        $.plot($("#mudFlot"), dataset, options)
+        if (realtime === 'on')
+            setTimeout(update, updateInterval)
+    }
+
 }
 
 function temperatureFlot() {
@@ -195,6 +209,7 @@ function temperatureFlot() {
 }
 
 function humidityFlot() {
+    console.log("humidityFlot")
     /*
      * Flot Interactive Chart
      * -----------------------

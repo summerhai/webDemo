@@ -74,7 +74,7 @@
                                 </div>
                             </div>
                             <div class="box-body">
-                                <div id="mudFlot" style="height: 80%; padding: 0px; position: relative;">
+                                <div id="mudFlot" style="height: 80%;width: 100%; padding: 0px; position: relative;">
                                 </div>
                             </div>
                             <!-- /.box-body-->
@@ -97,7 +97,7 @@
                                 </div>
                             </div>
                             <div class="box-body">
-                                <div id="temperatureFlot" style="height: 80%; padding: 0px; position: relative;">
+                                <div id="temperatureFlot" style="height: 80%;width: 100%; padding: 0px; position: relative;">
                                 </div>
                             </div>
                             <!-- /.box-body-->
@@ -122,7 +122,7 @@
                                 </div>
                             </div>
                             <div class="box-body">
-                                <div id="humidityFlot" style="height: 80%; padding: 0px; position: relative;">
+                                <div id="humidityFlot" style="height: 80%;width: 100%; padding: 0px; position: relative;">
                                 </div>
                             </div>
                             <!-- /.box-body-->
@@ -155,5 +155,6 @@
 <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.pie.js"></script>
 <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
 <script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.categories.js"></script>
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/Flot/jquery.flot.time.js"></script>
 <script src="<%=path%>/static/script/trend/trend.js"></script>
 </html>

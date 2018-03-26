@@ -154,15 +154,15 @@ public class ReportServiceImpl implements ReportService {
         }
         data.add(v9);
         JSONObject v10 = new JSONObject();
-        v10.put("name1","反水信号1");
+        v10.put("name1","反洗信号1");
         v10.put("value1",report.getBlackFlush1().equals((byte)1)?"开":"关");
-        v10.put("name2","反水信号2");
+        v10.put("name2","反洗信号2");
         v10.put("value2",report.getBlackFlush2().equals((byte)1)?"开":"关");
         data.add(v10);
         JSONObject v11 = new JSONObject();
-        v11.put("name1","反水信号3");
+        v11.put("name1","反洗信号3");
         v11.put("value1",report.getBlackFlush3().equals((byte)1)?"开":"关");
-        v11.put("name2","反水信号4");
+        v11.put("name2","反洗信号4");
         v11.put("value2",report.getBlackFlush4().equals((byte)1)?"开":"关");
         data.add(v11);
         JSONObject v12 = new JSONObject();
