@@ -82,6 +82,13 @@
     where id = (select max(id) from report)
   </select>
 
+  <select id="selectLastTen" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from report
+    order by id desc limit 10;
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from report
     where id = #{id,jdbcType=INTEGER}

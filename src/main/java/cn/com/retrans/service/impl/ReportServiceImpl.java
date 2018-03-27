@@ -6,6 +6,7 @@ import cn.com.retrans.service.ReportService;
 import cn.com.retrans.utils.Constants;
 import cn.com.retrans.utils.DataTablePageUtil;
 import cn.com.retrans.utils.DatabaseUtil;
+import cn.com.retrans.utils.DateUtils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -16,7 +17,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -204,5 +208,75 @@ public class ReportServiceImpl implements ReportService {
         result.put("flag",true);
         result.put("data",data);
         return result;
+    }
+
+    @Override
+    public JSONObject getMudData() throws ParseException {
+
+        List<Report> lastTen = reportMapper.selectLastTen();
+        JSONArray xArray = new JSONArray();
+        JSONArray yArray = new JSONArray();
+        //倒序的，所以倒着解析
+        for(int i=lastTen.size()-1;i>=0;i--){
+            Report report = lastTen.get(i);
+            String realTime = DateUtils.sdf1.format(report.getCollectDate())+" "+DateUtils.sdf2.format(report.getCollectTime());
+            //1522127816371 right
+            //1521986327000
+            long x = DateUtils.sdf3.parse(realTime).getTime();
+            double y = report.getMudLevel();
+            xArray.add(x);
+            yArray.add(y);
+        }
+        JSONObject result = new JSONObject();
+        result.put("x",xArray);
+        result.put("y",yArray);
+        System.out.println("x:"+xArray.toString());
+        System.out.println("y:"+yArray.toString());
+        return result;
+    }
+
+    @Override
+    public void addRandom(double value) {
+        Report report = new Report();
+        report.setCollectDate(new Date());
+        report.setCollectTime(new Date());
+        report.setAntiVirusDevice((byte)0);
+        report.setBackFlushPumb((byte)0);
+        report.setBlackFlush1((byte)0);
+        report.setBlackFlush2((byte)0);
+        report.setBlackFlush3((byte)0);
+        report.setBlackFlush4((byte)0);
+        report.setBlower((byte)0);
+        report.setCableTemperature(value);
+        report.setElectricValve((byte)0);
+        report.setEnvDimidity(value);
+        report.setEnvTemperature(value);
+        report.setFilterPumb1((byte)0);
+        report.setFilterPumb2((byte)0);
+        report.setMedicalKitIndex((byte)0);
+        report.setMiddleHigh((byte)0);
+        report.setMiddleLow((byte)0);
+        report.setMiddleMiddle((byte)0);
+        report.setPacBlender((byte)0);
+        report.setPacMeteringPumb1((byte)0);
+        report.setPacMeteringPumb2((byte)0);
+        report.setPamBlender((byte)0);
+        report.setPamMeteringPumb1((byte)0);
+        report.setPamMeteringPumb2((byte)0);
+        report.setRegulateHigh((byte)0);
+        report.setRegulateLow((byte)0);
+        report.setSmokeSignal(0.0);
+        report.setSystemRun((byte)1);
+        report.setWaterHigh((byte)0);
+        report.setWaterLow((byte)0);
+        report.setWaterMiddle((byte)0);
+        report.setWaterSupplyPumb1((byte)0);
+        report.setWaterSupplyPumb2((byte)0);
+        report.setRawWaterPumb1((byte)0);
+        report.setRawWaterPumb2((byte)0);
+        report.setWaterSignal(0.0);
+        report.setWaterSignal(0.0);
+        report.setMudLevel(value);
+        reportMapper.insert(report);
     }
 }

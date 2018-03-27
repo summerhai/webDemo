@@ -8,23 +8,59 @@ $(function () {
 
 
 function mudFlot() {
-    var data = [];
+    var dataArray = [];
     var dataset;
-    var totalPoints = 100;
-    var updateInterval = 1000;
-    var now = new Date().getTime();
-
+    var totalPoints = 10;
+    //没分钟更新一次
+    var updateInterval = 60000;
+    // var now = new Date().getTime();
 
     function GetData() {
-
-        data.shift();
-
-        while (data.length < totalPoints) {
-            var y = Math.random() * 100;
-            var temp = [now += updateInterval, y];
-
-            data.push(temp);
-        }
+        dataArray.splice(0,dataArray.length);
+        $.ajax({
+            url:CONTEXTPATH+"/admin/mudData",
+            type:"GET",
+            async:false,
+            success:function(data){
+                console.log(data.x.length);
+                for(var i=0;i<data.x.length;i++){
+                    var x = data.x[i];
+                    var y = data.y[i];
+                    var temp = [x,y];
+                    dataArray.push(temp);
+                }
+            }
+        });
+        // dataArray.shift();
+        // //
+        // while (dataArray.length < totalPoints) {
+        //     var y = Math.random() * 10;
+        //     var x = now += updateInterval;
+        //     var temp = [x, y];
+        //
+        //     dataArray.push(temp);
+        // }
+        // dataArray.splice(0,dataArray.length);
+        // var temp = [now += updateInterval,4.7];
+        // dataArray.push(temp);
+        // temp = [now += updateInterval,3.1];
+        // dataArray.push(temp);
+        // temp = [now += updateInterval,3.1];
+        // dataArray.push(temp);
+        // temp = [now += updateInterval,3.1];
+        // dataArray.push(temp);
+        // temp = [now += updateInterval,3.1];
+        // dataArray.push(temp);
+        // temp = [now += updateInterval,3.1];
+        // dataArray.push(temp);
+        // temp = [now += updateInterval,3.1];
+        // dataArray.push(temp);
+        // temp = [now += updateInterval,3.1];
+        // dataArray.push(temp);
+        // temp = [now += updateInterval,3.1];
+        // dataArray.push(temp);
+        // temp = [now += updateInterval,3.1];
+        // dataArray.push(temp);
     }
 
     var options = {
@@ -37,7 +73,7 @@ function mudFlot() {
         },
         xaxis: {
             mode: "time",
-            tickSize: [30, "second"],
+            tickSize: [1, "minute"],
             tickFormatter: function (v, axis) {
                 var date = new Date(v);
 
@@ -59,35 +95,34 @@ function mudFlot() {
         },
         yaxis: {
             min: 0,
-            max: 100,
-            tickSize: 10,
+            max: 10,
+            tickSize: 1,
             tickFormatter: function (v, axis) {
-                if (v % 10 == 0) {
+                if (v % 1 == 0) {
                     return v;
                 } else {
                     return "";
                 }
             },
-            axisLabel: "泥位液位",
+            axisLabel: "泥位信号",
             axisLabelUseCanvas: true,
             axisLabelFontSizePixels: 12,
             axisLabelFontFamily: 'Verdana, Arial',
             axisLabelPadding: 6
         },
         legend: {
-            labelBoxBorderColor: "#ffffff"
+            labelBoxBorderColor: "#fff"
         },
         grid: {
-            backgroundColor: "#ffffff",
-            tickColor: "#3c8dbc"
+            backgroundColor: "#fff",
+            tickColor: "#203080"
         }
     };
-
     dataset = [
-        {data: data}
+        { label: "泥位信号", data: dataArray, color: "#fffd30" }
     ];
 
-    var realtime = 'on' //If == to on then fetch data every x seconds. else stop fetching
+    var realtime = 'on' //If == to on then fetch dataArray every x seconds. else stop fetching
 
     //INITIALIZE REALTIME DATA FETCHING
     if (realtime === 'on') {
@@ -107,9 +142,11 @@ function mudFlot() {
     function update() {
         console.log("当前是:"+realtime)
         GetData();
+        console.log(dataArray);
         $.plot($("#mudFlot"), dataset, options)
         if (realtime === 'on')
             setTimeout(update, updateInterval)
+        console.log("执行完update")
     }
 
 }

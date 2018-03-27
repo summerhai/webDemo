@@ -1,5 +1,6 @@
 package cn.com.retrans.controller;
 
+import cn.com.retrans.service.ReportService;
 import cn.com.retrans.utils.MyMD5;
 import com.alibaba.fastjson.JSONObject;
 import com.google.code.kaptcha.Constants;
@@ -8,6 +9,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,12 +19,15 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Random;
 
 /**
  * Created by mingyue on 2018/1/23.
  */
 @Controller
 public class LoginController {
+    @Autowired
+    private ReportService reportService;
     /**
      * 用户登录
      */
@@ -95,6 +100,24 @@ public class LoginController {
                 flag.put("error", "登陆认证错误");
             }
         }
+        //启动一个测试服务，每一分钟插入一条数据
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Random random = new Random(8);
+                while(true){
+                    double value = random.nextDouble()*10;
+                    reportService.addRandom(value);
+                    try {
+                        Thread.sleep(60000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        });
+        thread.start();
         return flag;
     }
 

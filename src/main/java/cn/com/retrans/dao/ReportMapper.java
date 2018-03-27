@@ -22,4 +22,6 @@ public interface ReportMapper {
     List<Report> selectReportList();
 
     Report selectCurMax();
+
+    List<Report> selectLastTen();
 }
