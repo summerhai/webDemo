@@ -16,12 +16,14 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.json.JsonObject;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class ReportServiceImpl implements ReportService {
@@ -240,43 +242,167 @@ public class ReportServiceImpl implements ReportService {
         Report report = new Report();
         report.setCollectDate(new Date());
         report.setCollectTime(new Date());
-        report.setAntiVirusDevice((byte)0);
-        report.setBackFlushPumb((byte)0);
-        report.setBlackFlush1((byte)0);
-        report.setBlackFlush2((byte)0);
-        report.setBlackFlush3((byte)0);
-        report.setBlackFlush4((byte)0);
-        report.setBlower((byte)0);
+        report.setAntiVirusDevice(randomValue());
+        report.setBackFlushPumb(randomValue());
+        report.setBlackFlush1(randomValue());
+        report.setBlackFlush2(randomValue());
+        report.setBlackFlush3(randomValue());
+        report.setBlackFlush4(randomValue());
+        report.setBlower(randomValue());
         report.setCableTemperature(value);
-        report.setElectricValve((byte)0);
+        report.setElectricValve(randomValue());
         report.setEnvDimidity(value);
         report.setEnvTemperature(value);
-        report.setFilterPumb1((byte)0);
-        report.setFilterPumb2((byte)0);
-        report.setMedicalKitIndex((byte)0);
-        report.setMiddleHigh((byte)0);
+        report.setFilterPumb1(randomValue());
+        report.setFilterPumb2(randomValue());
+        report.setMedicalKitIndex(randomValue());
+        report.setMiddleHigh((byte)1);
         report.setMiddleLow((byte)0);
         report.setMiddleMiddle((byte)0);
-        report.setPacBlender((byte)0);
-        report.setPacMeteringPumb1((byte)0);
-        report.setPacMeteringPumb2((byte)0);
-        report.setPamBlender((byte)0);
-        report.setPamMeteringPumb1((byte)0);
-        report.setPamMeteringPumb2((byte)0);
+        report.setPacBlender(randomValue());
+        report.setPacMeteringPumb1(randomValue());
+        report.setPacMeteringPumb2(randomValue());
+        report.setPamBlender(randomValue());
+        report.setPamMeteringPumb1(randomValue());
+        report.setPamMeteringPumb2(randomValue());
         report.setRegulateHigh((byte)0);
-        report.setRegulateLow((byte)0);
+        report.setRegulateLow((byte)1);
         report.setSmokeSignal(0.0);
         report.setSystemRun((byte)1);
         report.setWaterHigh((byte)0);
         report.setWaterLow((byte)0);
-        report.setWaterMiddle((byte)0);
-        report.setWaterSupplyPumb1((byte)0);
-        report.setWaterSupplyPumb2((byte)0);
-        report.setRawWaterPumb1((byte)0);
-        report.setRawWaterPumb2((byte)0);
+        report.setWaterMiddle((byte)1);
+        report.setWaterSupplyPumb1(randomValue());
+        report.setWaterSupplyPumb2(randomValue());
+        report.setRawWaterPumb1(randomValue());
+        report.setRawWaterPumb2(randomValue());
         report.setWaterSignal(0.0);
         report.setWaterSignal(0.0);
         report.setMudLevel(value);
         reportMapper.insert(report);
+    }
+
+    @Override
+    public JSONObject getTemperatureData() throws ParseException {
+        List<Report> lastTen = reportMapper.selectLastTen();
+        JSONArray xArray = new JSONArray();
+        JSONArray yArray = new JSONArray();
+        //倒序的，所以倒着解析
+        for(int i=lastTen.size()-1;i>=0;i--){
+            Report report = lastTen.get(i);
+            String realTime = DateUtils.sdf1.format(report.getCollectDate())+" "+DateUtils.sdf2.format(report.getCollectTime());
+            //1522127816371 right
+            //1521986327000
+            long x = DateUtils.sdf3.parse(realTime).getTime();
+            double y = report.getEnvTemperature();
+            xArray.add(x);
+            yArray.add(y);
+        }
+        JSONObject result = new JSONObject();
+        result.put("x",xArray);
+        result.put("y",yArray);
+        System.out.println("x:"+xArray.toString());
+        System.out.println("y:"+yArray.toString());
+        return result;
+    }
+
+    @Override
+    public JSONObject getHumidityData() throws ParseException {
+        List<Report> lastTen = reportMapper.selectLastTen();
+        JSONArray xArray = new JSONArray();
+        JSONArray yArray = new JSONArray();
+        //倒序的，所以倒着解析
+        for(int i=lastTen.size()-1;i>=0;i--){
+            Report report = lastTen.get(i);
+            String realTime = DateUtils.sdf1.format(report.getCollectDate())+" "+DateUtils.sdf2.format(report.getCollectTime());
+            //1522127816371 right
+            //1521986327000
+            long x = DateUtils.sdf3.parse(realTime).getTime();
+            double y = report.getEnvDimidity();
+            xArray.add(x);
+            yArray.add(y);
+        }
+        JSONObject result = new JSONObject();
+        result.put("x",xArray);
+        result.put("y",yArray);
+        System.out.println("x:"+xArray.toString());
+        System.out.println("y:"+yArray.toString());
+        return result;
+    }
+
+    @Override
+    public JSONObject getSewerageStatus() {
+        Report report = reportMapper.selectCurMax();
+        //解析这一条数据
+        JSONArray data = new JSONArray();
+        data.add(getRunStatus("115", "320",report.getRawWaterPumb1()));
+        data.add(getRunStatus("125", "280",report.getRawWaterPumb2()));
+        data.add(getRunStatus("125", "280",report.getFilterPumb1()));
+        data.add(getRunStatus("125", "280",report.getFilterPumb2()));
+        data.add(getRunStatus("125", "280",report.getPacMeteringPumb1()));
+        data.add(getRunStatus("125", "280",report.getPacMeteringPumb2()));
+        data.add(getRunStatus("125", "280",report.getPamMeteringPumb1()));
+        data.add(getRunStatus("125", "280",report.getPamMeteringPumb2()));
+        data.add(getRunStatus("125", "280",report.getPacBlender()));
+        data.add(getRunStatus("125", "280",report.getPamBlender()));
+        data.add(getRunStatus("125", "280",report.getWaterSupplyPumb1()));
+        data.add(getRunStatus("125", "280",report.getWaterSupplyPumb2()));
+        data.add(getRunStatus("125", "280",report.getBackFlushPumb()));
+        if(report.getRegulateHigh().equals((byte)1)){
+            data.add(getRunStatus("125","280","高水位"));
+        }else if(report.getRegulateHigh().equals((byte)1)){
+            data.add(getRunStatus("125","280","低水位"));
+        }
+        if(report.getMiddleLow().equals((byte)1)){
+            data.add(getRunStatus("125","280","低水位"));
+        }else if(report.getMiddleMiddle().equals((byte)1)){
+            data.add(getRunStatus("125","280","中水位"));
+        }else if(report.getMiddleHigh().equals((byte)1)){
+            data.add(getRunStatus("125","280","高水位"));
+        }
+        if(report.getWaterLow().equals((byte)1)){
+            data.add(getRunStatus("125","280","低水位"));
+        }else if(report.getWaterMiddle().equals((byte)1)){
+            data.add(getRunStatus("125","280","中水位"));
+        }else if(report.getWaterHigh().equals((byte)1)){
+            data.add(getRunStatus("125","280","高水位"));
+        }
+        JSONObject result = new JSONObject();
+        result.put("flag",true);
+        result.put("data",data);
+        return result;
+    }
+
+    private JSONObject getRunStatus(String x,String y,String status) {
+        JSONObject device = new JSONObject();
+        device.put("x",x);
+        device.put("y",y);
+        device.put("status",status);
+        device.put("color","blue");
+        return device;
+    }
+
+    /**
+     * 封装单个设备在画布上的显示状态
+     * @return
+     */
+    private JSONObject getRunStatus(String x,String y,Byte status) {
+        boolean flag = status.equals((byte)1);
+        JSONObject device = new JSONObject();
+        device.put("x",x);
+        device.put("y",y);
+        device.put("status",flag?"运行中":"停止");
+        device.put("color",flag?"blue":"red");
+        return device;
+    }
+
+    public Byte randomValue(){
+        Random random = new Random();
+        int value = random.nextInt();
+        if(value%2==0){
+            return (byte)0;
+        }else{
+            return (byte)1;
+        }
     }
 }

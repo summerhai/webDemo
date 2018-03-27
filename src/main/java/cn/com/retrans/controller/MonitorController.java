@@ -40,6 +40,14 @@ public class MonitorController {
         return result;
     }
 
+    @RequestMapping(value = "/sewerage/status",method = RequestMethod.GET)
+    @ResponseBody
+    public JSONObject sewerageStatus(){
+        System.out.println("获取污水单元监控中的数据");
+        JSONObject result = reportService.getSewerageStatus();
+        return result;
+    }
+
     @RequestMapping(value = "/integrate/anhuan",method = RequestMethod.GET)
     @ResponseBody
     public JSONObject anhuanInfo(){

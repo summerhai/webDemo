@@ -31,36 +31,6 @@ function mudFlot() {
                 }
             }
         });
-        // dataArray.shift();
-        // //
-        // while (dataArray.length < totalPoints) {
-        //     var y = Math.random() * 10;
-        //     var x = now += updateInterval;
-        //     var temp = [x, y];
-        //
-        //     dataArray.push(temp);
-        // }
-        // dataArray.splice(0,dataArray.length);
-        // var temp = [now += updateInterval,4.7];
-        // dataArray.push(temp);
-        // temp = [now += updateInterval,3.1];
-        // dataArray.push(temp);
-        // temp = [now += updateInterval,3.1];
-        // dataArray.push(temp);
-        // temp = [now += updateInterval,3.1];
-        // dataArray.push(temp);
-        // temp = [now += updateInterval,3.1];
-        // dataArray.push(temp);
-        // temp = [now += updateInterval,3.1];
-        // dataArray.push(temp);
-        // temp = [now += updateInterval,3.1];
-        // dataArray.push(temp);
-        // temp = [now += updateInterval,3.1];
-        // dataArray.push(temp);
-        // temp = [now += updateInterval,3.1];
-        // dataArray.push(temp);
-        // temp = [now += updateInterval,3.1];
-        // dataArray.push(temp);
     }
 
     var options = {
@@ -152,79 +122,91 @@ function mudFlot() {
 }
 
 function temperatureFlot() {
-    console.log("进入temperatureFlot")
-    /*
-     * Flot Interactive Chart
-     * -----------------------
-     */
-    // We use an inline data source in the example, usually data would
-    // be fetched from a server
-    var data = [], totalPoints = 100
+    var dataArray = [];
+    var dataset;
+    var totalPoints = 10;
+    //没分钟更新一次
+    var updateInterval = 60000;
+    // var now = new Date().getTime();
 
-    function getRandomData() {
-
-        if (data.length > 0)
-            data = data.slice(1)
-
-        // Do a random walk
-        while (data.length < totalPoints) {
-
-            var prev = data.length > 0 ? data[data.length - 1] : 50,
-                y = prev + Math.random() * 10 - 5
-
-            if (y < 0) {
-                y = 0
-            } else if (y > 100) {
-                y = 100
+    function GetData() {
+        dataArray.splice(0,dataArray.length);
+        $.ajax({
+            url:CONTEXTPATH+"/admin/temperatureData",
+            type:"GET",
+            async:false,
+            success:function(data){
+                console.log(data.x.length);
+                for(var i=0;i<data.x.length;i++){
+                    var x = data.x[i];
+                    var y = data.y[i];
+                    var temp = [x,y];
+                    dataArray.push(temp);
+                }
             }
-
-            data.push(y)
-        }
-
-        // Zip the generated y values with the x values
-        var res = []
-        for (var i = 0; i < data.length; ++i) {
-            res.push([i, data[i]])
-        }
-        // console.log(res);
-        return res
+        });
     }
 
-    var interactive_plot = $.plot('#temperatureFlot', [getRandomData()], {
-        grid: {
-            borderColor: '#f3f3f3',
-            borderWidth: 1,
-            tickColor: '#f3f3f3'
-        },
+    var options = {
         series: {
-            shadowSize: 0, // Drawing is faster without shadows
-            color: '#3c8dbc'
+            lines: {
+                show: true,
+                lineWidth: 1.2,
+                fill: true
+            }
         },
-        lines: {
-            fill: true, //Converts the line chart to area chart
-            color: '#3c8dbc'
+        xaxis: {
+            mode: "time",
+            tickSize: [1, "minute"],
+            tickFormatter: function (v, axis) {
+                var date = new Date(v);
+
+                if (date.getSeconds() % 30 == 0) {
+                    var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+                    var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+                    var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+
+                    return hours + ":" + minutes + ":" + seconds;
+                } else {
+                    return "";
+                }
+            },
+            axisLabel: "Time",
+            axisLabelUseCanvas: true,
+            axisLabelFontSizePixels: 12,
+            axisLabelFontFamily: 'Verdana, Arial',
+            axisLabelPadding: 10
         },
         yaxis: {
             min: 0,
-            max: 100,
-            show: true
+            max: 10,
+            tickSize: 1,
+            tickFormatter: function (v, axis) {
+                if (v % 1 == 0) {
+                    return v;
+                } else {
+                    return "";
+                }
+            },
+            axisLabel: "温度数值",
+            axisLabelUseCanvas: true,
+            axisLabelFontSizePixels: 12,
+            axisLabelFontFamily: 'Verdana, Arial',
+            axisLabelPadding: 6
         },
-        xaxis: {
-            show: true
+        legend: {
+            labelBoxBorderColor: "#fff"
+        },
+        grid: {
+            backgroundColor: "#fff",
+            tickColor: "#203080"
         }
-    })
+    };
+    dataset = [
+        { label: "温度数值", data: dataArray, color: "#160dff" }
+    ];
 
-    var updateInterval = 500 //Fetch data ever x milliseconds
-    var realtime = 'on' //If == to on then fetch data every x seconds. else stop fetching
-    function update() {
-
-        interactive_plot.setData([getRandomData()])
-
-        // Since the axes don't change, we don't need to call plot.setupGrid()
-        interactive_plot.draw()
-        if (realtime === 'on')
-            setTimeout(update, updateInterval)
-    }
+    var realtime = 'on' //If == to on then fetch dataArray every x seconds. else stop fetching
 
     //INITIALIZE REALTIME DATA FETCHING
     if (realtime === 'on') {
@@ -240,85 +222,105 @@ function temperatureFlot() {
         }
         update()
     })
-    /*
-     * END INTERACTIVE CHART
-     */
+
+    function update() {
+        console.log("当前是:"+realtime)
+        GetData();
+        console.log(dataArray);
+        $.plot($("#temperatureFlot"), dataset, options)
+        if (realtime === 'on')
+            setTimeout(update, updateInterval)
+        console.log("执行完update")
+    }
+
 }
 
 function humidityFlot() {
-    console.log("humidityFlot")
-    /*
-     * Flot Interactive Chart
-     * -----------------------
-     */
-    // We use an inline data source in the example, usually data would
-    // be fetched from a server
-    var data = [], totalPoints = 100
+    var dataArray = [];
+    var dataset;
+    var totalPoints = 10;
+    //没分钟更新一次
+    var updateInterval = 60000;
+    // var now = new Date().getTime();
 
-    function getRandomData() {
-
-        if (data.length > 0)
-            data = data.slice(1)
-
-        // Do a random walk
-        while (data.length < totalPoints) {
-
-            var prev = data.length > 0 ? data[data.length - 1] : 50,
-                y = prev + Math.random() * 10 - 5
-
-            if (y < 0) {
-                y = 0
-            } else if (y > 100) {
-                y = 100
+    function GetData() {
+        dataArray.splice(0,dataArray.length);
+        $.ajax({
+            url:CONTEXTPATH+"/admin/humidityData",
+            type:"GET",
+            async:false,
+            success:function(data){
+                console.log(data.x.length);
+                for(var i=0;i<data.x.length;i++){
+                    var x = data.x[i];
+                    var y = data.y[i];
+                    var temp = [x,y];
+                    dataArray.push(temp);
+                }
             }
-
-            data.push(y)
-        }
-
-        // Zip the generated y values with the x values
-        var res = []
-        for (var i = 0; i < data.length; ++i) {
-            res.push([i, data[i]])
-        }
-        // console.log(res);
-        return res
+        });
     }
 
-    var interactive_plot = $.plot('#humidityFlot', [getRandomData()], {
-        grid: {
-            borderColor: '#f3f3f3',
-            borderWidth: 1,
-            tickColor: '#f3f3f3'
-        },
+    var options = {
         series: {
-            shadowSize: 0, // Drawing is faster without shadows
-            color: '#3c8dbc'
+            lines: {
+                show: true,
+                lineWidth: 1.2,
+                fill: true
+            }
         },
-        lines: {
-            fill: true, //Converts the line chart to area chart
-            color: '#3c8dbc'
+        xaxis: {
+            mode: "time",
+            tickSize: [1, "minute"],
+            tickFormatter: function (v, axis) {
+                var date = new Date(v);
+
+                if (date.getSeconds() % 30 == 0) {
+                    var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+                    var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+                    var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+
+                    return hours + ":" + minutes + ":" + seconds;
+                } else {
+                    return "";
+                }
+            },
+            axisLabel: "Time",
+            axisLabelUseCanvas: true,
+            axisLabelFontSizePixels: 12,
+            axisLabelFontFamily: 'Verdana, Arial',
+            axisLabelPadding: 10
         },
         yaxis: {
             min: 0,
-            max: 100,
-            show: true
+            max: 10,
+            tickSize: 1,
+            tickFormatter: function (v, axis) {
+                if (v % 1 == 0) {
+                    return v;
+                } else {
+                    return "";
+                }
+            },
+            axisLabel: "湿度数值",
+            axisLabelUseCanvas: true,
+            axisLabelFontSizePixels: 12,
+            axisLabelFontFamily: 'Verdana, Arial',
+            axisLabelPadding: 6
         },
-        xaxis: {
-            show: true
+        legend: {
+            labelBoxBorderColor: "#fff"
+        },
+        grid: {
+            backgroundColor: "#fff",
+            tickColor: "#203080"
         }
-    })
+    };
+    dataset = [
+        { label: "湿度数值", data: dataArray, color: "#160dff" }
+    ];
 
-    var updateInterval = 500 //Fetch data ever x milliseconds
-    var realtime = 'on' //If == to on then fetch data every x seconds. else stop fetching
-    function update() {
-
-        interactive_plot.setData([getRandomData()])
-
-        // Since the axes don't change, we don't need to call plot.setupGrid()
-        interactive_plot.draw()
-        if (realtime === 'on')
-            setTimeout(update, updateInterval)
-    }
+    var realtime = 'on' //If == to on then fetch dataArray every x seconds. else stop fetching
 
     //INITIALIZE REALTIME DATA FETCHING
     if (realtime === 'on') {
@@ -334,7 +336,15 @@ function humidityFlot() {
         }
         update()
     })
-    /*
-     * END INTERACTIVE CHART
-     */
+
+    function update() {
+        console.log("当前是:"+realtime)
+        GetData();
+        console.log(dataArray);
+        $.plot($("#humidityFlot"), dataset, options)
+        if (realtime === 'on')
+            setTimeout(update, updateInterval)
+        console.log("执行完update")
+    }
+
 }

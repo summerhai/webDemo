@@ -38,4 +38,20 @@ public class TrendController {
         return resultObject;
     }
 
+    @RequestMapping(value = "/temperatureData",method = RequestMethod.GET)
+    @ResponseBody
+    public JSONObject temperatureData() throws ParseException {
+        logger.info("获取温度数据");
+        JSONObject resultObject = reportService.getTemperatureData();
+        return resultObject;
+    }
+
+    @RequestMapping(value = "/humidityData",method = RequestMethod.GET)
+    @ResponseBody
+    public JSONObject humidityData() throws ParseException {
+        logger.info("获取湿度数据");
+        JSONObject resultObject = reportService.getHumidityData();
+        return resultObject;
+    }
+
 }

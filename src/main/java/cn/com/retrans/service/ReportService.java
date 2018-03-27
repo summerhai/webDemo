@@ -16,4 +16,10 @@ public interface ReportService {
     JSONObject getMudData() throws ParseException;
 
     void addRandom(double value);
+
+    JSONObject getTemperatureData() throws ParseException;
+
+    JSONObject getHumidityData() throws ParseException;
+
+    JSONObject getSewerageStatus();
 }

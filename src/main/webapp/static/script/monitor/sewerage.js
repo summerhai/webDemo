@@ -46,17 +46,24 @@ function initCanvas() {
 function myClickHandler()
 {
     ctx.drawImage(img, 10,10,ctx.canvas.width,ctx.canvas.height);
-    ctx.fillStyle="#0000ff";
-    ctx.font = "10pt Calibri blod";
-    ctx.fillStyle = 'blue';
-    ctx.fillText("运行中", 125, 280);
-    ctx.fillText("运行中", 260, 260);
-    // ctx.fillText(Math.round(20+Math.random()*10)+"度", 1400, 280);
-    ctx.fillStyle="#0000ff";
-    ctx.font = "10pt Calibri blod";
-    ctx.fillStyle = 'red';
-    ctx.fillText("停止", 380, 300);
-    // ctx.fillText(Math.round(20+Math.random()*10)+"度", 1500, 80);
+    //利用ajax获取设备的状态，并赋值
+    // $.ajax({
+    //     url:CONTEXTPATH+"/admin/sewerage/status",
+    //     type:"GET",
+    //     async:false,
+    //     success:function(data){
+    //         console.log(data);
+    //         var result = data.data;
+    //         for(var i=0;i<result.length;i++){
+    //             ctx.fillStyle=result[i].color;
+    //             ctx.font = "10pt Calibri blod";
+    //             ctx.fillText(result[i].status, result[i].x, result[i].y);
+    //         }
+    //     }
+    // });
+                ctx.fillStyle='red';
+                ctx.font = "10pt Calibri blod";
+                ctx.fillText("运行中", 100, 350);
 }
 
 
