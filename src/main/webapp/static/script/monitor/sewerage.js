@@ -61,9 +61,14 @@ function myClickHandler()
     //         }
     //     }
     // });
-                ctx.fillStyle='red';
-                ctx.font = "10pt Calibri blod";
-                ctx.fillText("运行中", 100, 350);
+    ctx.fillStyle='red';
+    ctx.font = "10pt Calibri blod";
+    ctx.fillText("运行中", 100, 232);
+    //819,728
+    //819,484
+
+    console.log(ctx.canvas.width);
+    console.log(ctx.canvas.height);
 }
 
 
