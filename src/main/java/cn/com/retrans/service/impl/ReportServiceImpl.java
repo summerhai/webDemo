@@ -335,37 +335,37 @@ public class ReportServiceImpl implements ReportService {
         Report report = reportMapper.selectCurMax();
         //解析这一条数据
         JSONArray data = new JSONArray();
-        data.add(getRunStatus("115", "320",report.getRawWaterPumb1()));
-        data.add(getRunStatus("125", "280",report.getRawWaterPumb2()));
-        data.add(getRunStatus("125", "280",report.getFilterPumb1()));
-        data.add(getRunStatus("125", "280",report.getFilterPumb2()));
-        data.add(getRunStatus("125", "280",report.getPacMeteringPumb1()));
-        data.add(getRunStatus("125", "280",report.getPacMeteringPumb2()));
-        data.add(getRunStatus("125", "280",report.getPamMeteringPumb1()));
-        data.add(getRunStatus("125", "280",report.getPamMeteringPumb2()));
-        data.add(getRunStatus("125", "280",report.getPacBlender()));
-        data.add(getRunStatus("125", "280",report.getPamBlender()));
-        data.add(getRunStatus("125", "280",report.getWaterSupplyPumb1()));
-        data.add(getRunStatus("125", "280",report.getWaterSupplyPumb2()));
-        data.add(getRunStatus("125", "280",report.getBackFlushPumb()));
+        data.add(getRunStatus("95", "360",report.getRawWaterPumb1()));
+        data.add(getRunStatus("145", "360",report.getRawWaterPumb2()));
+        data.add(getRunStatus("565", "220",report.getFilterPumb1()));
+        data.add(getRunStatus("565", "320",report.getFilterPumb2()));
+        data.add(getRunStatus("685", "130",report.getPacMeteringPumb1()));
+        data.add(getRunStatus("680", "210",report.getPacMeteringPumb2()));
+        data.add(getRunStatus("680", "300",report.getPamMeteringPumb1()));
+        data.add(getRunStatus("675", "380",report.getPamMeteringPumb2()));
+        data.add(getRunStatus("765", "155",report.getPacBlender()));
+        data.add(getRunStatus("765", "340",report.getPamBlender()));
+        data.add(getRunStatus("100", "600",report.getWaterSupplyPumb1()));
+        data.add(getRunStatus("100", "700",report.getWaterSupplyPumb2()));
+        data.add(getRunStatus("260", "670",report.getBackFlushPumb()));
         if(report.getRegulateHigh().equals((byte)1)){
-            data.add(getRunStatus("125","280","高水位"));
-        }else if(report.getRegulateHigh().equals((byte)1)){
-            data.add(getRunStatus("125","280","低水位"));
+            data.add(getRunStatus("123","250","高水位"));
+        }else if(report.getRegulateLow().equals((byte)1)){
+            data.add(getRunStatus("123","250","低水位"));
         }
         if(report.getMiddleLow().equals((byte)1)){
-            data.add(getRunStatus("125","280","低水位"));
+            data.add(getRunStatus("480","300","低水位"));
         }else if(report.getMiddleMiddle().equals((byte)1)){
-            data.add(getRunStatus("125","280","中水位"));
+            data.add(getRunStatus("480","300","中水位"));
         }else if(report.getMiddleHigh().equals((byte)1)){
-            data.add(getRunStatus("125","280","高水位"));
+            data.add(getRunStatus("480","300","高水位"));
         }
         if(report.getWaterLow().equals((byte)1)){
-            data.add(getRunStatus("125","280","低水位"));
+            data.add(getRunStatus("180","620","低水位"));
         }else if(report.getWaterMiddle().equals((byte)1)){
-            data.add(getRunStatus("125","280","中水位"));
+            data.add(getRunStatus("180","620","中水位"));
         }else if(report.getWaterHigh().equals((byte)1)){
-            data.add(getRunStatus("125","280","高水位"));
+            data.add(getRunStatus("180","620","高水位"));
         }
         JSONObject result = new JSONObject();
         result.put("flag",true);

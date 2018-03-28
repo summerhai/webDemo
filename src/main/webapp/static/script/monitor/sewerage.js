@@ -3,7 +3,7 @@ var img;
 $(function () {
     showTime();
     initCanvas();
-    setInterval(myClickHandler,1000);
+    setInterval(myClickHandler,10000);
 })
 
 function showTime() {
@@ -45,30 +45,35 @@ function initCanvas() {
 
 function myClickHandler()
 {
+    //初始设定的宽高
+    var setWidth=819;
+    var setHeight=736;
     ctx.drawImage(img, 10,10,ctx.canvas.width,ctx.canvas.height);
     //利用ajax获取设备的状态，并赋值
-    // $.ajax({
-    //     url:CONTEXTPATH+"/admin/sewerage/status",
-    //     type:"GET",
-    //     async:false,
-    //     success:function(data){
-    //         console.log(data);
-    //         var result = data.data;
-    //         for(var i=0;i<result.length;i++){
-    //             ctx.fillStyle=result[i].color;
-    //             ctx.font = "10pt Calibri blod";
-    //             ctx.fillText(result[i].status, result[i].x, result[i].y);
-    //         }
-    //     }
-    // });
-    ctx.fillStyle='red';
-    ctx.font = "10pt Calibri blod";
-    ctx.fillText("运行中", 100, 232);
-    //819,728
-    //819,484
-
-    console.log(ctx.canvas.width);
-    console.log(ctx.canvas.height);
+    $.ajax({
+        url:CONTEXTPATH+"/admin/sewerage/status",
+        type:"GET",
+        async:false,
+        success:function(data){
+            console.log(data);
+            var result = data.data;
+            for(var i=0;i<result.length;i++){
+                ctx.fillStyle=result[i].color;
+                ctx.font = "10pt Calibri blod";
+                var x = result[i].x*ctx.canvas.width/setWidth;
+                var y = result[i].y*ctx.canvas.height/setHeight;
+                ctx.fillText(result[i].status, x, y);
+            }
+        }
+    });
+    // ctx.fillStyle='red';
+    // ctx.font = "10pt Calibri blod";
+    // ctx.fillText("运行中", 123, 250);
+    // //819,728
+    // //819,484
+    //
+    // console.log(ctx.canvas.width);
+    // console.log(ctx.canvas.height);
 }
 
 
