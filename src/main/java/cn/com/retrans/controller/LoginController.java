@@ -19,6 +19,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.DecimalFormat;
 import java.util.Random;
 
 /**
@@ -101,23 +102,24 @@ public class LoginController {
             }
         }
         //启动一个测试服务，每一分钟插入一条数据
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Random random = new Random(8);
-                while(true){
-                    double value = random.nextDouble()*10;
-                    reportService.addRandom(value);
-                    try {
-                        Thread.sleep(60000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            }
-        });
-        thread.start();
+//        Random random = new Random(8);
+//        DecimalFormat df = new DecimalFormat("0.0");
+//        Thread thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                while(true){
+//                    double value = Double.valueOf(df.format(random.nextDouble()*10));
+//                    reportService.addRandom(value);
+//                    try {
+//                        Thread.sleep(300000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//
+//            }
+//        });
+//        thread.start();
         return flag;
     }
 

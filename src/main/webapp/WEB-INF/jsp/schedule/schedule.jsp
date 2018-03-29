@@ -14,7 +14,10 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <%@include file="/WEB-INF/jsp/common/commonCss.jsp" %>
-    <link rel="stylesheet" href="<%=path%>/static/css/common.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+<%--<link rel="stylesheet" href="<%=path%>/static/css/common.css">--%>
     <%@include file="/WEB-INF/jsp/common/commonJs.jsp" %>
 
 </head>
@@ -39,144 +42,46 @@
         </section>
         <section class="content">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="box box-primary">
-                        <div class="box-body box-profile">
-                            <h3 class="profile-username text-center">设备列表</h3>
-
-                            <ul class="list-group list-group-unbordered" style="text-align: center;">
-                                <li class="list-group-item">
-                                    <a href="#device1" data-toggle="tab" class="btn btn-primary btn-block">设备1</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#device2" data-toggle="tab" class="btn btn-primary btn-block">设备2</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#device3" data-toggle="tab" class="btn btn-primary btn-block">设备3</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#" class="btn btn-primary btn-block">设备4</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#" class="btn btn-primary btn-block">设备5</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#" class="btn btn-primary btn-block">设备6</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#" class="btn btn-primary btn-block">设备7</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#" class="btn btn-primary btn-block">设备8</a>
-                                </li>
-                            </ul>
-                        </div>
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">计划任务设置</h3>
                     </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="nav-tabs-custom">
-                        <div class="tab-content">
-                            <div class="active tab-pane" id="device1">
-                                <div class="box box-primary">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">设备1计划配置</h3>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">系统启动时间:</label>
+
+                                <div class="input-group date" style="width:80%;">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
                                     </div>
-                                    <!-- /.box-header -->
-                                    <!-- form start -->
-                                    <form role="form">
-                                        <div class="box-body">
-                                            <div class="form-group">
-                                                <label>属性1</label>
-                                                <input type="text" class="form-control" placeholder="Enter ...">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>属性2</label>
-                                                <input type="text" class="form-control" placeholder="Enter ...">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputFile">设备图片</label>
-                                                <input type="file" id="exampleInputFile1">
-
-                                                <p class="help-block">更改设备图片</p>
-                                            </div>
-                                        </div>
-                                        <!-- /.box-body -->
-
-                                        <div class="box-footer">
-                                            <button type="submit" class="btn btn-primary">确定</button>
-                                        </div>
-                                    </form>
+                                    <input type="text" class="form-control pull-right" id="time1">
                                 </div>
                             </div>
-                            <div class="tab-pane" id="device2">
-                                <div class="box box-primary">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">设备2计划配置</h3>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">系统停止时间:</label>
+
+                                <div class="input-group date" style="width:80%;">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
                                     </div>
-                                    <!-- /.box-header -->
-                                    <!-- form start -->
-                                    <form role="form">
-                                        <div class="box-body">
-                                            <div class="form-group">
-                                                <label>属性1</label>
-                                                <input type="text" class="form-control" placeholder="Enter ...">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>属性2</label>
-                                                <input type="text" class="form-control" placeholder="Enter ...">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputFile">设备图片</label>
-                                                <input type="file" id="exampleInputFile1">
-
-                                                <p class="help-block">更改设备图片</p>
-                                            </div>
-                                        </div>
-                                        <!-- /.box-body -->
-
-                                        <div class="box-footer">
-                                            <button type="submit" class="btn btn-primary">确定</button>
-                                        </div>
-                                    </form>
+                                    <input type="text" class="form-control pull-right" id="time2">
                                 </div>
                             </div>
-                            <!-- /.tab-pane -->
-                            <div class="tab-pane" id="device3">
-                                <div class="box box-primary">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">设备3计划配置</h3>
-                                    </div>
-                                    <!-- /.box-header -->
-                                    <!-- form start -->
-                                    <form role="form">
-                                        <div class="box-body">
-                                            <div class="form-group">
-                                                <label>属性1</label>
-                                                <input type="text" class="form-control" placeholder="Enter ...">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>属性2</label>
-                                                <input type="text" class="form-control" placeholder="Enter ...">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputFile">设备图片</label>
-                                                <input type="file" id="exampleInputFile1">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">预警报警值设定:</label>
 
-                                                <p class="help-block">更改设备图片</p>
-                                            </div>
-                                        </div>
-                                        <!-- /.box-body -->
-
-                                        <div class="box-footer">
-                                            <button type="submit" class="btn btn-primary">确定</button>
-                                        </div>
-                                    </form>
-                                </div>
+                                <input type="text" class="form-control" placeholder="" style="width: 80%">
                             </div>
-                            <!-- /.tab-pane -->
                         </div>
-                        <!-- /.tab-content -->
-                    </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer" align="center">
+                            <button type="submit" class="btn btn-info">保存</button>
+                        </div>
+                        <!-- /.box-footer -->
+                    </form>
                 </div>
             </div>
         </section>
@@ -189,6 +94,8 @@
     <%@include file="/WEB-INF/jsp/common/footer.jsp" %>
 </body>
 
-<script src="<%=path%>/static/script/monitor/sewerage.js"></script>
+<script src="<%=path%>/static/script/schedule/schedule.js"></script>
+<!-- bootstrap datepicker -->
+<script src="<%=path%>/static/AdminLTE-2.4.2/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
 </html>

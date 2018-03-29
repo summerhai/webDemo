@@ -11,8 +11,8 @@ function mudFlot() {
     var dataArray = [];
     var dataset;
     var totalPoints = 10;
-    //没分钟更新一次
-    var updateInterval = 60000;
+    //每5分钟更新一次
+    var updateInterval = 300000;
     // var now = new Date().getTime();
 
     function GetData() {
@@ -43,7 +43,7 @@ function mudFlot() {
         },
         xaxis: {
             mode: "time",
-            tickSize: [1, "minute"],
+            tickSize: [5, "minute"],
             tickFormatter: function (v, axis) {
                 var date = new Date(v);
 

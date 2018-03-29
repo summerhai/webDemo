@@ -33,10 +33,10 @@
 {{each data}}
    <tr>
 			<td>
-				<span   title="{{html name}}" >{{html name}}</span>
+				{{html name}}
 			</td>
 			<td>
-				<span   title="{{html value}}" >{{html value}}</span>
+				{{html value}}
 			</td>
 		</tr>
 

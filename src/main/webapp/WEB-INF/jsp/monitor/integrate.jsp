@@ -74,7 +74,7 @@
                                 </table>
                                 <%--每隔一段时间去刷新数据--%>
 
-                                <table class="table table-bordered text-center" id="sewerage1" style="font-size: 14px">
+                                <table class="table table-bordered text-center" id="sewerage1" style="width:100%;font-size: 14px">
                                     <tr>
                                         <th>名称</th>
                                         <th>状态</th>
@@ -119,7 +119,7 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                                <table class="table table-bordered text-center">
+                                <table class="table table-bordered text-center" style="width:100%;">
                                     <tr>
                                         <th>名称</th>
                                         <th>状态</th>

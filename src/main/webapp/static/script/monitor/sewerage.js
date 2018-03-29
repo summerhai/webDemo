@@ -3,7 +3,7 @@ var img;
 $(function () {
     showTime();
     initCanvas();
-    setInterval(myClickHandler,10000);
+    setInterval(myClickHandler,3000);
 })
 
 function showTime() {
